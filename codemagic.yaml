@@ -25,21 +25,30 @@ workflows:
           export PATH=$HOME/.dotnet:$PATH
           dotnet workload install maui
 
-      - name: Apply Vault Profiles
-        script: xcode-project use-profiles
+      - name: Setup Keychain and Apply Profiles
+        script: |
+          # 1. تهيئة سلسلة المفاتيح الخاصة بنظام الماك
+          keychain initialize
+
+          # 2. حقن الشهادة بداخلها لتصبح مرئية لـ .NET
+          keychain add-certificates
+
+          # 3. ربط البروفايل
+          xcode-project use-profiles
 
       - name: Build IPA
         script: |
           export PATH=$HOME/.dotnet:$PATH
 
-          # أضفنا أكواد التوقيع (CodesignKey و CodesignProvision) ليتمكن MAUI من استخدام الشهادات
+          # طباعة الشهادات المتاحة في السجل للتأكد من نجاح الخطوة السابقة
+          security find-identity -v -p codesigning
+
+          # البناء (قمنا بإزالة التحديد اليدوي لنجعل MAUI يلتقط الشهادة تلقائياً)
           dotnet publish PROXIMAMOP.csproj \
             -f net10.0-ios \
             -c Release \
             -p:ArchiveOnBuild=true \
-            -p:RuntimeIdentifier=ios-arm64 \
-            -p:CodesignKey="$CM_CERTIFICATE" \
-            -p:CodesignProvision="$CM_PROVISIONING_PROFILE"
+            -p:RuntimeIdentifier=ios-arm64
 
     artifacts:
       - "**/*.ipa"
