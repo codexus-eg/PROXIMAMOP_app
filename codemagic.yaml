@@ -1,0 +1,46 @@
+workflows:
+  proximamop-ios-testflight-workflow:
+    name: PROXIMAMOP iOS Build and Publish to TestFlight
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+
+    integrations:
+      app_store_connect: noourway
+
+    environment:
+      dotnet: 8.0 # تم التعديل إلى بيئة .NET بدلاً من Flutter
+      xcode: latest
+      ios_signing:
+        provisioning_profiles:
+          - PROXIMAMOP_Manual_Profile # اسم البروفايل الجديد الخاص بك
+        certificates:
+          - ios_cert_manual
+
+    scripts:
+      - name: Install .NET MAUI Workload
+        script: |
+          # تحميل الحزم اللازمة لبيئة MAUI على سيرفرات ماك
+          dotnet workload install maui
+
+      - name: Apply Vault Profiles
+        script: xcode-project use-profiles
+
+      - name: Build IPA
+        script: |
+          # أمر البناء المخصص لـ .NET MAUI لاستخراج ملف الـ ipa
+          dotnet publish PROXIMAMOP.csproj \
+            -f net8.0-ios \
+            -c Release \
+            -p:ArchiveOnBuild=true \
+            -p:RuntimeIdentifier=ios-arm64
+
+    artifacts:
+      - "**/*.ipa" # البحث عن ملف الـ ipa في أي مجلد بعد البناء
+
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+      email:
+        recipients:
+          - codexus.eg@gmail.com
