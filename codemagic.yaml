@@ -8,8 +8,8 @@ workflows:
       app_store_connect: noourway
 
     environment:
-      # نطلب أحدث نسخة متوفرة من إكس كود على السيرفر
-      xcode: edge
+      # تحديد الإصدار المطلوب بدقة ليتطابق مع متطلبات .NET 10
+      xcode: 26.5
       ios_signing:
         provisioning_profiles:
           - PROXIMAMOP_Manual_Profile
@@ -33,13 +33,12 @@ workflows:
         script: |
           export PATH=$HOME/.dotnet:$PATH
 
-          # أضفنا -p:VerifyXcodeVersion=false لتجاوز خطأ توافق الإصدارات البسيط
+          # إزالة كود التجاهل السابق لأننا حددنا الإصدار الصحيح
           dotnet publish PROXIMAMOP.csproj \
             -f net10.0-ios \
             -c Release \
             -p:ArchiveOnBuild=true \
-            -p:RuntimeIdentifier=ios-arm64 \
-            -p:VerifyXcodeVersion=false
+            -p:RuntimeIdentifier=ios-arm64
 
     artifacts:
       - "**/*.ipa"
