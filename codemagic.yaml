@@ -8,18 +8,17 @@ workflows:
       app_store_connect: noourway
 
     environment:
-      dotnet: 8.0 # تم التعديل إلى بيئة .NET بدلاً من Flutter
       xcode: latest
       ios_signing:
         provisioning_profiles:
-          - PROXIMAMOP_Manual_Profile # اسم البروفايل الجديد الخاص بك
+          - PROXIMAMOP_Manual_Profile
         certificates:
           - ios_cert_manual
 
     scripts:
       - name: Install .NET MAUI Workload
         script: |
-          # تحميل الحزم اللازمة لبيئة MAUI على سيرفرات ماك
+          # تحميل الحزم اللازمة لبيئة MAUI
           dotnet workload install maui
 
       - name: Apply Vault Profiles
@@ -27,15 +26,15 @@ workflows:
 
       - name: Build IPA
         script: |
-          # أمر البناء المخصص لـ .NET MAUI لاستخراج ملف الـ ipa
+          # أمر البناء باستخدام net10.0-ios بناءً على إعدادات مشروعك
           dotnet publish PROXIMAMOP.csproj \
-            -f net8.0-ios \
+            -f net10.0-ios \
             -c Release \
             -p:ArchiveOnBuild=true \
             -p:RuntimeIdentifier=ios-arm64
 
     artifacts:
-      - "**/*.ipa" # البحث عن ملف الـ ipa في أي مجلد بعد البناء
+      - "**/*.ipa"
 
     publishing:
       app_store_connect:
