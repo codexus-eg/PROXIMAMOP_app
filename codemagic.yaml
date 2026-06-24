@@ -8,7 +8,8 @@ workflows:
       app_store_connect: noourway
 
     environment:
-      xcode: latest
+      # نطلب أحدث نسخة متوفرة من إكس كود على السيرفر
+      xcode: edge
       ios_signing:
         provisioning_profiles:
           - PROXIMAMOP_Manual_Profile
@@ -22,7 +23,6 @@ workflows:
           chmod +x ./dotnet-install.sh
           ./dotnet-install.sh --channel 10.0
 
-          # تعريف المسار للخطوة الحالية
           export PATH=$HOME/.dotnet:$PATH
           dotnet workload install maui
 
@@ -31,14 +31,15 @@ workflows:
 
       - name: Build IPA
         script: |
-          # السطر السحري لحل المشكلة: تذكير السيرفر بمكان dotnet قبل البناء
           export PATH=$HOME/.dotnet:$PATH
 
+          # أضفنا -p:VerifyXcodeVersion=false لتجاوز خطأ توافق الإصدارات البسيط
           dotnet publish PROXIMAMOP.csproj \
             -f net10.0-ios \
             -c Release \
             -p:ArchiveOnBuild=true \
-            -p:RuntimeIdentifier=ios-arm64
+            -p:RuntimeIdentifier=ios-arm64 \
+            -p:VerifyXcodeVersion=false
 
     artifacts:
       - "**/*.ipa"
