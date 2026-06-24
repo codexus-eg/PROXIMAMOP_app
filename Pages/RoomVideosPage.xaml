@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.Pages.RoomVideosPage"
+             BackgroundColor="#050203"
+             Title="Videos">
+
+    <Grid>
+        <Image Source="fire_bg.jpg" Aspect="AspectFill" Opacity="0.45"/>
+
+        <VerticalStackLayout Padding="18" Spacing="14">
+            <Label x:Name="RoomTitleLabel"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="White"/>
+
+            <CollectionView x:Name="VideosList"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="#F0B24A"
+                                StrokeThickness="2"
+                                Padding="14"
+                                Margin="0,0,0,12"
+                                StrokeShape="RoundRectangle 22"
+                                BackgroundColor="#22080A">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="{Binding Title}"
+                                       FontSize="17"
+                                       FontAttributes="Bold"
+                                       TextColor="White"/>
+
+                                <WebView Source="{Binding VideoHtml}"
+                                         HeightRequest="220"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label x:Name="EmptyLabel"
+                   Text="No videos yet."
+                   IsVisible="False"
+                   TextColor="#F7D9A0"
+                   FontSize="16"
+                   HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,1525 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\pages\\registerpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\pages\\registerpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\pages\\pendingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\pages\\pendingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\pages\\loadingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\pages\\loadingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\pages\\activationgatepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\pages\\activationgatepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\platforms\\android\\androidmanifest.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\platforms\\android\\androidmanifest.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\proximamop.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\proximamop.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\models\\chatmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\models\\chatmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\pages\\roomvideospage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\pages\\roomvideospage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\pages\\roomvideospage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\pages\\roomvideospage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\roomspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\roomspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\roomspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\roomspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\flow90page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\flow90page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\flow90page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\flow90page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\features\\live\\livepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\features\\live\\livepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\components\\livetest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\components\\livetest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\chartpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\chartpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\feedpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\feedpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\candlevelocityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\candlevelocityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\grel90page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\grel90page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\locmapindicatorlevelsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\locmapindicatorlevelsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\indicatorlevelsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\indicatorlevelsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\goldmarketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\goldmarketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\newmarketlevelsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\newmarketlevelsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\locmapservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\locmapservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\newmarketserverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\newmarketserverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\servermarketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\servermarketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\levelsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\levelsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\locmappage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\locmappage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\analystprofilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\analystprofilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\models\\locmaplevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\models\\locmaplevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\models\\heatmapapimodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\models\\heatmapapimodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\locmappage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\locmappage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\grel90page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\grel90page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\servicespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\servicespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\liquidityheatmappage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\liquidityheatmappage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\features\\live\\livepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\features\\live\\livepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\features\\live\\livebroadcastwebview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\features\\live\\livebroadcastwebview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\features\\live\\liveconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\features\\live\\liveconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\live\\livetokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\live\\livetokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\live\\livebroadcastservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\live\\livebroadcastservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\live\\iliveinappbrowserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\live\\iliveinappbrowserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\live\\ilivebroadcastservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\live\\ilivebroadcastservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\servicehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\servicehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\livekitprobe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\livekitprobe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\live\\defaultliveinappbrowserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\live\\defaultliveinappbrowserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\servicespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\servicespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\sednasubscribepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\sednasubscribepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\platforms\\android\\livebroadcastwebviewhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\platforms\\android\\livebroadcastwebviewhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\models\\live\\livejoinresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\models\\live\\livejoinresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\models\\live\\livejoinrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\models\\live\\livejoinrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\models\\messengermodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\models\\messengermodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\models\\leveldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\models\\leveldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\models\\feeditem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\models\\feeditem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\sednapage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\sednapage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\copytradespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\copytradespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\messengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\messengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\chatmessagecacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\chatmessagecacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\privatemessagecacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\privatemessagecacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\candlepoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\candlepoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\heatmapcanvasview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\heatmapcanvasview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\iaudioplaybackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\iaudioplaybackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\feedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\feedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\liquidityheatmappage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\liquidityheatmappage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\feedmonitorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\feedmonitorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\feedpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\feedpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\analystprofilepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\analystprofilepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\analystcommentspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\analystcommentspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\marketservicepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\marketservicepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\marketservicepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\marketservicepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\copytradespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\copytradespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\myprofilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\myprofilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\services\\activationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\services\\activationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\chartpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\chartpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\platforms\\android\\mainactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\platforms\\android\\mainactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\inverseboolconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\inverseboolconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\sednapage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\sednapage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\chatpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\chatpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\chatpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\chatpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|c:\\users\\hp\\source\\repos\\proximamop\\proximamop\\resources\\appicon\\appiconfg.svg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{8C3961E8-C33A-9FFF-FE1F-5F0635948475}|PROXIMAMOP\\PROXIMAMOP.csproj|solutionrelative:proximamop\\resources\\appicon\\appiconfg.svg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "MessengerModels.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\MessengerModels.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Models\\MessengerModels.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\MessengerModels.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Models\\MessengerModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T14:29:20.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ChatModels.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\ChatModels.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Models\\ChatModels.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\ChatModels.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Models\\ChatModels.cs",
+              "ViewState": "AgIAAOMAAAAAAAAAAAAUwOwAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T14:28:56.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LoginPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\LoginPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LoginPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\LoginPage.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwCQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T15:11:01.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PROXIMAMOP.csproj",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\PROXIMAMOP.csproj",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\PROXIMAMOP.csproj",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\PROXIMAMOP.csproj",
+              "RelativeToolTip": "PROXIMAMOP\\PROXIMAMOP.csproj",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAtwBwAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-11T00:45:39.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RoomsPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\RoomsPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\RoomsPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\RoomsPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\RoomsPage.xaml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAkwDQAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-06-10T23:23:08.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LoginPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\LoginPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LoginPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\LoginPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-22T15:06:22.263Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ActivationGatePage.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\ActivationGatePage.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Pages\\ActivationGatePage.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\ActivationGatePage.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Pages\\ActivationGatePage.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBYAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T14:05:18.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoadingPage.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\LoadingPage.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Pages\\LoadingPage.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\LoadingPage.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Pages\\LoadingPage.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwFoAAABoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T17:50:30.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PendingPage.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\PendingPage.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Pages\\PendingPage.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\PendingPage.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Pages\\PendingPage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T12:50:36.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RegisterPage.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\RegisterPage.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Pages\\RegisterPage.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\RegisterPage.cs*",
+              "RelativeToolTip": "PROXIMAMOP\\Pages\\RegisterPage.cs*",
+              "ViewState": "AgIAAAEAAAAAAAAAAADwvyMAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T12:47:42.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "LocmapIndicatorLevelsService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LocmapIndicatorLevelsService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\LocmapIndicatorLevelsService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LocmapIndicatorLevelsService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\LocmapIndicatorLevelsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T16:46:11.679Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "AnalystProfilePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\AnalystProfilePage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\AnalystProfilePage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\AnalystProfilePage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\AnalystProfilePage.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABMAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T17:05:18.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AndroidManifest.xml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Platforms\\Android\\AndroidManifest.xml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Platforms\\Android\\AndroidManifest.xml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Platforms\\Android\\AndroidManifest.xml",
+              "RelativeToolTip": "PROXIMAMOP\\Platforms\\Android\\AndroidManifest.xml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2026-06-18T17:50:07.304Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "LiveTest.razor",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Components\\LiveTest.razor",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Components\\LiveTest.razor",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Components\\LiveTest.razor",
+              "RelativeToolTip": "PROXIMAMOP\\Components\\LiveTest.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-10T21:35:05.64Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RoomsPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\RoomsPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\RoomsPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\RoomsPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\RoomsPage.xaml.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAuwDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-10T23:23:52.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\App.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\App.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\App.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\App.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-22T14:50:26.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RoomVideosPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\RoomVideosPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Pages\\RoomVideosPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\RoomVideosPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\Pages\\RoomVideosPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-06-10T23:44:47.215Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RoomVideosPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\RoomVideosPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Pages\\RoomVideosPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Pages\\RoomVideosPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Pages\\RoomVideosPage.xaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAqwBIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-10T23:45:42.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "SednaSubscribePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\SednaSubscribePage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\SednaSubscribePage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\SednaSubscribePage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\SednaSubscribePage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwAsAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T13:04:58.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "MessengerService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\MessengerService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\MessengerService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\MessengerService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\MessengerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T21:49:54.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "ServiceHelper.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\ServiceHelper.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\ServiceHelper.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\ServiceHelper.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\ServiceHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T21:19:26.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "INotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\INotificationService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\INotificationService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\INotificationService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\INotificationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T21:18:53.095Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "IAudioPlaybackService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\IAudioPlaybackService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\IAudioPlaybackService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\IAudioPlaybackService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\IAudioPlaybackService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T21:18:50.289Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "ChatMessageCacheService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\ChatMessageCacheService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\ChatMessageCacheService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\ChatMessageCacheService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\ChatMessageCacheService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T21:18:33.212Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "PrivateMessageCacheService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\PrivateMessageCacheService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\PrivateMessageCacheService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\PrivateMessageCacheService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\PrivateMessageCacheService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T21:17:41.406Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "HeatmapApiModel.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\HeatmapApiModel.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Models\\HeatmapApiModel.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\HeatmapApiModel.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Models\\HeatmapApiModel.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAkwGsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T08:05:18.369Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "HeatmapCanvasView.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\HeatmapCanvasView.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\HeatmapCanvasView.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\HeatmapCanvasView.cs",
+              "RelativeToolTip": "PROXIMAMOP\\HeatmapCanvasView.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAQwKABAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T08:03:56.549Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "LocmapPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LocmapPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\LocmapPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LocmapPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\LocmapPage.xaml.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwC4AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T00:32:42.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "LocmapPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LocmapPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\LocmapPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LocmapPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\LocmapPage.xaml",
+              "ViewState": "AgIAAMEAAAAAAAAAAAAuwMsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-21T00:31:13.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "LocmapService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\LocmapService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\LocmapService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\LocmapService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\LocmapService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T00:30:08.585Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "LocmapLevel.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\LocmapLevel.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Models\\LocmapLevel.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\LocmapLevel.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Models\\LocmapLevel.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAxwBUAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T00:26:39.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "FeedItem.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\FeedItem.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Models\\FeedItem.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\FeedItem.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Models\\FeedItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:04:30.486Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "FeedMonitorService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\FeedMonitorService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\FeedMonitorService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\FeedMonitorService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\FeedMonitorService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwv2EAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:00:55.164Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "FeedService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\FeedService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\FeedService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\FeedService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\FeedService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T15:54:29.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "FeedPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\FeedPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\FeedPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\FeedPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\FeedPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T15:38:05.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "FeedPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\FeedPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\FeedPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\FeedPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\FeedPage.xaml",
+              "ViewState": "AgIAAM4AAAAAAAAAAADwv+4AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-16T15:37:57.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "AnalystCommentsPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\AnalystCommentsPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\AnalystCommentsPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\AnalystCommentsPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\AnalystCommentsPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-16T15:34:20.76Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "AnalystProfilePage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\AnalystProfilePage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\AnalystProfilePage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\AnalystProfilePage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\AnalystProfilePage.xaml",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-16T12:26:49.648Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "CopyTradesPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\CopyTradesPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\CopyTradesPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\CopyTradesPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\CopyTradesPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T11:02:12.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "CopyTradesPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\CopyTradesPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\CopyTradesPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\CopyTradesPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\CopyTradesPage.xaml",
+              "ViewState": "AgIAAC8BAAAAAAAAAAAiwEABAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-16T11:01:28.117Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "SettingsPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\SettingsPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\SettingsPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\SettingsPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\SettingsPage.xaml.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAywG8AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T10:53:17.426Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "SettingsPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\SettingsPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\SettingsPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\SettingsPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\SettingsPage.xaml",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAiwGoAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-16T10:52:55.142Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "MyProfilePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MyProfilePage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\MyProfilePage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MyProfilePage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\MyProfilePage.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T22:31:25.123Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "ChatService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\ChatService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\ChatService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\ChatService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\ChatService.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAgwNAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T15:14:49.453Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "CandleVelocityService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\CandleVelocityService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\CandleVelocityService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\CandleVelocityService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\CandleVelocityService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T11:03:46.645Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Flow90Page.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Flow90Page.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Flow90Page.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Flow90Page.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Flow90Page.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T09:27:34.388Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Flow90Page.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Flow90Page.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Flow90Page.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Flow90Page.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\Flow90Page.xaml",
+              "ViewState": "AgIAACAAAAAAAAAAAAAUwCsAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-06T09:26:57.903Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Grel90Page.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Grel90Page.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Grel90Page.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Grel90Page.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Grel90Page.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T23:30:11.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "Grel90Page.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Grel90Page.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Grel90Page.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Grel90Page.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\Grel90Page.xaml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAIwEoAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-04T23:29:34.017Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 87,
+              "Title": "InverseBoolConverter.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\InverseBoolConverter.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\InverseBoolConverter.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\InverseBoolConverter.cs",
+              "RelativeToolTip": "PROXIMAMOP\\InverseBoolConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T20:46:14.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "LiquidityHeatmapPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LiquidityHeatmapPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\LiquidityHeatmapPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LiquidityHeatmapPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\LiquidityHeatmapPage.xaml.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAUwA8AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T19:59:10.897Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "LiquidityHeatmapPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LiquidityHeatmapPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\LiquidityHeatmapPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LiquidityHeatmapPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\LiquidityHeatmapPage.xaml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACAAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-03T19:58:40.938Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 84,
+              "Title": "ActivationService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\ActivationService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\ActivationService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\ActivationService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\ActivationService.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAA2wGkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T10:17:48.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IndicatorLevelsService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\IndicatorLevelsService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\IndicatorLevelsService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\IndicatorLevelsService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\IndicatorLevelsService.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAYwAsAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T20:04:55.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "GoldMarketService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\GoldMarketService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\GoldMarketService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\GoldMarketService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\GoldMarketService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T17:07:16.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "ServicesPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ServicesPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\ServicesPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ServicesPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\ServicesPage.xaml.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAswC8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T17:32:49.952Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "ServicesPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ServicesPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\ServicesPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ServicesPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\ServicesPage.xaml",
+              "ViewState": "AgIAAIABAAAAAAAAAAAEwIkBAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-24T17:32:34.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "MarketServicePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MarketServicePage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\MarketServicePage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MarketServicePage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\MarketServicePage.xaml.cs",
+              "ViewState": "AgIAANwBAAAAAAAAAAAowOoBAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T17:22:44.547Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "MarketServicePage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MarketServicePage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\MarketServicePage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MarketServicePage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\MarketServicePage.xaml",
+              "ViewState": "AgIAAOMAAAAAAAAAAAAiwAUBAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-24T17:21:09.511Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "NewMarketLevelsService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\NewMarketLevelsService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\NewMarketLevelsService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\NewMarketLevelsService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\NewMarketLevelsService.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAgwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T17:19:44.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "NewMarketServerService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\NewMarketServerService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\NewMarketServerService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\NewMarketServerService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\NewMarketServerService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAYwAwAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T17:18:14.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "CandlePoint.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\CandlePoint.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\CandlePoint.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\CandlePoint.cs",
+              "RelativeToolTip": "PROXIMAMOP\\CandlePoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T16:41:44.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 85,
+              "Title": "ChartPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ChartPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\ChartPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ChartPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\ChartPage.xaml",
+              "ViewState": "AgIAABgBAAAAAAAAAAAAwDEBAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-24T16:39:07.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 88,
+              "Title": "SednaPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\SednaPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\SednaPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\SednaPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\SednaPage.xaml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAUwGkAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-23T22:20:22.959Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "SednaPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\SednaPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\SednaPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\SednaPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\SednaPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T22:20:02.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "LevelsService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\LevelsService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\LevelsService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\LevelsService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\LevelsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T15:35:58.117Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ServerMarketService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\ServerMarketService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\ServerMarketService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\ServerMarketService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\ServerMarketService.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAswCcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T15:33:25.672Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ChartPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ChartPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\ChartPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ChartPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\ChartPage.xaml.cs",
+              "ViewState": "AgIAAOoAAAAAAAAAAAA4wAwAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T15:33:03.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "AppShell.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\AppShell.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\AppShell.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\AppShell.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\AppShell.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T14:51:33.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\App.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\App.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T14:50:54.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 89,
+              "Title": "ChatPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ChatPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\ChatPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ChatPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\ChatPage.xaml.cs",
+              "ViewState": "AgIAAM4DAAAAAAAAAAAswOADAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T10:18:35.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 90,
+              "Title": "ChatPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ChatPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\ChatPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\ChatPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\ChatPage.xaml",
+              "ViewState": "AgIAAMcBAAAAAAAAAAAqwNcBAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-16T10:18:01.005Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "ILiveInAppBrowserService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\Live\\ILiveInAppBrowserService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\Live\\ILiveInAppBrowserService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\Live\\ILiveInAppBrowserService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\Live\\ILiveInAppBrowserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T09:59:05.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\MainPage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MainPage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\MainPage.xaml.cs",
+              "ViewState": "AgIAAGgBAAAAAAAAAAAewH0BAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T09:42:34.34Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "DefaultLiveInAppBrowserService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\Live\\DefaultLiveInAppBrowserService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\Live\\DefaultLiveInAppBrowserService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\Live\\DefaultLiveInAppBrowserService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\Live\\DefaultLiveInAppBrowserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T09:40:38.084Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "ILiveBroadcastService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\Live\\ILiveBroadcastService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\Live\\ILiveBroadcastService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\Live\\ILiveBroadcastService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\Live\\ILiveBroadcastService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAgwB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T00:00:19.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "LiveBroadcastService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\Live\\LiveBroadcastService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\Live\\LiveBroadcastService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\Live\\LiveBroadcastService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\Live\\LiveBroadcastService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAzwHEAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:46:52.815Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 86,
+              "Title": "MainActivity.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Platforms\\Android\\MainActivity.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Platforms\\Android\\MainActivity.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Platforms\\Android\\MainActivity.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Platforms\\Android\\MainActivity.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAC0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:31:37.829Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "LiveTokenService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\Live\\LiveTokenService.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Services\\Live\\LiveTokenService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Services\\Live\\LiveTokenService.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Services\\Live\\LiveTokenService.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwJAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:30:03.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "LivePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Features\\Live\\LivePage.xaml.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Features\\Live\\LivePage.xaml.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Features\\Live\\LivePage.xaml.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Features\\Live\\LivePage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:26:51.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "LiveBroadcastWebViewHandler.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Platforms\\Android\\LiveBroadcastWebViewHandler.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Platforms\\Android\\LiveBroadcastWebViewHandler.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Platforms\\Android\\LiveBroadcastWebViewHandler.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Platforms\\Android\\LiveBroadcastWebViewHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:22:43.724Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\AppShell.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\AppShell.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\AppShell.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\AppShell.xaml",
+              "ViewState": "AgIAABEAAAAAAAAAAAAiwBQAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-15T23:15:06.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\MauiProgram.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MauiProgram.cs",
+              "RelativeToolTip": "PROXIMAMOP\\MauiProgram.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:14:24.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "LiveKitProbe.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LiveKitProbe.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\LiveKitProbe.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\LiveKitProbe.cs",
+              "RelativeToolTip": "PROXIMAMOP\\LiveKitProbe.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAQwHEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:13:58.076Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "LiveJoinResult.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\Live\\LiveJoinResult.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Models\\Live\\LiveJoinResult.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\Live\\LiveJoinResult.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Models\\Live\\LiveJoinResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:13:19.654Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "LiveJoinRequest.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\Live\\LiveJoinRequest.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Models\\Live\\LiveJoinRequest.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\Live\\LiveJoinRequest.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Models\\Live\\LiveJoinRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:13:02.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "LivePage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Features\\Live\\LivePage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Features\\Live\\LivePage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Features\\Live\\LivePage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\Features\\Live\\LivePage.xaml",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAUwDgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-15T23:12:39.899Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "LiveConfig.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Features\\Live\\LiveConfig.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Features\\Live\\LiveConfig.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Features\\Live\\LiveConfig.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Features\\Live\\LiveConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:12:23.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "LevelData.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\LevelData.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Models\\LevelData.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Models\\LevelData.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Models\\LevelData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:10:42.381Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "LiveBroadcastWebView.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Features\\Live\\LiveBroadcastWebView.cs",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Features\\Live\\LiveBroadcastWebView.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Features\\Live\\LiveBroadcastWebView.cs",
+              "RelativeToolTip": "PROXIMAMOP\\Features\\Live\\LiveBroadcastWebView.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T23:10:32.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MainPage.xaml",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\MainPage.xaml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\MainPage.xaml",
+              "RelativeToolTip": "PROXIMAMOP\\MainPage.xaml",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAtwKQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-11T14:10:20.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 91,
+              "Title": "appiconfg.svg",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Resources\\AppIcon\\appiconfg.svg",
+              "RelativeDocumentMoniker": "PROXIMAMOP\\Resources\\AppIcon\\appiconfg.svg",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\PROXIMAMOP\\PROXIMAMOP\\Resources\\AppIcon\\appiconfg.svg",
+              "RelativeToolTip": "PROXIMAMOP\\Resources\\AppIcon\\appiconfg.svg",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAGAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQESURBVDhPrZRdbJNVHMZ/b/u26xfUbqPYbd2wIKxsbGDYpk6joISJCuIHRkyMVxpDNBpjQjDRZFfeaFiI3ojGS00MshgvIEQkYyTAnJMs4yPb2Nqt27p17d5\u002B0L7v23O8WDc28JIneXK\u002B/ufJ\u002BZ/znD88SEgplXvnurq6jjc2Nn5UWkdKuRQLgBCCfD5PNpvtPnr06JFoNBpbrXAPurq6hoQQolgs/i9N0xQDAwOir69PnDhx4tdwOLxl5X7rygFAR0fHkba2tkohwdRTiNw1lMwP6DM/Y0z9AcDwhMHOljacTmfIbrfXTE5OXkskEon7BO2tbyr1za1HbuTKKm9N9rLW/A7nzPeYsbOgbEHIIGb8EtFZqNvcis/nU10u16by8vLg9evXL6bT6fSioKLgfmy/r/bF975cE6h9viVss\u002B9efxzv9BkGRrfzm/YxI2WH2da8DzE7RMZwc7F/jP7\u002BfjRNs/p8vvCFCxd\u002BSaVSMRXA0bjXW3fgw8\u002Be21nz/mvbRlw7xeckbubozR7jVugVorqTSyPTZI0xXvc3UN\u002B8kRr86LqOx\u002BNhcHBwOUsLgL/jg/a28Lq3DzVcXtuS\u002B1RZGMgzqXSSW3cQWxbchknthiquzhbpST6CsqaWysoKAoEAXq8Xq9W67AILQF3Ac/Dl\u002BqGKJuMbZa7PwNX0E9seP8ihHQHeaqokMzWLz16G4nbSl7Axl7eUziNhhbUAVICt61JPP\u002BH90ZkZdfCt8QUTf9kwzH8RUiIR5IsqFaoFm93G6GyBZFqnaq0DKQHlrkcB1KqAan\u002B36UyNLTKinLd8Jd0te5SQtLAYTUlUYtzR0XWDgmliSllalsh7PoBl4kbtgc3i97IrmcNyqGJv8cqlm1KOjiNGxigO36Y4fBsxfBslOk51YZ5ngx78HntJbPUvAlClFntjZry6cL64CyMrVbfTZmkPVSo7qt14HSpa3uDyWJJIMgdSEvS58DjUpQQW73EF1PxEvj2ZLfuzd1rdWqum6taHqpWzUznO3ppB6gaqXaXoqSBZdDEfn\u002BcFi4LNcrcELKW8BIu5oDj3HSscjk3PfX1zaDQxPpWWunsN1G5A2fQoheo64lIhHk8Qcpi81Lgeu3Xple\u002BH9dg7\u002BJ95OBm62nujpy5gMzIpo17LCPdEfIHEXIo7iXls6QUaHlL5ZNdGyt12UJRlyyiKQiQS4fTp0yc1TYtZN1RxOTbN7rB95pnqeM9goKbZtefJp\u002Br9tiJbvCqtVW72N/h5dXsVDpu6eIySXQAUi4VIJEp3d/dJTdPuL2WdnZ09QghhGEaJujD0RerLLCy3hmGIc\u002BfOiWAw2MKSsVdCSvn3qVOn2kt9pJQIIVYV2pUE0DTtH2B\u002BtdIDwn\u002B7nChdLXVvTAAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-04-11T12:32:14.207Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{dee22b65-9761-4a26-8fb2-759b971d6dfc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{28836128-fc2c-11d2-a433-00c04f72d18a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

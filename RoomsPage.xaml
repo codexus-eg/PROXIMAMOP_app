@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.Pages.RoomsPage"
+             BackgroundColor="#050203"
+             Title="Rooms">
+
+    <Grid>
+        <Image Source="fire_bg.jpg" Aspect="AspectFill" Opacity="0.55"/>
+
+        <VerticalStackLayout Padding="18" Spacing="14">
+            <Label Text="ROOMS"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="White"/>
+
+            <CollectionView x:Name="RoomsList"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="#F0B24A"
+                                StrokeThickness="2"
+                                Padding="16"
+                                Margin="0,0,0,12"
+                                StrokeShape="RoundRectangle 24"
+                                BackgroundColor="#22080A">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Name}"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="White"/>
+                                    <Label Text="Locked room"
+                                           FontSize="12"
+                                           TextColor="#F7D9A0"/>
+                                </VerticalStackLayout>
+
+                                <Label Grid.Column="1"
+                                       Text="??"
+                                       FontSize="26"
+                                       VerticalOptions="Center"/>
+                            </Grid>
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnRoomTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

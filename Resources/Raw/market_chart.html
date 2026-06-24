@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #0b0b0b;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        #chartWrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #0b0b0b;
+        }
+
+        #chart {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+            #overlay svg {
+                width: 100%;
+                height: 100%;
+                overflow: visible;
+            }
+    </style>
+</head>
+
+<body>
+    <div id="chartWrapper">
+        <div id="chart"></div>
+        <div id="overlay">
+            <svg id="overlaySvg"></svg>
+        </div>
+    </div>
+
+    <script>
+        let chart = null;
+        let candleSeries = null;
+        let helperSeries = null;
+
+        let candles = [];
+        let timeframeSeconds = 60;
+        let currentObjects = [];
+
+        let chartReadyFlag = false;
+        let isPointerDown = false;
+        let userInteractionUntil = 0;
+
+        function createChartIfNeeded() {
+            if (chart) return;
+
+            chart = LightweightCharts.createChart(document.getElementById('chart'), {
+                width: window.innerWidth,
+                height: window.innerHeight,
+                attributionLogo: false,
+                layout: {
+                    background: { color: '#0b0b0b' },
+                    textColor: '#d1d4dc'
+                },
+                grid: {
+                    vertLines: { color: '#1a1a1a' },
+                    horzLines: { color: '#1a1a1a' }
+                },
+                rightPriceScale: {
+                    borderColor: '#333'
+                },
+                timeScale: {
+                    borderColor: '#333',
+                    timeVisible: true,
+                    secondsVisible: false
+                },
+                crosshair: {
+                    mode: LightweightCharts.CrosshairMode.Normal
+                }
+            });
+
+            candleSeries = chart.addSeries(LightweightCharts.CandlestickSeries, {
+                upColor: '#00ff88',
+                downColor: '#ff4d4d',
+                borderUpColor: '#00ff88',
+                borderDownColor: '#ff4d4d',
+                wickUpColor: '#00ff88',
+                wickDownColor: '#ff4d4d'
+            });
+
+            helperSeries = chart.addSeries(LightweightCharts.LineSeries, {
+                color: 'rgba(0,0,0,0)',
+                lineWidth: 1,
+                priceLineVisible: false,
+                lastValueVisible: false,
+                crosshairMarkerVisible: false
+            });
+
+            const wrapper = document.getElementById('chartWrapper');
+
+            wrapper.addEventListener('pointerdown', () => {
+                isPointerDown = true;
+                userInteractionUntil = Date.now() + 5000;
+            });
+
+            wrapper.addEventListener('pointerup', () => {
+                isPointerDown = false;
+                userInteractionUntil = Date.now() + 5000;
+            });
+
+            wrapper.addEventListener('pointercancel', () => {
+                isPointerDown = false;
+                userInteractionUntil = Date.now() + 5000;
+            });
+
+            wrapper.addEventListener('wheel', () => {
+                userInteractionUntil = Date.now() + 5000;
+            }, { passive: true });
+
+            chart.timeScale().subscribeVisibleTimeRangeChange(() => {
+                redrawObjects();
+            });
+
+            window.addEventListener('resize', () => {
+                chart.applyOptions({
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                });
+                redrawObjects();
+            });
+
+            chartReadyFlag = true;
+        }
+
+        function parseBase64Json(base64) {
+            const binary = atob(base64);
+            const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+            const json = new TextDecoder('utf-8').decode(bytes);
+            return JSON.parse(json);
+        }
+
+        function setTimeframeSeconds(seconds) {
+            timeframeSeconds = Number(seconds || 60);
+        }
+
+        function setCandles(base64Json, autoFit) {
+            createChartIfNeeded();
+
+            candles = parseBase64Json(base64Json) || [];
+            candleSeries.setData(candles);
+
+            rebuildHelperSeries();
+
+            if (autoFit === true || autoFit === "true") {
+                safeFitContent();
+            }
+
+            redrawObjects();
+        }
+
+        function setObjects(base64Json, autoFit) {
+            createChartIfNeeded();
+
+            try {
+                const payload = parseBase64Json(base64Json);
+                currentObjects = payload.objects || [];
+            } catch {
+                currentObjects = [];
+            }
+
+            rebuildHelperSeries();
+
+            if (autoFit === true || autoFit === "true") {
+                safeFitContent();
+            }
+
+            redrawObjects();
+        }
+
+        function updateLivePrice(price, unixTime) {
+            createChartIfNeeded();
+
+            if (!candles || candles.length === 0) return;
+
+            const bucket = Math.floor(Number(unixTime) / timeframeSeconds) * timeframeSeconds;
+            const last = candles[candles.length - 1];
+
+            if (bucket > last.time) {
+                const newCandle = {
+                    time: bucket,
+                    open: last.close,
+                    high: Number(price),
+                    low: Number(price),
+                    close: Number(price)
+                };
+
+                candles.push(newCandle);
+                candleSeries.update(newCandle);
+            } else {
+                last.high = Math.max(Number(last.high), Number(price));
+                last.low = Math.min(Number(last.low), Number(price));
+                last.close = Number(price);
+                candleSeries.update(last);
+            }
+
+            rebuildHelperSeries();
+            redrawObjects();
+        }
+
+        function safeFitContent() {
+            if (!chart) return;
+            if (isPointerDown) return;
+            if (Date.now() < userInteractionUntil) return;
+
+            requestAnimationFrame(() => {
+                try {
+                    chart.timeScale().fitContent();
+                } catch { }
+            });
+        }
+
+        function rebuildHelperSeries() {
+            if (!helperSeries) return;
+
+            const points = [];
+
+            for (const c of candles) {
+                if (!c || c.time == null) continue;
+
+                points.push({ time: Number(c.time), value: Number(c.high) });
+                points.push({ time: Number(c.time), value: Number(c.low) });
+            }
+
+            for (const o of currentObjects) {
+                if (!o || !o.obj) continue;
+
+                const type = String(o.obj).toUpperCase();
+
+                if (type === 'RECT') {
+                    if (o.t1 != null && o.high != null) points.push({ time: Number(o.t1), value: Number(o.high) });
+                    if (o.t1 != null && o.low != null) points.push({ time: Number(o.t1), value: Number(o.low) });
+                    if (o.t2 != null && o.high != null) points.push({ time: Number(o.t2), value: Number(o.high) });
+                    if (o.t2 != null && o.low != null) points.push({ time: Number(o.t2), value: Number(o.low) });
+                }
+                else if (type === 'TREND') {
+                    if (o.t1 != null && o.p1 != null) points.push({ time: Number(o.t1), value: Number(o.p1) });
+                    if (o.t2 != null && o.p2 != null) points.push({ time: Number(o.t2), value: Number(o.p2) });
+                }
+                else if (type === 'HLINE') {
+                    if (candles.length > 0 && o.price != null) {
+                        points.push({ time: Number(candles[0].time), value: Number(o.price) });
+                        points.push({ time: Number(candles[candles.length - 1].time), value: Number(o.price) });
+                    }
+                }
+                else if (type === 'TEXT' || type === 'ARROW') {
+                    if (o.t1 != null && o.p1 != null) {
+                        points.push({ time: Number(o.t1), value: Number(o.p1) });
+                    }
+                }
+            }
+
+            points.sort((a, b) => a.time - b.time);
+
+            try {
+                helperSeries.setData(points);
+            } catch { }
+        }
+
+        function redrawObjects() {
+            if (!chart || !candleSeries) return;
+
+            const svg = document.getElementById('overlaySvg');
+
+            while (svg.firstChild) {
+                svg.removeChild(svg.firstChild);
+            }
+
+            for (const o of currentObjects) {
+                drawObject(svg, o);
+            }
+        }
+
+        function drawObject(svg, o) {
+            if (!o || !o.obj) return;
+
+            const type = String(o.obj).toUpperCase();
+
+            if (type === 'RECT') drawRect(svg, o);
+            else if (type === 'TREND') drawTrend(svg, o);
+            else if (type === 'HLINE') drawHLine(svg, o);
+            else if (type === 'TEXT') drawText(svg, o);
+            else if (type === 'ARROW') drawArrow(svg, o);
+            else if (type === 'LABEL') drawLabel(svg, o);
+        }
+
+        function timeToX(t) {
+            return chart.timeScale().timeToCoordinate(Number(t));
+        }
+
+        function priceToY(p) {
+            return candleSeries.priceToCoordinate(Number(p));
+        }
+
+        function makeSvg(tag) {
+            return document.createElementNS('http://www.w3.org/2000/svg', tag);
+        }
+
+        function hexToRgba(hex, alpha) {
+            if (!hex) return `rgba(255,255,255,${alpha})`;
+
+            let h = String(hex).replace('#', '').trim();
+
+            if (h.length === 3) {
+                h = h.split('').map(c => c + c).join('');
+            }
+
+            const r = parseInt(h.substring(0, 2), 16);
+            const g = parseInt(h.substring(2, 4), 16);
+            const b = parseInt(h.substring(4, 6), 16);
+
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+
+        function drawRect(svg, o) {
+            const x1 = timeToX(o.t1);
+            const x2 = timeToX(o.t2);
+            const y1 = priceToY(o.high);
+            const y2 = priceToY(o.low);
+
+            if (x1 == null || x2 == null || y1 == null || y2 == null) return;
+            if (!isFinite(x1) || !isFinite(x2) || !isFinite(y1) || !isFinite(y2)) return;
+
+            const left = Math.min(x1, x2);
+            const top = Math.min(y1, y2);
+            const width = Math.abs(x2 - x1);
+            const height = Math.abs(y2 - y1);
+
+            if (width < 1 || height < 1) return;
+
+            const rect = makeSvg('rect');
+            rect.setAttribute('x', left);
+            rect.setAttribute('y', top);
+            rect.setAttribute('width', width);
+            rect.setAttribute('height', height);
+            rect.setAttribute('fill', hexToRgba(o.color || '#ffffff', Number(o.fill || 0) === 1 ? 0.20 : 0.08));
+            rect.setAttribute('stroke', o.color || '#ffffff');
+            rect.setAttribute('stroke-width', o.width || 1);
+
+            svg.appendChild(rect);
+        }
+
+        function drawTrend(svg, o) {
+            const x1 = timeToX(o.t1);
+            const x2 = timeToX(o.t2);
+            const y1 = priceToY(o.p1);
+            const y2 = priceToY(o.p2);
+
+            if (x1 == null || x2 == null || y1 == null || y2 == null) return;
+            if (!isFinite(x1) || !isFinite(x2) || !isFinite(y1) || !isFinite(y2)) return;
+
+            const line = makeSvg('line');
+            line.setAttribute('x1', x1);
+            line.setAttribute('y1', y1);
+            line.setAttribute('x2', x2);
+            line.setAttribute('y2', y2);
+            line.setAttribute('stroke', o.color || '#ffffff');
+            line.setAttribute('stroke-width', o.width || 1);
+
+            svg.appendChild(line);
+        }
+
+        function drawHLine(svg, o) {
+            const y = priceToY(o.price);
+            if (y == null || !isFinite(y)) return;
+
+            const line = makeSvg('line');
+            line.setAttribute('x1', 0);
+            line.setAttribute('y1', y);
+            line.setAttribute('x2', window.innerWidth);
+            line.setAttribute('y2', y);
+            line.setAttribute('stroke', o.color || '#ffffff');
+            line.setAttribute('stroke-width', o.width || 1);
+
+            svg.appendChild(line);
+        }
+
+        function drawText(svg, o) {
+            const x = timeToX(o.t1);
+            const y = priceToY(o.p1);
+
+            if (x == null || y == null) return;
+            if (!isFinite(x) || !isFinite(y)) return;
+
+            const text = makeSvg('text');
+            text.setAttribute('x', x + 6);
+            text.setAttribute('y', y - 6);
+            text.setAttribute('fill', o.color || '#ffff00');
+            text.setAttribute('font-size', o.fontsize || 12);
+            text.setAttribute('font-family', o.font || 'Arial');
+            text.textContent = o.text || o.name || '';
+
+            svg.appendChild(text);
+        }
+
+        function drawArrow(svg, o) {
+            const x = timeToX(o.t1);
+            const y = priceToY(o.p1);
+
+            if (x == null || y == null) return;
+            if (!isFinite(x) || !isFinite(y)) return;
+
+            const circle = makeSvg('circle');
+            circle.setAttribute('cx', x);
+            circle.setAttribute('cy', y);
+            circle.setAttribute('r', 5);
+            circle.setAttribute('fill', o.color || '#ffffff');
+
+            svg.appendChild(circle);
+        }
+
+        function drawLabel(svg, o) {
+            const x = 20 + Number(o.x || 0);
+            const y = 20 + Number(o.y || 0);
+
+            const text = makeSvg('text');
+            text.setAttribute('x', x);
+            text.setAttribute('y', y);
+            text.setAttribute('fill', o.color || '#ffffff');
+            text.setAttribute('font-size', o.fontsize || 12);
+            text.setAttribute('font-family', o.font || 'Arial');
+            text.textContent = o.text || o.name || '';
+
+            svg.appendChild(text);
+        }
+    </script>
+</body>
+</html>

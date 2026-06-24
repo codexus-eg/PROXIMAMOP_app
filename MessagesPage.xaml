@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.Pages.MessagesPage"
+             BackgroundColor="#050203"
+             FlowDirection="RightToLeft"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
+
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#090305" Offset="0.0" />
+                <GradientStop Color="#14080C" Offset="0.45" />
+                <GradientStop Color="#1A0B0F" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!-- Header -->
+        <Grid Grid.Row="0"
+              Padding="18,18,18,10"
+              ColumnDefinitions="56,*,56">
+
+            <Border Grid.Column="0"
+                    Background="#14090B"
+                    Stroke="#F0B24A"
+                    StrokeThickness="1.6"
+                    WidthRequest="48"
+                    HeightRequest="48"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    StrokeShape="RoundRectangle 16">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRefreshTapped" />
+                </Border.GestureRecognizers>
+
+                <Grid>
+                    <Label Text="↻"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="#F7D9A0"
+                           FontSize="20"
+                           FontAttributes="Bold" />
+                </Grid>
+            </Border>
+
+            <VerticalStackLayout Grid.Column="1"
+                                 Spacing="2"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center">
+                <Label Text="Messages"
+                       HorizontalTextAlignment="Center"
+                       TextColor="White"
+                       FontSize="24"
+                       FontAttributes="Bold" />
+
+                <Label Text="{Binding HeaderSubtitle}"
+                       HorizontalTextAlignment="Center"
+                       TextColor="#D7C6A3"
+                       FontSize="13" />
+            </VerticalStackLayout>
+
+            <Border Grid.Column="2"
+                    Background="#14090B"
+                    Stroke="#F0B24A"
+                    StrokeThickness="1.6"
+                    WidthRequest="48"
+                    HeightRequest="48"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    StrokeShape="RoundRectangle 16">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackTapped" />
+                </Border.GestureRecognizers>
+
+                <Grid>
+                    <Label Text="←"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="#F7D9A0"
+                           FontSize="20"
+                           FontAttributes="Bold" />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Search -->
+        <Border Grid.Row="1"
+                Margin="18,0,18,12"
+                Padding="12,8"
+                Background="#120607"
+                Stroke="#F0B24A"
+                StrokeThickness="1.4"
+                StrokeShape="RoundRectangle 22">
+            <Grid ColumnDefinitions="Auto,*,Auto"
+                  ColumnSpacing="10"
+                  VerticalOptions="Center">
+
+                <Label Text="⌕"
+                       VerticalOptions="Center"
+                       TextColor="#F0B24A"
+                       FontSize="18" />
+                       <Entry Grid.Column="1"
+                       Text="{Binding SearchText}"
+                       TextChanged="OnSearchTextChanged"
+                       Placeholder="Search conversations..."
+                       PlaceholderColor="#9E8E78"
+                       TextColor="White"
+                       BackgroundColor="Transparent"
+                       ClearButtonVisibility="WhileEditing"
+                       FontSize="16"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Center" />
+
+                <Border Grid.Column="2"
+                        WidthRequest="28"
+                        HeightRequest="28"
+                        Background="#24110E"
+                        Stroke="#F0B24A"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 14"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnStartNewChatTapped" />
+                    </Border.GestureRecognizers>
+
+                    <Label Text="+"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="#F0B24A"
+                           FontSize="16"
+                           FontAttributes="Bold" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Error -->
+        <Border Grid.Row="2"
+                Margin="18,0,18,12"
+                Padding="18"
+                Background="#2A0E12"
+                Stroke="#B44B5F"
+                StrokeThickness="1.5"
+                StrokeShape="RoundRectangle 22"
+                IsVisible="{Binding HasError}">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Something went wrong"
+                       HorizontalTextAlignment="Center"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       FontSize="20" />
+
+                <Label Text="{Binding ErrorMessage}"
+                       HorizontalTextAlignment="Center"
+                       TextColor="#F0C6CF"
+                       FontSize="13" />
+
+                <Button Text="Retry"
+                        Clicked="OnRetryClicked"
+                        HeightRequest="48"
+                        CornerRadius="16"
+                        BackgroundColor="#8B1E2D"
+                        TextColor="White"
+                        FontSize="15"
+                        FontAttributes="Bold" />
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Content -->
+        <Grid Grid.Row="3"
+              Margin="18,0,18,18">
+
+            <!-- Empty State -->
+            <Border Padding="22"
+                    Background="#120607"
+                    Stroke="#F0B24A"
+                    StrokeThickness="1.3"
+                    StrokeShape="RoundRectangle 22"
+                    VerticalOptions="Start"
+                    IsVisible="{Binding ShowEmptyState}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="No conversations yet"
+                           HorizontalTextAlignment="Center"
+                           TextColor="White"
+                           FontSize="20"
+                           FontAttributes="Bold" />
+
+                    <Label Text="Use the search bar above or the + button to start chatting."
+                           HorizontalTextAlignment="Center"
+                           TextColor="#D7C6A3"
+                           FontSize="13" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Conversations List -->
+            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+            Command="{Binding RefreshCommand}"
+                         IsVisible="{Binding ShowList}"
+                         RefreshColor="#F0B24A"
+                         BackgroundColor="Transparent">
+                <CollectionView x:Name="ChatsList"
+                                ItemsSource="{Binding Conversations}"
+                                SelectionMode="Single"
+                                SelectionChanged="OnChatSelected"
+                                RemainingItemsThreshold="3"
+                                RemainingItemsThresholdReached="OnRemainingItemsThresholdReached">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                                           ItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="12"
+                                    Background="#120607"
+                                    Stroke="#F0B24A"
+                                    StrokeThickness="1.2"
+                                    StrokeShape="RoundRectangle 20">
+
+                                <Grid ColumnDefinitions="Auto,*,Auto"
+                                      ColumnSpacing="12">
+
+                                    <!-- Time + unread -->
+                                    <VerticalStackLayout WidthRequest="52"
+                                                         VerticalOptions="Center"
+                                                         HorizontalOptions="Start"
+                                                         Spacing="6">
+                                        <Label Text="{Binding LastMessageTimeText}"
+                                               HorizontalTextAlignment="Center"
+                                               TextColor="#D7C6A3"
+                                               FontSize="11" />
+
+                                        <Border Background="#8B1E2D"
+                                                Padding="7,2"
+                                                StrokeThickness="0"
+                                                StrokeShape="RoundRectangle 12"
+                                                HorizontalOptions="Center"
+                                                IsVisible="{Binding ShowUnreadCount}">
+                                            <Label Text="{Binding UnreadCountText}"
+                                                   TextColor="White"
+                                                   FontSize="11"
+                                                   FontAttributes="Bold" />
+                                        </Border>
+                                    </VerticalStackLayout>
+
+                                    <!-- Name + preview -->
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         Spacing="4"
+                                                         VerticalOptions="Center">
+                                        <Label Text="{Binding UserName}"
+                                               TextColor="White"
+                                               FontSize="17"
+                                               FontAttributes="Bold"
+                                               LineBreakMode="TailTruncation"
+                                               HorizontalTextAlignment="Start" />
+
+                                        <Label Text="{Binding LastMessagePreview}"
+                                               TextColor="#D7C6A3"
+                                               FontSize="13"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               HorizontalTextAlignment="Start" />
+                                    </VerticalStackLayout>
+                                    <!-- Avatar -->
+                                    <Grid Grid.Column="2"
+                                          WidthRequest="52"
+                                          HeightRequest="52"
+                                          VerticalOptions="Center">
+                                        <Border Background="#221012"
+                                                Stroke="#F0B24A"
+                                                StrokeThickness="1"
+                                                StrokeShape="RoundRectangle 18">
+                                            <Grid>
+                                                <Image Source="{Binding AvatarUrl}"
+                                                       Aspect="AspectFill"
+                                                       IsVisible="{Binding ShowImageAvatar}" />
+
+                                                <Label Text="{Binding Initial}"
+                                                       IsVisible="{Binding ShowInitialAvatar}"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       TextColor="#F7D9A0"
+                                                       FontAttributes="Bold"
+                                                       FontSize="19" />
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </Grid>
+    </Grid>
+</ContentPage>

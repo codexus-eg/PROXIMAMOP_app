@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PROXIMAMOP.Pages.CreateAnalystPostPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Create Post"
+    BackgroundColor="#0B1020"
+    FlowDirection="RightToLeft">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#0B1020" Offset="0" />
+                <GradientStop Color="#121A31" Offset="0.45" />
+                <GradientStop Color="#1B1430" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="16,16,16,24" Spacing="16">
+
+                <Border
+                    Background="#151D33"
+                    Stroke="#2B3D68"
+                    StrokeThickness="1"
+                    Padding="18"
+                    StrokeShape="RoundRectangle 24">
+
+                    <VerticalStackLayout Spacing="8">
+                        <Label
+                            Text="منشور جديد"
+                            FontSize="26"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            Text="اكتب منشورك ويمكنك إضافة صورة اختيارية مع النص"
+                            FontSize="14"
+                            TextColor="#C7D1E7" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border
+                    Background="#151D33"
+                    Stroke="#2B3D68"
+                    StrokeThickness="1"
+                    Padding="16"
+                    StrokeShape="RoundRectangle 24">
+
+                    <VerticalStackLayout Spacing="14">
+                        <Editor
+                            x:Name="PostTextEditor"
+                            Placeholder="اكتب النص هنا"
+                            PlaceholderColor="#96A6C9"
+                            TextColor="White"
+                            BackgroundColor="#101625"
+                            AutoSize="TextChanges"
+                            MaxLength="4000"
+                            HeightRequest="180" />
+
+                        <Button
+                            Text="اختيار صورة"
+                            Clicked="OnPickImageClicked"
+                            HeightRequest="48"
+                            CornerRadius="16"
+                            BackgroundColor="#26365B"
+                            TextColor="White"
+                            FontAttributes="Bold" />
+
+                        <Label
+                            x:Name="SelectedFileLabel"
+                            Text="لم يتم اختيار صورة"
+                            FontSize="13"
+                            TextColor="#B5C1DD" />
+
+                        <Border
+                            IsVisible="False"
+                            x:Name="PreviewBorder"
+                            Background="#101625"
+                            Stroke="#32466E"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 20">
+                            <Image
+                                x:Name="PreviewImage"
+                                IsVisible="False"
+                                HeightRequest="240"
+                                Aspect="AspectFill" />
+                        </Border>
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                            <Button
+                                Text="إزالة الصورة"
+                                Clicked="OnRemoveImageClicked"
+                                HeightRequest="50"
+                                CornerRadius="16"
+                                BackgroundColor="#6B213E"
+                                TextColor="White" />
+                                <Button
+                                x:Name="PublishButton"
+                                Grid.Column="1"
+                                Text="نشر"
+                                Clicked="OnPublishClicked"
+                                HeightRequest="50"
+                                CornerRadius="16"
+                                BackgroundColor="#8B5CF6"
+                                TextColor="White"
+                                FontAttributes="Bold" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

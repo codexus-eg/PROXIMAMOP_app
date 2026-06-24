@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.MyProfilePage"
+             BackgroundColor="#0B0B0B"
+             Title="My Profile"
+             FlowDirection="RightToLeft">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="14">
+
+            <Grid WidthRequest="118"
+                  HeightRequest="118"
+                  HorizontalOptions="Center">
+
+                <Border x:Name="AvatarBorder"
+                        Stroke="#2E2E2E"
+                        StrokeThickness="3"
+                        BackgroundColor="#1C1C1C"
+                        StrokeShape="RoundRectangle 59">
+                    <Image x:Name="AvatarImage"
+                           Source="dotnet_bot.png"
+                           Aspect="AspectFill" />
+                </Border>
+
+                <Border x:Name="BadgeIconBorder"
+                        IsVisible="False"
+                        WidthRequest="26"
+                        HeightRequest="26"
+                        Padding="0"
+                        BackgroundColor="#2E2E2E"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 13"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        TranslationX="4"
+                        TranslationY="-4">
+                    <Label x:Name="BadgeIconLabel"
+                           Text=""
+                           FontSize="14"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           TextColor="White" />
+                </Border>
+            </Grid>
+
+            <Label x:Name="BadgeNameLabel"
+                   Text="Normal"
+                   FontSize="14"
+                   TextColor="#D8CCFF"
+                   HorizontalTextAlignment="Center" />
+
+            <Label x:Name="UserIdLabel"
+                   Text="ID: -"
+                   FontSize="14"
+                   TextColor="#C4B5FD"
+                   HorizontalTextAlignment="Center" />
+
+            <Button Text="Change Photo"
+                    Clicked="OnChangeAvatarClicked"
+                    BackgroundColor="#232323"
+                    TextColor="White"
+                    CornerRadius="14" />
+
+            <Border BackgroundColor="#151515"
+                    Stroke="#2A2A2A"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="12,0">
+                <Entry x:Name="NameEntry"
+                       Placeholder="Name"
+                       TextColor="White"
+                       PlaceholderColor="#808080"
+                       BackgroundColor="Transparent"
+                       HorizontalTextAlignment="End"
+                       MaxLength="100" />
+            </Border>
+
+            <Border BackgroundColor="#151515"
+                    Stroke="#2A2A2A"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="12">
+                <Editor x:Name="BioEditor"
+                        Placeholder="Bio"
+                        TextColor="White"
+                        PlaceholderColor="#808080"
+                        BackgroundColor="Transparent"
+                        AutoSize="TextChanges"
+                        MaxLength="300"
+                        HorizontalTextAlignment="End" />
+            </Border>
+
+            <Label x:Name="InfoLabel"
+                   TextColor="#C4B5FD"
+                   HorizontalTextAlignment="End" />
+
+            <Button x:Name="SaveButton"
+                    Text="Save Changes"
+                    Clicked="OnSaveClicked"
+                    BackgroundColor="#7C3AED"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="16"
+                    HeightRequest="50" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

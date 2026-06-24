@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PROXIMAMOP.Pages.AnalystCommentsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:PROXIMAMOP.Models"
+    Title="Comments"
+    BackgroundColor="#0B1020"
+    FlowDirection="RightToLeft">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#0B1020" Offset="0" />
+                <GradientStop Color="#121A31" Offset="0.45" />
+                <GradientStop Color="#1B1430" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid RowDefinitions="Auto,*,Auto" Padding="16,16,16,14">
+
+            <Border
+                Grid.Row="0"
+                Background="#151D33"
+                Stroke="#2B3D68"
+                StrokeThickness="1"
+                Padding="16"
+                StrokeShape="RoundRectangle 24">
+                <VerticalStackLayout Spacing="6">
+                    <Label
+                        Text="التعليقات"
+                        TextColor="White"
+                        FontSize="24"
+                        FontAttributes="Bold" />
+
+                    <Label
+                        Text="تستطيع إضافة تعليق جديد أو حذف تعليقك، ويمكنك الرد محلياً عبر منشن داخل التعليق."
+                        TextColor="#C8D2EC"
+                        FontSize="13" />
+                </VerticalStackLayout>
+            </Border>
+
+            <RefreshView
+                Grid.Row="1"
+                Margin="0,14,0,0"
+                IsRefreshing="{Binding IsRefreshing}"
+                Command="{Binding RefreshCommand}">
+
+                <CollectionView
+                    ItemsSource="{Binding Comments}"
+                    SelectionMode="None">
+
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout
+                            Padding="24,60"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Spacing="8">
+                            <Label
+                                Text="لا توجد تعليقات بعد"
+                                TextColor="White"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" />
+                            <Label
+                                Text="كن أول شخص يضيف تعليق"
+                                TextColor="#A8B6D3"
+                                FontSize="14"
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:AnalystCommentViewModel">
+                            <Border
+                                Margin="0,0,0,12"
+                                Padding="12"
+                                Background="#151D33"
+                                Stroke="#2B3D68"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20">
+
+                                <VerticalStackLayout Spacing="10">
+
+                                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                        <Border
+                                            WidthRequest="46"
+                                            HeightRequest="46"
+                                            Background="#101625"
+                                            Stroke="#33476F"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 16">
+                                            <Image
+                                                Source="{Binding AvatarUrl}"
+                                                Aspect="AspectFill" />
+                                        </Border>
+
+                                        <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                            <HorizontalStackLayout Spacing="8">
+                                                <Label
+                                                    Text="{Binding UserName}"
+                                                    FontSize="15"
+                                                    FontAttributes="Bold"
+                                                    TextColor="White" />
+
+                                                <Border
+                                                    IsVisible="{Binding HasBadge}"
+                                                    Padding="5,1"
+                                                    Stroke="{Binding BadgeBorderColor}"
+                                                    StrokeThickness="1"
+                                                    Background="{Binding BadgeIconBackgroundColor}"
+                                                    StrokeShape="RoundRectangle 8">
+                                                    <Label
+                                                        Text="{Binding BadgeIcon}"
+                                                        FontSize="11"
+                                                        TextColor="{Binding BadgeIconTextColor}" />
+                                                </Border>
+                                            </HorizontalStackLayout>
+
+                                            <Label
+                                                Text="{Binding TimeText}"
+                                                FontSize="12"
+                                                TextColor="#AAB7D3" />
+                                        </VerticalStackLayout>
+
+                                        <Button
+                                            Grid.Column="2"
+                                            Text="حذف"
+                                            IsVisible="{Binding CanDelete}"
+                                            Clicked="OnDeleteCommentClicked"
+                                            CommandParameter="{Binding Id}"
+                                            HeightRequest="34"
+                                            CornerRadius="12"
+                                            BackgroundColor="#B42318"
+                                            TextColor="White"
+                                            FontSize="12" />
+                                    </Grid>
+
+                                    <Label
+                                        Text="{Binding Text}"
+                                        FontSize="15"
+                                        TextColor="#EEF2FF"
+                                        LineHeight="1.4" />
+
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Button
+                                            Text="رد"
+                                            Clicked="OnReplyCommentClicked"
+                                            HeightRequest="36"
+                                            CornerRadius="12"
+                                            BackgroundColor="#25365C"
+                                            TextColor="White"
+                                            FontSize="12" />
+
+                                        <Label
+                                            VerticalOptions="Center"
+                                            Text="سيتم الرد كمنشن داخل التعليق العام"
+                                            FontSize="12"
+                                            TextColor="#AAB7D3" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
+            <Border
+                Grid.Row="2"
+                Margin="0,14,0,0"
+                Background="#141A2B"
+                Stroke="#2B3A60"
+                StrokeThickness="1"
+                Padding="12"
+                StrokeShape="RoundRectangle 22">
+
+                <VerticalStackLayout Spacing="10">
+                    <Border
+                        IsVisible="{Binding IsReplying}"
+                        Background="#1E2843"
+                        StrokeThickness="0"
+                        Padding="10"
+                        StrokeShape="RoundRectangle 14">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                            <Label
+                                Text="{Binding ReplyingToText}"
+                                TextColor="#DCE6FF"
+                                FontSize="13"
+                                VerticalOptions="Center" />
+
+                            <Button
+                                Grid.Column="1"
+                                Text="إلغاء"
+                                Clicked="OnCancelReplyClicked"
+                                HeightRequest="34"
+                                CornerRadius="10"
+                                BackgroundColor="#39496F"
+                                TextColor="White"
+                                FontSize="12" />
+                        </Grid>
+                    </Border>
+
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <Editor
+                            x:Name="CommentEditor"
+                            AutoSize="TextChanges"
+                            MaxLength="1000"
+                            Placeholder="اكتب تعليقك هنا"
+                            TextColor="White"
+                            PlaceholderColor="#90A0C5"
+                            BackgroundColor="#101625"
+                            HeightRequest="56" />
+
+                        <Button
+                            Grid.Column="1"
+                            Text="إرسال"
+                            Clicked="OnSendCommentClicked"
+                            HeightRequest="56"
+                            WidthRequest="90"
+                            CornerRadius="16"
+                            BackgroundColor="#8B5CF6"
+                            TextColor="White"
+                            FontAttributes="Bold" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>

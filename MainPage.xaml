@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.MainPage"
+             BackgroundColor="#050203"
+             FlowDirection="RightToLeft"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- Fire background -->
+        <Grid Grid.RowSpan="2">
+    <Image Source="fire_bg.jpg"
+           Aspect="AspectFill" />
+</Grid>
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="18,18,18,110" Spacing="18">
+
+                <!-- Header -->
+                <Border Stroke="#F0B24A"
+                        StrokeThickness="2.2"
+                        Padding="18,14"
+                        StrokeShape="RoundRectangle 28">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#24090B" Offset="0.0" />
+                            <GradientStop Color="#160608" Offset="0.55" />
+                            <GradientStop Color="#0D0304" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Grid ColumnDefinitions="*,Auto"
+                          ColumnSpacing="12">
+
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="PROXIMA"
+                                   FontSize="30"
+                                   FontAttributes="Bold"
+                                   TextColor="White" />
+
+                            <Label Text="Trading and Analysis Platform"
+                                   FontSize="14"
+                                   TextColor="#F7D9A0" />
+                        </VerticalStackLayout>
+
+                        <Border Grid.Column="1"
+                                WidthRequest="60"
+                                HeightRequest="60"
+                                Stroke="#F0B24A"
+                                StrokeThickness="2"
+                                StrokeShape="RoundRectangle 20"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#C52B47" Offset="0.0" />
+                                    <GradientStop Color="#84152B" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <Label Text="P"
+                                   FontSize="26"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- Main section -->
+                <Grid ColumnDefinitions="92,*"
+                      ColumnSpacing="14"
+                      HeightRequest="620">
+
+                    <!-- Side buttons -->
+                    <VerticalStackLayout Grid.Column="0"
+                                         Spacing="14"
+                                         VerticalOptions="Start">
+                                         <Border Stroke="#F0B24A"
+                                StrokeThickness="2"
+                                Padding="10"
+                                StrokeShape="RoundRectangle 24"
+                                HeightRequest="104">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#341016" Offset="0.0" />
+                                    <GradientStop Color="#17080B" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <VerticalStackLayout Spacing="8"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center">
+                                <Label Text="⚙️"
+                                       FontSize="28"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="White" />
+                                <Label Text="Settings"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="White" />
+                            </VerticalStackLayout>
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSettingsClicked" />
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#F0B24A"
+                                StrokeThickness="2"
+                                Padding="10"
+                                StrokeShape="RoundRectangle 24"
+                                HeightRequest="104">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#341016" Offset="0.0" />
+                                    <GradientStop Color="#17080B" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <VerticalStackLayout Spacing="8"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center">
+                                <Label Text="⌘"
+                                       FontSize="28"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="White" />
+                                <Label Text="Services"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="White" />
+                            </VerticalStackLayout>
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnServicesClicked" />
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#F0B24A"
+                                StrokeThickness="2"
+                                Padding="10"
+                                StrokeShape="RoundRectangle 24"
+                                HeightRequest="104">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#341016" Offset="0.0" />
+                                    <GradientStop Color="#17080B" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <VerticalStackLayout Spacing="8"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center">
+                                <Label Text="R"
+                                       FontSize="28"
+                                       FontAttributes="Bold"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="White" />
+                                <Label Text="ROOM"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="White" />
+                            </VerticalStackLayout>
+                            <Border.GestureRecognizers>
+                             <TapGestureRecognizer Tapped="OnRoomClicked" />
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                    </VerticalStackLayout>
+
+                    <!-- Offers card -->
+                    <Grid Grid.Column="1">
+
+                        <Border Stroke="#F0B24A"
+                                StrokeThickness="2.2"
+                                Padding="0"
+                                StrokeShape="RoundRectangle 34">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#18090B" Offset="0.0" />
+                                    <GradientStop Color="#110506" Offset="0.6" />
+                                    <GradientStop Color="#0B0304" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <Grid Padding="18"
+                                  RowDefinitions="Auto,Auto,*,Auto">
+
+                                <!-- Title -->
+                                <VerticalStackLayout Grid.Row="0"
+                                                     Spacing="8">
+                                    <Label Text=""
+                                           FontSize="28"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+
+                                    <Label Text="The world is at your command."
+                                           FontSize="13"
+                                           LineHeight="1.3"
+                                           TextColor="#F4D9B1" />
+                                </VerticalStackLayout>
+
+                                <!-- Audio Bar -->
+                                <Border Grid.Row="1"
+                                        Margin="0,12,0,12"
+                                        Stroke="#F0B24A"
+                                        StrokeThickness="1.8"
+                                        StrokeShape="RoundRectangle 22"
+                                        Padding="10,8"
+                                        HeightRequest="72">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#260B0D" Offset="0.0" />
+                                            <GradientStop Color="#160607" Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+
+                                    <Grid ColumnDefinitions="*,Auto,Auto"
+                                          ColumnSpacing="8">
+
+                                        <VerticalStackLayout Spacing="1"
+                                                             VerticalOptions="Center">
+                                                             <Label x:Name="AudioTitleLabel"
+                                                   Text="Featured Audio"
+                                                   FontSize="14"
+                                                   FontAttributes="Bold"
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="White" />
+
+                                            <Label x:Name="AudioDescriptionLabel"
+                                                   Text="No audio available."
+                                                   FontSize="11"
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="#F1D7AC" />
+                                        </VerticalStackLayout>
+
+                                        <Button Grid.Column="1"
+                                                x:Name="PlayAudioButton"
+                                                Text="Play"
+                                                BackgroundColor="#167B3D"
+                                                TextColor="White"
+                                                CornerRadius="14"
+                                                HeightRequest="42"
+                                                WidthRequest="74"
+                                                FontSize="13"
+                                                Clicked="OnPlayAudioClicked" />
+
+                                        <Button Grid.Column="2"
+                                                x:Name="StopAudioButton"
+                                                Text="Stop"
+                                                BackgroundColor="#8B1E2D"
+                                                TextColor="White"
+                                                CornerRadius="14"
+                                                HeightRequest="42"
+                                                WidthRequest="74"
+                                                FontSize="13"
+                                                Clicked="OnStopAudioClicked" />
+                                    </Grid>
+                                </Border>
+
+                                <!-- Ads Area -->
+                                <Border Grid.Row="2"
+                                        Margin="0,0,0,12"
+                                        Stroke="#F0B24A"
+                                        StrokeThickness="1.8"
+                                        StrokeShape="RoundRectangle 28"
+                                        Padding="8">
+                                        
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#1C0A0C" Offset="0.0" />
+                                            <GradientStop Color="#100405" Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+
+                                    <Grid>
+                                        <CarouselView x:Name="AdsCarousel"
+                                                      IsBounceEnabled="True"
+                                                      IsSwipeEnabled="True"
+                                                      PeekAreaInsets="0"
+                                                      VerticalOptions="Fill"
+                                                      HorizontalOptions="Fill">
+                                            <CarouselView.ItemsLayout>
+                                            <LinearItemsLayout Orientation="Vertical"
+                                                                   SnapPointsType="MandatorySingle"
+                                                                   SnapPointsAlignment="Center" />
+                                            </CarouselView.ItemsLayout>
+
+                                            <CarouselView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Padding="4">
+                                                        <Border Stroke="#F0B24A"
+                                                                StrokeThickness="1.5"
+                                                                StrokeShape="RoundRectangle 22"
+                                                                Padding="8">
+                                                            <Border.Background>
+                                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                                    <GradientStop Color="#110A0A" Offset="0.0" />
+                                                                    <GradientStop Color="#080405" Offset="1.0" />
+                                                                </LinearGradientBrush>
+                                                            </Border.Background>
+
+                                                            <Grid RowDefinitions="*,Auto,Auto">
+                                                                <Grid HeightRequest="200">
+                                                                    <Image Source="{Binding ImageSource}"
+                                                                           Aspect="AspectFill"
+                                                                           IsVisible="{Binding IsImage}" />
+
+                                                                    <WebView Source="{Binding VideoHtml}"
+                                                                             IsVisible="{Binding IsVideo}" />
+                                                                </Grid>
+
+                                                                <VerticalStackLayout Grid.Row="1"
+                                                                                     Margin="0,8,0,0"
+                                                                                     Spacing="3">
+                                                                    <Label Text="{Binding Title}"
+                                                                           FontSize="16"
+                                                                           FontAttributes="Bold"
+                                                                           HorizontalTextAlignment="Center"
+                                                                           LineBreakMode="TailTruncation"
+                                                                           TextColor="White" />
+
+                                                                    <Label Text="{Binding Description}"
+                                                                           FontSize="11"
+                                                                           HorizontalTextAlignment="Center"
+                                                                           LineHeight="1.2"
+                                                                           MaxLines="2"
+                                                                           TextColor="#F0D8B3" />
+                                                                </VerticalStackLayout>
+                                                                <Button Grid.Row="2"
+                                                                        Margin="0,8,0,0"
+                                                                        Text="{Binding ButtonText}"
+                                                                        IsVisible="{Binding HasButton}"
+                                                                        BackgroundColor="#1D4ED8"
+                                                                        TextColor="White"
+                                                                        CornerRadius="14"
+                                                                        HeightRequest="38"
+                                                                        FontSize="12"
+                                                                        Clicked="OnAdButtonClicked" />
+                                                            </Grid>
+                                                        </Border>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </CarouselView.ItemTemplate>
+                                        </CarouselView>
+
+                                        <Grid x:Name="EmptyAdsView"
+                                              IsVisible="False"
+                                              Padding="18">
+                                            <VerticalStackLayout Spacing="10"
+                                                                 HorizontalOptions="Center"
+                                                                 VerticalOptions="Center">
+                                                <Label Text="🔥"
+                                                       FontSize="44"
+                                                       HorizontalTextAlignment="Center" />
+
+                                                <Label Text="Ads Area"
+                                                       FontSize="20"
+                                                       FontAttributes="Bold"
+                                                       HorizontalTextAlignment="Center"
+                                                       TextColor="White" />
+
+                                                <Label Text="No ads are available right now."
+                                                       FontSize="12"
+                                                       WidthRequest="220"
+                                                       HorizontalTextAlignment="Center"
+                                                       LineHeight="1.3"
+                                                       TextColor="#F0D8B3" />
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Bottom stats -->
+                                <Grid Grid.Row="3"
+                                      ColumnDefinitions="*,*"
+                                      ColumnSpacing="10">
+
+                                    <Border Background="#1A0B0C"
+                                            Stroke="#F0B24A"
+                                            StrokeThickness="1.6"
+                                            Padding="10"
+                                            StrokeShape="RoundRectangle 18">
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="Status"
+                                                   FontSize="11"
+                                                   TextColor="#F0C77A" />
+                                            <Label x:Name="AdsStatusLabel"
+                                                   Text="Loading"
+                                                   FontSize="15"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                        </VerticalStackLayout>
+                                    </Border>
+
+                                    <Border Grid.Column="1"
+                                            Background="#1A0B0C"
+                                            Stroke="#F0B24A"
+                                            StrokeThickness="1.6"
+                                            Padding="10"
+                                            StrokeShape="RoundRectangle 18">
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="Items"
+                                                   FontSize="11"
+                                                   TextColor="#F0C77A" />
+                                            <Label x:Name="AdsCountLabel"
+                                                   Text="0"
+                                                   FontSize="15"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </Grid>
+
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Fixed Messages Button -->
+        <Grid Grid.Row="1"
+              Padding="18,8,18,18">
+            <Border HorizontalOptions="Fill"
+                    Padding="18,14"
+                    Stroke="#F0B24A"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 24">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#BE2742" Offset="0.0" />
+                        <GradientStop Color="#7B1024" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <HorizontalStackLayout Spacing="10"
+                                       HorizontalOptions="Center">
+                    <Label Text="💬"
+                           FontSize="22"
+                           VerticalOptions="Center"
+                           TextColor="White" />
+                    <Label Text="Messages"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           TextColor="White" />
+                </HorizontalStackLayout>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnMessagesClicked" />
+                </Border.GestureRecognizers>
+            </Border>
+        </Grid>
+
+        <WebView x:Name="AudioWebView"
+                 IsVisible="False"
+                 HeightRequest="1"
+                 WidthRequest="1" />
+
+    </Grid>
+</ContentPage>

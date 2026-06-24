@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>GOLDMAP</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #050b10;
+            font-family: Arial, sans-serif;
+            touch-action: none;
+            overscroll-behavior: none;
+        }
+
+        #canvas {
+            position: fixed;
+            inset: 0;
+            width: 100dvw;
+            height: 100dvh;
+            display: block;
+            background: #050b10;
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d", { alpha: false });
+
+        let latestData = null;
+
+        let viewW = 0;
+        let viewH = 0;
+        let dpr = 1;
+
+        let zoomX = 1;
+        let zoomY = 1;
+        let panX = 0;
+        let panY = 0;
+
+        let isDragging = false;
+        let priceScaleDragging = false;
+        let timeScaleDragging = false;
+
+        let lastX = 0;
+        let lastY = 0;
+        let lastDistance = 0;
+        let lastTapTime = 0;
+
+        const MIN_ZOOM_X = 1;
+        const MAX_ZOOM_X = 20;
+        const MIN_ZOOM_Y = 0.55;
+        const MAX_ZOOM_Y = 18;
+
+        const PRICE_AXIS_W = 74;
+        const PRICE_DRAG_W = 24;
+        const TIME_AXIS_H = 24;
+        const TIME_DRAG_H = 24;
+
+        const COLORS = {
+            bg: "#050b10",
+            panel: "#07131f",
+            drag: "rgba(255,255,255,0.025)",
+            dragActive: "rgba(200,164,77,0.16)",
+            gridMinor: "rgba(66, 92, 116, 0.22)",
+            gridMajor: "rgba(198, 166, 74, 0.35)",
+            border: "rgba(170, 200, 230, 0.35)",
+            text: "#20ff78",
+            textSoft: "rgba(32,255,120,0.78)",
+            gold: "#C8A44D",
+            white: "#f4f7fb",
+            marker: "#ffffff",
+            markerLine: "rgba(255,255,255,0.35)"
+        };
+
+        function sx(v) { return v / zoomX; }
+        function sy(v) { return v / zoomY; }
+        function fixed(v) { return v / Math.max(zoomX, zoomY); }
+
+        function resize() {
+            dpr = Math.min(window.devicePixelRatio || 1, 3);
+
+            viewW = Math.floor(window.visualViewport?.width || window.innerWidth);
+            viewH = Math.floor(window.visualViewport?.height || window.innerHeight);
+
+            canvas.style.width = viewW + "px";
+            canvas.style.height = viewH + "px";
+
+            canvas.width = Math.floor(viewW * dpr);
+            canvas.height = Math.floor(viewH * dpr);
+
+            resetTransform();
+            clampPan();
+            draw();
+        }
+
+        window.addEventListener("resize", resize, { passive: true });
+        window.visualViewport?.addEventListener("resize", resize, { passive: true });
+        window.visualViewport?.addEventListener("scroll", resize, { passive: true });
+
+        function resetTransform() {
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function showMessage(msg) {
+            resetTransform();
+            ctx.clearRect(0, 0, viewW, viewH);
+            ctx.fillStyle = COLORS.bg;
+            ctx.fillRect(0, 0, viewW, viewH);
+
+            ctx.fillStyle = COLORS.white;
+            ctx.font = "700 18px Arial";
+            ctx.textAlign = "left";
+            ctx.textBaseline = "top";
+            ctx.fillText(msg, 18, 24);
+        }
+
+        function setHeatmap(base64) {
+            try {
+                latestData = JSON.parse(atob(base64));
+                draw();
+            } catch (err) {
+                showMessage("Parse error");
+            }
+        }
+
+        window.setHeatmap = setHeatmap;
+
+        function heatColor(value) {
+            const v = Number(value || 0);
+
+            if (v <= 0) return "#07131f";
+            if (v < 8) return "#102236";
+            if (v < 16) return "#173b4d";
+            if (v < 28) return "#1d6d4a";
+            if (v < 42) return "#35a84f";
+            if (v < 58) return "#b7c93a";
+            if (v < 74) return "#ffd43d";
+            if (v < 88) return "#ff8a1f";
+            return "#ff2020";
+        }
+
+        function getLayout() {
+            const leftPad = 6;
+            const topPad = 6;
+            const rightPad = PRICE_AXIS_W + PRICE_DRAG_W + 8;
+            const bottomPad = TIME_AXIS_H + TIME_DRAG_H + 6;
+
+            const heatW = Math.max(80, viewW - leftPad - rightPad);
+            const heatH = Math.max(80, viewH - topPad - bottomPad);
+
+            return {
+                w: viewW,
+                h: viewH,
+                leftPad,
+                topPad,
+                rightPad,
+                bottomPad,
+                heatW,
+                heatH,
+
+                priceAxisX: leftPad + heatW,
+                priceAxisY: topPad,
+                priceAxisW: PRICE_AXIS_W,
+                priceAxisH: heatH,
+
+                priceDragX: leftPad + heatW + PRICE_AXIS_W,
+                priceDragY: topPad,
+                priceDragW: PRICE_DRAG_W,
+                priceDragH: heatH,
+
+                timeAxisX: leftPad,
+                timeAxisY: topPad + heatH,
+                timeAxisW: heatW,
+                timeAxisH: TIME_AXIS_H,
+
+                timeDragX: leftPad,
+                timeDragY: topPad + heatH + TIME_AXIS_H,
+                timeDragW: heatW,
+                timeDragH: TIME_DRAG_H
+            };
+        }
+
+        function isInPriceDragZone(x, y) {
+            const l = getLayout();
+            return x >= l.priceDragX &&
+                x <= l.priceDragX + l.priceDragW &&
+                y >= l.priceDragY &&
+                y <= l.priceDragY + l.priceDragH;
+        }
+
+        function isInTimeDragZone(x, y) {
+            const l = getLayout();
+            return x >= l.timeDragX &&
+                x <= l.timeDragX + l.timeDragW &&
+                y >= l.timeDragY &&
+                y <= l.timeDragY + l.timeDragH;
+        }
+
+        function clampPan() {
+            const l = getLayout();
+
+            if (zoomX <= MIN_ZOOM_X) {
+                zoomX = MIN_ZOOM_X;
+                panX = 0;
+            }
+
+            const minX = -(l.heatW * zoomX - l.heatW);
+            const maxX = 0;
+
+            const minY = -(l.heatH * zoomY - l.heatH);
+            const maxY = 0;
+
+            panX = Math.min(maxX, Math.max(minX, panX));
+            panY = Math.min(maxY, Math.max(minY, panY));
+        }
+
+        function draw() {
+            if (!latestData) {
+                showMessage("Loading liquidity data...");
+                return;
+            }
+
+            const d = latestData;
+            const rows = Number(d.rows);
+            const cols = Number(d.cols);
+            const heat = d.heat || [];
+            const colVol = d.colVol || [];
+
+            if (!rows || !cols || heat.length < rows * cols) {
+                showMessage("Invalid heatmap data");
+                return;
+            }
+
+            clampPan();
+
+            const l = getLayout();
+            const cellW = l.heatW / cols;
+            const cellH = l.heatH / rows;
+
+            resetTransform();
+
+            ctx.clearRect(0, 0, l.w, l.h);
+
+            ctx.fillStyle = COLORS.bg;
+            ctx.fillRect(0, 0, l.w, l.h);
+
+            ctx.fillStyle = COLORS.panel;
+            ctx.fillRect(l.leftPad, l.topPad, l.heatW, l.heatH);
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(l.leftPad, l.topPad, l.heatW, l.heatH);
+            ctx.clip();
+
+            ctx.translate(l.leftPad + panX, l.topPad + panY);
+            ctx.scale(zoomX, zoomY);
+
+            drawHeatCells(rows, cols, heat, l, cellW, cellH);
+            drawGrid(rows, cols, l.heatW, l.heatH);
+
+            ctx.restore();
+
+            drawVolumeNumbers(d, l, cellW, cellH, colVol);
+            drawFrameNumbers(rows, cols, l);
+            drawPriceMarker(d, l);
+            drawScaleZones(l);
+            drawBorder(l);
+        }
+
+        function drawHeatCells(rows, cols, heat, l, cellW, cellH) {
+            let index = 0;
+
+            for (let r = 0; r < rows; r++) {
+                const y = r * cellH;
+
+                for (let c = 0; c < cols; c++) {
+                    const x = c * cellW;
+
+                    ctx.fillStyle = heatColor(heat[index++]);
+                    ctx.fillRect(
+                        x,
+                        y,
+                        Math.ceil(cellW + sx(0.35)),
+                        Math.ceil(cellH + sy(0.35))
+                    );
+                }
+            }
+        }
+
+        function drawGrid(rows, cols, heatW, heatH) {
+            const cellW = heatW / cols;
+            const cellH = heatH / rows;
+
+            ctx.lineWidth = fixed(1);
+            ctx.strokeStyle = COLORS.gridMinor;
+
+            for (let c = 0; c <= cols; c++) {
+                const x = c * cellW;
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, heatH);
+                ctx.stroke();
+            }
+
+            for (let r = 0; r <= rows; r++) {
+                const y = r * cellH;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(heatW, y);
+                ctx.stroke();
+            }
+
+            ctx.lineWidth = fixed(1.25);
+            ctx.strokeStyle = COLORS.gridMajor;
+
+            for (let c = 0; c <= cols; c += 5) {
+                const x = c * cellW;
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, heatH);
+                ctx.stroke();
+            }
+
+            for (let r = 0; r <= rows; r += 5) {
+                const y = r * cellH;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(heatW, y);
+                ctx.stroke();
+            }
+        }
+
+        function drawFrameNumbers(rows, cols, l) {
+            const cellW = l.heatW / cols;
+            const cellH = l.heatH / rows;
+
+            const d = latestData || {};
+            const lo = Number(d.lo);
+            const hi = Number(d.hi);
+
+            const colStep = zoomX >= 4 ? 1 : zoomX >= 2 ? 2 : 5;
+            const rowStep = zoomY >= 4 ? 1 : zoomY >= 2 ? 2 : 5;
+
+            ctx.font = "700 10px Consolas, monospace";
+            ctx.fillStyle = COLORS.textSoft;
+            ctx.textBaseline = "middle";
+
+            ctx.textAlign = "center";
+
+            for (let c = 0; c < cols; c += colStep) {
+                const x = l.leftPad + panX + (c * cellW + cellW / 2) * zoomX;
+
+                if (x < l.leftPad + 4 || x > l.leftPad + l.heatW - 4) continue;
+
+                ctx.fillText(String(c + 1), x, l.timeAxisY + 12);
+            }
+
+            ctx.textAlign = "left";
+
+            for (let r = 0; r < rows; r += rowStep) {
+                const y = l.topPad + panY + (r * cellH + cellH / 2) * zoomY;
+
+                if (y < l.topPad + 4 || y > l.topPad + l.heatH - 4) continue;
+
+                let label;
+
+                if (isFinite(lo) && isFinite(hi) && hi > lo) {
+                    const t = 1 - r / Math.max(1, rows - 1);
+                    label = (lo + (hi - lo) * t).toFixed(1);
+                } else {
+                    label = String(r + 1);
+                }
+
+                ctx.fillText(label, l.priceAxisX + 7, y);
+            }
+        }
+
+        function drawVolumeNumbers(d, l, cellW, cellH, colVol) {
+            const rows = Number(d.rows);
+            const cols = Number(d.cols);
+            const heat = d.heat || [];
+
+            const volumeFont = zoomX >= 3 ? 11 : zoomX >= 2 ? 10 : 8;
+
+            ctx.font = `700 ${volumeFont}px Consolas, monospace`;
+            ctx.fillStyle = COLORS.text;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+
+            ctx.shadowColor = "rgba(0,0,0,0.95)";
+            ctx.shadowBlur = 3;
+
+            for (let c = 0; c < cols; c++) {
+                if (zoomX < 1.35 && c % 2 !== 0) continue;
+
+                const v = Number(colVol[c] || 0);
+                if (v <= 0) continue;
+
+                let bottomRow = -1;
+
+                for (let r = rows - 1; r >= 0; r--) {
+                    if (Number(heat[r * cols + c] || 0) > 0) {
+                        bottomRow = r;
+                        break;
+                    }
+                }
+
+                if (bottomRow < 0) continue;
+
+                const x = l.leftPad + panX + (c * cellW + cellW / 2) * zoomX;
+                const y = l.topPad + panY + (bottomRow * cellH + cellH / 2) * zoomY;
+
+                if (x < l.leftPad + 2 || x > l.leftPad + l.heatW - 2) continue;
+                if (y < l.topPad + 2 || y > l.topPad + l.heatH - 2) continue;
+
+                const text = String(Math.round(v));
+
+                for (let i = 0; i < text.length; i++) {
+                    ctx.fillText(text[i], x, y + i * volumeFont * 0.9);
+                }
+            }
+
+            ctx.shadowBlur = 0;
+        }
+
+        function drawPriceMarker(d, l) {
+            const lo = Number(d.lo);
+            const hi = Number(d.hi);
+            const price = Number(d.price);
+
+            if (!isFinite(lo) || !isFinite(hi) || !isFinite(price) || hi <= lo) return;
+
+            const t = Math.max(0, Math.min(1, (price - lo) / (hi - lo)));
+            const yBase = l.heatH - t * l.heatH;
+            const y = l.topPad + panY + yBase * zoomY;
+
+            if (y < l.topPad || y > l.topPad + l.heatH) return;
+
+            const x = l.priceAxisX + 12;
+
+            ctx.strokeStyle = COLORS.markerLine;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(l.leftPad, y);
+            ctx.lineTo(l.leftPad + l.heatW, y);
+            ctx.stroke();
+
+            ctx.fillStyle = COLORS.marker;
+            ctx.beginPath();
+            ctx.arc(x, y, 5.3, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.font = "700 14px Arial";
+            ctx.fillStyle = COLORS.white;
+            ctx.textAlign = "left";
+            ctx.textBaseline = "middle";
+            ctx.fillText(price.toFixed(2), x + 10, y);
+        }
+
+        function drawScaleZones(l) {
+            ctx.save();
+
+            ctx.fillStyle = priceScaleDragging ? COLORS.dragActive : COLORS.drag;
+            ctx.fillRect(l.priceDragX, l.priceDragY, l.priceDragW, l.priceDragH);
+
+            ctx.fillStyle = timeScaleDragging ? COLORS.dragActive : COLORS.drag;
+            ctx.fillRect(l.timeDragX, l.timeDragY, l.timeDragW, l.timeDragH);
+
+            ctx.fillStyle = COLORS.gold;
+            ctx.globalAlpha = 0.75;
+            ctx.font = "800 9px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+
+            ctx.save();
+            ctx.translate(l.priceDragX + l.priceDragW / 2, l.priceDragY + l.priceDragH / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText("SCALE", 0, 0);
+            ctx.restore();
+
+            ctx.fillText("TIME SCALE", l.timeDragX + l.timeDragW / 2, l.timeDragY + l.timeDragH / 2);
+
+            ctx.restore();
+        }
+
+        function drawBorder(l) {
+            ctx.strokeStyle = COLORS.border;
+            ctx.lineWidth = 1;
+            ctx.strokeRect(
+                l.leftPad + 0.5,
+                l.topPad + 0.5,
+                l.heatW,
+                l.heatH
+            );
+        }
+
+        function distance(touches) {
+            const dx = touches[0].clientX - touches[1].clientX;
+            const dy = touches[0].clientY - touches[1].clientY;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+
+        canvas.addEventListener("touchstart", e => {
+            e.preventDefault();
+
+            if (e.touches.length === 1) {
+                const x = e.touches[0].clientX;
+                const y = e.touches[0].clientY;
+
+                priceScaleDragging = isInPriceDragZone(x, y);
+                timeScaleDragging = isInTimeDragZone(x, y);
+                isDragging = !priceScaleDragging && !timeScaleDragging;
+
+                lastX = x;
+                lastY = y;
+            }
+
+            if (e.touches.length === 2) {
+                isDragging = false;
+                priceScaleDragging = false;
+                timeScaleDragging = false;
+                lastDistance = distance(e.touches);
+            }
+        }, { passive: false });
+
+        canvas.addEventListener("touchmove", e => {
+            e.preventDefault();
+
+            if (e.touches.length === 1) {
+                const x = e.touches[0].clientX;
+                const y = e.touches[0].clientY;
+
+                const dx = x - lastX;
+                const dy = y - lastY;
+
+                const l = getLayout();
+
+                if (priceScaleDragging) {
+                    const oldZoomY = zoomY;
+                    const centerY = l.topPad + l.heatH / 2;
+                    const contentY = (centerY - l.topPad - panY) / oldZoomY;
+
+                    zoomY = Math.max(MIN_ZOOM_Y, Math.min(MAX_ZOOM_Y, zoomY * Math.exp(-dy * 0.012)));
+                    panY = centerY - l.topPad - contentY * zoomY;
+                }
+                else if (timeScaleDragging) {
+                    const oldZoomX = zoomX;
+                    const centerX = l.leftPad + l.heatW / 2;
+                    const contentX = (centerX - l.leftPad - panX) / oldZoomX;
+
+                    zoomX = Math.max(MIN_ZOOM_X, Math.min(MAX_ZOOM_X, zoomX * Math.exp(dx * 0.012)));
+                    panX = centerX - l.leftPad - contentX * zoomX;
+                }
+                else if (isDragging) {
+                    panX += dx;
+                    panY += dy;
+                }
+
+                lastX = x;
+                lastY = y;
+
+                clampPan();
+                draw();
+            }
+
+            if (e.touches.length === 2) {
+                const newDistance = distance(e.touches);
+
+                if (lastDistance > 0) {
+                    const oldZoomX = zoomX;
+                    const oldZoomY = zoomY;
+                    const factor = newDistance / lastDistance;
+
+                    const centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                    const centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+                    const l = getLayout();
+
+                    const contentX = (centerX - l.leftPad - panX) / oldZoomX;
+                    const contentY = (centerY - l.topPad - panY) / oldZoomY;
+
+                    zoomX = Math.max(MIN_ZOOM_X, Math.min(MAX_ZOOM_X, zoomX * factor));
+                    zoomY = Math.max(MIN_ZOOM_Y, Math.min(MAX_ZOOM_Y, zoomY * factor));
+
+                    panX = centerX - l.leftPad - contentX * zoomX;
+                    panY = centerY - l.topPad - contentY * zoomY;
+
+                    clampPan();
+                    draw();
+                }
+
+                lastDistance = newDistance;
+            }
+        }, { passive: false });
+
+        canvas.addEventListener("touchend", e => {
+            const now = Date.now();
+
+            if (e.changedTouches.length === 1 && now - lastTapTime < 280) {
+                zoomX = 1;
+                zoomY = 1;
+                panX = 0;
+                panY = 0;
+                draw();
+            }
+
+            lastTapTime = now;
+
+            if (e.touches.length === 0) {
+                isDragging = false;
+                priceScaleDragging = false;
+                timeScaleDragging = false;
+                lastDistance = 0;
+            }
+        }, { passive: false });
+
+        canvas.addEventListener("wheel", e => {
+            e.preventDefault();
+
+            const l = getLayout();
+
+            const oldZoomX = zoomX;
+            const oldZoomY = zoomY;
+            const factor = e.deltaY < 0 ? 1.12 : 0.88;
+
+            const contentX = (e.clientX - l.leftPad - panX) / oldZoomX;
+            const contentY = (e.clientY - l.topPad - panY) / oldZoomY;
+
+            zoomX = Math.max(MIN_ZOOM_X, Math.min(MAX_ZOOM_X, zoomX * factor));
+            zoomY = Math.max(MIN_ZOOM_Y, Math.min(MAX_ZOOM_Y, zoomY * factor));
+
+            panX = e.clientX - l.leftPad - contentX * zoomX;
+            panY = e.clientY - l.topPad - contentY * zoomY;
+
+            clampPan();
+            draw();
+        }, { passive: false });
+
+        resize();
+        showMessage("Loading liquidity data...");
+    </script>
+</body>
+</html>

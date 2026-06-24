@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.Pages.CopyTradesPage"
+             BackgroundColor="#07100B"
+             FlowDirection="LeftToRight"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- HEADER -->
+        <Grid Padding="18,18,18,10"
+              ColumnDefinitions="Auto,*"
+              ColumnSpacing="12">
+
+            <Border WidthRequest="50"
+                    HeightRequest="50"
+                    Background="#2A151A"
+                    Stroke="#C8A44D"
+                    StrokeThickness="1.2"
+                    StrokeShape="RoundRectangle 18">
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackClicked" />
+                </Border.GestureRecognizers>
+
+                <Label Text="←"
+                       FontSize="24"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+            </Border>
+
+            <VerticalStackLayout Grid.Column="1"
+                                 VerticalOptions="Center"
+                                 Spacing="4">
+
+                <Label Text="Copy Trades"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="White" />
+
+                <Label Text="Submit your request and track its current status."
+                       FontSize="14"
+                       TextColor="#D1D5DB" />
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,10,18,30" Spacing="18">
+
+                <Border Stroke="#C8A44D"
+                        StrokeThickness="1.5"
+                        Background="#141A16"
+                        Padding="18"
+                        StrokeShape="RoundRectangle 26">
+
+                    <VerticalStackLayout Spacing="16">
+
+                        <Label Text="Request Form"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+
+                        <Label Text="Complete all required fields before submitting."
+                               FontSize="14"
+                               TextColor="#CFCFCF"
+                               HorizontalTextAlignment="Center" />
+
+                        <!-- First Name -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="First Name"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#F3F4F6" />
+                            <Entry x:Name="FirstNameEntry"
+                                   Placeholder="Enter first name"
+                                   TextColor="White"
+                                   PlaceholderColor="#9AA49E"
+                                   BackgroundColor="#1B2320"
+                                   HeightRequest="52" />
+                        </VerticalStackLayout>
+
+                        <!-- Last Name -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Last Name"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#F3F4F6" />
+                            <Entry x:Name="LastNameEntry"
+                                   Placeholder="Enter last name"
+                                   TextColor="White"
+                                   PlaceholderColor="#9AA49E"
+                                   BackgroundColor="#1B2320"
+                                   HeightRequest="52" />
+                        </VerticalStackLayout>
+                        <!-- Account Number -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Account Number"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#F3F4F6" />
+                            <Entry x:Name="AccountNumberEntry"
+                                   Placeholder="Enter account number"
+                                   Keyboard="Text"
+                                   TextColor="White"
+                                   PlaceholderColor="#9AA49E"
+                                   BackgroundColor="#1B2320"
+                                   HeightRequest="52" />
+                        </VerticalStackLayout>
+
+                        <!-- Password -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Password"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#F3F4F6" />
+                            <Entry x:Name="PasswordEntry"
+                                   Placeholder="Enter password"
+                                   IsPassword="True"
+                                   TextColor="White"
+                                   PlaceholderColor="#9AA49E"
+                                   BackgroundColor="#1B2320"
+                                   HeightRequest="52" />
+                        </VerticalStackLayout>
+
+                        <!-- Broker -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Broker"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#F3F4F6" />
+                            <Entry x:Name="BrokerEntry"
+                                   Placeholder="Enter broker"
+                                   TextColor="White"
+                                   PlaceholderColor="#9AA49E"
+                                   BackgroundColor="#1B2320"
+                                   HeightRequest="52" />
+                        </VerticalStackLayout>
+
+                        <!-- Country -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Country"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#F3F4F6" />
+                            <Entry x:Name="CountryEntry"
+                                   Placeholder="Enter country"
+                                   TextColor="White"
+                                   PlaceholderColor="#9AA49E"
+                                   BackgroundColor="#1B2320"
+                                   HeightRequest="52" />
+                        </VerticalStackLayout>
+
+                        <!-- Account Value -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Account Value"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#F3F4F6" />
+                            <Entry x:Name="AccountValueEntry"
+                                   Placeholder="Enter account value"
+                                   Keyboard="Numeric"
+                                   TextColor="White"
+                                   PlaceholderColor="#9AA49E"
+                                   BackgroundColor="#1B2320"
+                                   HeightRequest="52" />
+                        </VerticalStackLayout>
+
+                        <!-- Phone Number -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Phone Number"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#F3F4F6" />
+                            <Entry x:Name="PhoneNumberEntry"
+                                   Placeholder="Enter phone number"
+                                   Keyboard="Telephone"
+                                   TextColor="White"
+                                   PlaceholderColor="#9AA49E"
+                                   BackgroundColor="#1B2320"
+                                   HeightRequest="52" />
+                        </VerticalStackLayout>
+
+                        <!-- Email -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Email"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#F3F4F6" />
+                            <Entry x:Name="EmailEntry"
+                                   Placeholder="Enter email"
+                                   Keyboard="Email"
+                                   TextColor="White"
+                                   PlaceholderColor="#9AA49E"
+                                   BackgroundColor="#1B2320"
+                                   HeightRequest="52" />
+                        </VerticalStackLayout>
+
+                        <!-- Message -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Message"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#F3F4F6" />
+                            <Editor x:Name="MessageEditor"
+                                    Placeholder="Optional message"
+                                    AutoSize="TextChanges"
+                                    TextColor="White"
+                                    PlaceholderColor="#9AA49E"
+                                    BackgroundColor="#1B2320"
+                                    HeightRequest="110" />
+                        </VerticalStackLayout>
+
+                        <!-- Receipt -->
+                        <Border Stroke="#C8A44D"
+                                StrokeThickness="1"
+                                Background="#1B2320"
+                                Padding="14"
+                                StrokeShape="RoundRectangle 18">
+
+                            <VerticalStackLayout Spacing="12">
+                                <Label Text="Receipt Image"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+
+                                <Border Background="#0E1412"
+                                        Stroke="#324036"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 14"
+                                        Padding="8">
+                                    <Image x:Name="ReceiptPreviewImage"
+                                           HeightRequest="220"
+                                           Aspect="AspectFit" />
+                                </Border>
+
+                                <Label x:Name="ReceiptFileNameLabel"
+                                       Text="No file selected"
+                                       FontSize="13"
+                                       TextColor="#CFCFCF" />
+
+                                <Button Text="Choose Image"
+                                        BackgroundColor="#1D4ED8"
+                                        TextColor="White"
+                                        CornerRadius="18"
+                                        HeightRequest="52"
+                                        FontAttributes="Bold"
+                                        Clicked="OnPickReceiptClicked" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Status -->
+                        <Border Stroke="#C8A44D"
+                                StrokeThickness="1"
+                                Background="#1B2320"
+                                Padding="14"
+                                StrokeShape="RoundRectangle 18">
+
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Request Status"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+
+                                <Label x:Name="StatusValueLabel"
+                                       Text="No request found"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="#FFFFFF" />
+
+                                <Label x:Name="StatusMessageLabel"
+                                       Text="You can submit a new request."
+                                       FontSize="14"
+                                       TextColor="#D1D5DB" />
+
+                                <Label x:Name="AdminNoteLabel"
+                                       Text="No admin note"
+                                       FontSize="13"
+                                       TextColor="#CFCFCF" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Loading -->
+                        <Grid ColumnDefinitions="Auto,*"
+                              ColumnSpacing="10"
+                              IsVisible="False"
+                              x:Name="LoadingContainer">
+                            <ActivityIndicator IsRunning="True"
+                                               Color="#C8A44D"
+                                               WidthRequest="24"
+                                               HeightRequest="24" />
+                            <Label Grid.Column="1"
+                                   Text="Processing request..."
+                                   VerticalTextAlignment="Center"
+                                   TextColor="#F3F4F6"
+                                   FontSize="14" />
+                        </Grid>
+
+                        <!-- Buttons -->
+                        <Button x:Name="SubmitButton"
+                                Text="Submit Request"
+                                BackgroundColor="#15803D"
+                                TextColor="White"
+                                CornerRadius="20"
+                                HeightRequest="56"
+                                FontAttributes="Bold"
+                                Clicked="OnSubmitClicked" />
+
+                        <Button x:Name="RefreshButton"
+                                Text="Refresh Status"
+                                BackgroundColor="#374151"
+                                TextColor="White"
+                                CornerRadius="20"
+                                HeightRequest="56"
+                                FontAttributes="Bold"
+                                Clicked="OnRefreshStatusClicked" />
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

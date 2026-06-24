@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PROXIMAMOP.Pages.AnalystProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:PROXIMAMOP.Models"
+    Title="Analyst Profile"
+    FlowDirection="RightToLeft"
+    Shell.BackgroundColor="#D4AF37"
+    Shell.TitleColor="Black"
+    Shell.ForegroundColor="Black">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#070707" Offset="0.0" />
+            <GradientStop Color="#190000" Offset="0.45" />
+            <GradientStop Color="#090909" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="*,Auto">
+        <RefreshView
+            IsRefreshing="{Binding IsRefreshing}"
+            Command="{Binding RefreshCommand}">
+
+            <ScrollView>
+                <VerticalStackLayout Padding="16,16,16,24" Spacing="16">
+
+                    <Border
+                        Stroke="#D4AF37"
+                         Background="#0F0A0A"
+                        StrokeThickness="3"
+                        Padding="18"
+                        StrokeShape="RoundRectangle 28">
+
+                        <VerticalStackLayout Spacing="16">
+                            <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Border
+                                    WidthRequest="108"
+                                    HeightRequest="108"
+                                    Background="#11182A"
+                                    Stroke="#40598D"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 32">
+                                    <Image
+                                        Source="{Binding AnalystAvatarUrl}"
+                                        Aspect="AspectFill" />
+                                </Border>
+
+                                <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                                    <Label
+                                        Text="{Binding AnalystName}"
+                                        FontSize="26"
+                                        FontAttributes="Bold"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+
+                                    <Border
+                                        IsVisible="{Binding HasBadge}"
+                                        Padding="6,2"
+                                        Stroke="{Binding BadgeBorderColor}"
+                                        StrokeThickness="1"
+                                        Background="{Binding BadgeIconBackgroundColor}"
+                                        StrokeShape="RoundRectangle 10"
+                                        VerticalOptions="Center">
+                                        <Label
+                                            Text="{Binding BadgeIcon}"
+                                            FontSize="12"
+                                            TextColor="{Binding BadgeIconTextColor}" />
+                                    </Border>
+                                </HorizontalStackLayout>
+
+                                <Label
+                                    Text="{Binding StarsText}"
+                                    FontSize="16"
+                                    TextColor="#F7C948"
+                                    HorizontalTextAlignment="Center" />
+
+                                <Label
+                                    Text="{Binding AnalystTitleText}"
+                                    FontSize="14"
+                                    TextColor="#C8D2EC"
+                                    HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                            <Grid ColumnDefinitions="*,*"
+                                  ColumnSpacing="10">
+                                <Button
+                                    Text="{Binding FollowButtonText}"
+                                    Clicked="OnToggleFollowClicked"
+                                    HeightRequest="48"
+                                    CornerRadius="16"
+                                    BackgroundColor="{Binding FollowButtonBackgroundColor}"
+                                    TextColor="White"
+                                    FontAttributes="Bold" />
+
+                                <Button
+                                    Grid.Column="1"
+                                    Text="{Binding NotificationsButtonText}"
+                                    Clicked="OnToggleNotificationsClicked"
+                                    HeightRequest="48"
+                                    CornerRadius="16"
+                                    BackgroundColor="{Binding NotificationsButtonBackgroundColor}"
+                                    TextColor="White"
+                                    FontAttributes="Bold" />
+                            </Grid>
+
+                            <Border
+                                Background="#111827"
+                                Stroke="#2A3552"
+                                StrokeThickness="1"
+                                Padding="14"
+                                StrokeShape="RoundRectangle 18">
+                                <Label
+                                    Text="{Binding FollowInfoText}"
+                                    FontSize="13"
+                                    TextColor="#C6D0E7"
+                                    HorizontalTextAlignment="Center" />
+                            </Border>
+
+                            <Button
+                                x:Name="CreatePostButton"
+                                Text="إضافة منشور جديد"
+                                IsVisible="{Binding CanCreatePost}"
+                                Clicked="OnCreatePostClicked"
+                                HeightRequest="50"
+                                CornerRadius="16"
+                                BackgroundColor="#8B5CF6"
+                                TextColor="White"
+                                FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border
+                        Background="#151D33"
+                        Stroke="#2C3E68"
+                        StrokeThickness="1"
+                        Padding="16"
+                        StrokeShape="RoundRectangle 24">
+                        <VerticalStackLayout Spacing="10">
+                            <Label
+                                Text="السيرة الذاتية"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                            <Label
+                                Text="{Binding AnalystAboutText}"
+                                FontSize="14"
+                                TextColor="#D6DEEF"
+                                LineHeight="1.4" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border
+                        IsVisible="{Binding HasMethodology}"
+                        Background="#171A2D"
+                        Stroke="#383061"
+                        StrokeThickness="1"
+                        Padding="16"
+                        StrokeShape="RoundRectangle 24">
+                        <VerticalStackLayout Spacing="10">
+                            <Label
+                                Text="طريقة العمل"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+                                <Label
+                                Text="{Binding AnalystMethodologyText}"
+                                FontSize="14"
+                                TextColor="#D9D2F2"
+                                LineHeight="1.4" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label
+                            Text="منشورات المحلل"
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Border
+                            Grid.Column="1"
+                            Padding="10,6"
+                            Background="#1F2945"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 14"
+                            VerticalOptions="Center">
+                            <Label
+                                Text="{Binding PostsCountText}"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                TextColor="#DDE5FA" />
+                        </Border>
+                    </Grid>
+
+                    <CollectionView
+                        ItemsSource="{Binding Posts}"
+                        SelectionMode="None">
+                        <CollectionView.EmptyView>
+                            <VerticalStackLayout Padding="10,40" Spacing="8">
+                                <Label
+                                    Text="لا توجد منشورات حالياً"
+                                    TextColor="White"
+                                    FontSize="18"
+                                    HorizontalTextAlignment="Center" />
+
+                                <Label
+                                    Text="عند نشر أول منشور سيظهر هنا"
+                                    TextColor="#AEB9D4"
+                                    FontSize="14"
+                                    HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:AnalystPostViewModel">
+                                <Border
+                                    Margin="0,0,0,14"
+                                    Padding="14"
+                                    Background="#151D33"
+                                    Stroke="#2B3D68"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 24">
+
+                                    <VerticalStackLayout Spacing="12">
+
+                                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                            <Border
+                                                WidthRequest="50"
+                                                HeightRequest="50"
+                                                Background="#101625"
+                                                Stroke="#354A75"
+                                                StrokeThickness="1"
+                                                StrokeShape="RoundRectangle 18">
+
+                                                <Image
+                                                    Source="{Binding AvatarUrl}"
+                                                    Aspect="AspectFill" />
+                                            </Border>
+
+                                            <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                                <HorizontalStackLayout Spacing="8">
+                                                <Label
+                                                        Text="{Binding UserName}"
+                                                        FontSize="16"
+                                                        FontAttributes="Bold"
+                                                        TextColor="White" />
+
+                                                    <Border
+                                                        IsVisible="{Binding HasBadge}"
+                                                        Padding="5,1"
+                                                        Stroke="{Binding BadgeBorderColor}"
+                                                        StrokeThickness="1"
+                                                        Background="{Binding BadgeIconBackgroundColor}"
+                                                        StrokeShape="RoundRectangle 8">
+                                                        <Label
+                                                            Text="{Binding BadgeIcon}"
+                                                            FontSize="11"
+                                                            TextColor="{Binding BadgeIconTextColor}" />
+                                                    </Border>
+                                                </HorizontalStackLayout>
+
+                                                <Label
+                                                    Text="{Binding TimeText}"
+                                                    FontSize="12"
+                                                    TextColor="#A8B5D3" />
+                                            </VerticalStackLayout>
+
+                                            <Button
+                                                Grid.Column="2"
+                                                Text="حذف"
+                                                IsVisible="{Binding CanDelete}"
+                                                Clicked="OnDeletePostClicked"
+                                                CommandParameter="{Binding Id}"
+                                                HeightRequest="36"
+                                                CornerRadius="12"
+                                                BackgroundColor="#B42318"
+                                                TextColor="White"
+                                                FontSize="12" />
+                                        </Grid>
+
+                                        <Label
+                                            IsVisible="{Binding HasImage}"
+                                            Text="{Binding StarsText}"
+                                            FontSize="13"
+                                            TextColor="#F7C948" />
+
+                                        <Label
+                                            IsVisible="{Binding HasText}"
+                                            Text="{Binding Text}"
+                                            FontSize="15"
+                                            TextColor="#EEF2FF"
+                                            LineHeight="1.4" />
+
+                                        <Border
+                                            IsVisible="{Binding HasImage}"
+                                            Background="#101625"
+                                            Stroke="#30446D"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 20">
+                                            <Image
+                                                Source="{Binding ImageUrl}"
+                                                IsVisible="{Binding HasImage}"
+                                                Aspect="AspectFill"
+                                                HeightRequest="240" />
+                                        </Border>
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                            <Label
+                                                Text="{Binding CommentsText}"
+                                                FontSize="13"
+                                                TextColor="#B7C2DE"
+                                                VerticalOptions="Center" />
+
+                                            <Button
+                                                Grid.Column="1"
+                                                Text="التعليقات"
+                                                Clicked="OnOpenCommentsClicked"
+                                                CommandParameter="{Binding Id}"
+                                                HeightRequest="42"
+                                                CornerRadius="14"
+                                                BackgroundColor="#25365C"
+                                                TextColor="White" />
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </ScrollView>
+        </RefreshView>
+
+        <Grid
+            x:Name="LoadingOverlay"
+            IsVisible="{Binding IsBusy}"
+            BackgroundColor="#70000000"
+            InputTransparent="False">
+
+            <VerticalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="10">
+                <ActivityIndicator
+                    IsRunning="True"
+                    Color="#A78BFA"
+                    WidthRequest="42"
+                    HeightRequest="42" />
+                <Label
+                    Text="جاري التحميل"
+                    TextColor="White"
+                    FontSize="14"
+                    HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

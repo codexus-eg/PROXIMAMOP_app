@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PROXIMAMOP.Features.Live.LivePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Live"
+    BackgroundColor="#0B1020"
+    Padding="0">
+
+    <Grid Padding="16" RowDefinitions="Auto,*,Auto">
+
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*">
+            <Button
+                Grid.Column="0"
+                WidthRequest="36"
+                HeightRequest="36"
+                CornerRadius="10"
+                Padding="0"
+                BackgroundColor="#66000000"
+                Text="i"
+                FontSize="14"
+                TextColor="White"
+                Clicked="OnDeviceIdClicked"
+                HorizontalOptions="Start"
+                VerticalOptions="Start" />
+
+            <VerticalStackLayout
+                Grid.Column="1"
+                Spacing="4"
+                Padding="12,0,0,0">
+                <Label
+                    Text="Live"
+                    TextColor="White"
+                    FontSize="28"
+                    FontAttributes="Bold" />
+                <Label
+                    x:Name="StatusLabel"
+                    Text="جارِ التحضير..."
+                    TextColor="#C7D2FE"
+                    FontSize="14" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <Border
+            Grid.Row="1"
+            Margin="0,20,0,20"
+            Stroke="#22304A"
+            StrokeThickness="1"
+            BackgroundColor="#10182B"
+            StrokeShape="RoundRectangle 24">
+            <VerticalStackLayout
+                Padding="22"
+                Spacing="16"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Label
+                    Text="البث داخل التطبيق"
+                    TextColor="White"
+                    FontSize="26"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center" />
+
+                <Label
+                    x:Name="InfoLabel"
+                    Text="راح ينفتح البث داخل نافذة داخلية بدون WebView."
+                    TextColor="#A5B4FC"
+                    FontSize="15"
+                    HorizontalTextAlignment="Center" />
+
+                <Label
+                    x:Name="RoomLabel"
+                    Text="Room: test"
+                    TextColor="#E5E7EB"
+                    FontSize="14"
+                    HorizontalTextAlignment="Center" />
+
+                <Label
+                    x:Name="RoleLabel"
+                    Text="Role: -"
+                    TextColor="#E5E7EB"
+                    FontSize="14"
+                    HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        </Border>
+
+        <VerticalStackLayout
+            Grid.Row="2"
+            Spacing="12">
+
+            <Button
+                x:Name="OpenLiveButton"
+                Text="دخول البث"
+                Clicked="OnOpenLiveClicked"
+                BackgroundColor="#2563EB"
+                TextColor="White"
+                FontAttributes="Bold"
+                Padding="18,14"
+                CornerRadius="16" />
+
+            <HorizontalStackLayout
+                Spacing="10"
+                HorizontalOptions="Center">
+
+                <Button
+                    x:Name="StartLiveButton"
+                    Text="تشغيل البث"
+                    Clicked="OnStartLiveClicked"
+                    BackgroundColor="#16A34A"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Padding="18,12"
+                    CornerRadius="14" />
+
+                <Button
+                    x:Name="StopLiveButton"
+                    Text="إيقاف البث"
+                    Clicked="OnStopLiveClicked"
+                    BackgroundColor="#DC2626"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Padding="18,12"
+                    CornerRadius="14" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+    </Grid>
+    </ContentPage>

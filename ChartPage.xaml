@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.ChartPage"
+             BackgroundColor="#0B0B0B"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="56,*,Auto" RowSpacing="0">
+
+        <Border Grid.Row="0"
+                BackgroundColor="#111111"
+                StrokeThickness="0"
+                Padding="6,4">
+
+            <Grid ColumnDefinitions="Auto,Auto,*"
+                  ColumnSpacing="6"
+                  VerticalOptions="Center">
+
+                <Label Grid.Column="0"
+                       Text="Chart"
+                       TextColor="White"
+                       FontSize="15"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       Margin="2,0,2,0" />
+
+                <Button x:Name="BtnVelocity"
+                        Grid.Column="1"
+                        Text="CV"
+                        Clicked="OnVelocityClicked"
+                        HeightRequest="30"
+                        WidthRequest="46"
+                        Padding="0"
+                        CornerRadius="8"
+                        FontSize="11"
+                        FontAttributes="Bold"
+                        BackgroundColor="#1A1114"
+                        BorderColor="#FFD700"
+                        BorderWidth="1"
+                        TextColor="#FFD700" />
+
+                <ScrollView Grid.Column="2"
+                            Orientation="Horizontal"
+                            HorizontalScrollBarVisibility="Never">
+
+                    <HorizontalStackLayout x:Name="TimeframeButtonsLayout"
+                                           Spacing="3"
+                                           VerticalOptions="Center">
+
+                        <Button x:Name="BtnM1" Text="M1" Clicked="OnTimeframeClicked"
+                                CommandParameter="M1" HeightRequest="26" MinimumWidthRequest="36"
+                                Padding="3,0" CornerRadius="7" FontSize="10"
+                                BackgroundColor="#A78BFA" TextColor="White" />
+
+                        <Button x:Name="BtnM5" Text="M5" Clicked="OnTimeframeClicked"
+                                CommandParameter="M5" HeightRequest="26" MinimumWidthRequest="36"
+                                Padding="3,0" CornerRadius="7" FontSize="10"
+                                BackgroundColor="#A78BFA" TextColor="White" />
+
+                        <Button x:Name="BtnM15" Text="M15" Clicked="OnTimeframeClicked"
+                                CommandParameter="M15" HeightRequest="26" MinimumWidthRequest="40"
+                                Padding="3,0" CornerRadius="7" FontSize="10"
+                                BackgroundColor="#A78BFA" TextColor="White" />
+
+                        <Button x:Name="BtnM30" Text="M30" Clicked="OnTimeframeClicked"
+                                CommandParameter="M30" HeightRequest="26" MinimumWidthRequest="40"
+                                Padding="3,0" CornerRadius="7" FontSize="10"
+                                BackgroundColor="#A78BFA" TextColor="White" />
+
+                        <Button x:Name="BtnH1" Text="H1" Clicked="OnTimeframeClicked"
+                                CommandParameter="H1" HeightRequest="26" MinimumWidthRequest="36"
+                                Padding="3,0" CornerRadius="7" FontSize="10"
+                                BackgroundColor="#A78BFA" TextColor="White" />
+
+                        <Button x:Name="BtnH4" Text="H4" Clicked="OnTimeframeClicked"
+                                CommandParameter="H4" HeightRequest="26" MinimumWidthRequest="36"
+                                Padding="3,0" CornerRadius="7" FontSize="10"
+                                BackgroundColor="#A78BFA" TextColor="White" />
+
+                        <Button x:Name="BtnD1" Text="D1" Clicked="OnTimeframeClicked"
+                                CommandParameter="D1" HeightRequest="26" MinimumWidthRequest="36"
+                                Padding="3,0" CornerRadius="7" FontSize="10"
+                                BackgroundColor="#A78BFA" TextColor="White" />
+
+                    </HorizontalStackLayout>
+                </ScrollView>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+
+            <WebView x:Name="ChartWebView" />
+
+            <Border HorizontalOptions="End"
+                    VerticalOptions="End"
+                    Margin="8,0,0,30"
+                    WidthRequest="130"
+                    HeightRequest="62"
+                    BackgroundColor="#FF000000"
+                    Stroke="#FFD700"
+                    StrokeThickness="2.2"
+                    StrokeShape="RoundRectangle 16"
+                    InputTransparent="True"
+                    ZIndex="10">
+
+                <Label Text="GOLD"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="#FFD700"
+                       FontSize="18"
+                       FontAttributes="Bold" />
+            </Border>
+
+            <Grid x:Name="LoadingOverlay"
+                  IsVisible="False"
+                  BackgroundColor="#66000000"
+                  InputTransparent="False">
+
+                <VerticalStackLayout HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     Spacing="10">
+
+                    <ActivityIndicator IsRunning="True"
+                                       Color="#A78BFA"
+                                       WidthRequest="40"
+                                       HeightRequest="40" />
+
+                    <Label Text="Loading..."
+                           TextColor="White"
+                           FontSize="14"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+
+        <Border x:Name="VelocityCard"
+                Grid.Row="2"
+                IsVisible="False"
+                Background="#111018"
+                Stroke="#C8A44D"
+                StrokeThickness="1.2"
+                Padding="10,8"
+                Margin="8,4,8,8"
+                StrokeShape="RoundRectangle 20">
+
+            <ScrollView HeightRequest="330">
+                <VerticalStackLayout Spacing="8">
+
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                        <VerticalStackLayout Spacing="1">
+                            <Label Text="Candle Velocity"
+                                   TextColor="#FFD700"
+                                   FontSize="15"
+                                   FontAttributes="Bold" />
+
+                            <Label x:Name="VelocityStatusLabel"
+                                   Text="Waiting for data..."
+                                   TextColor="#CFCFCF"
+                                   FontSize="11" />
+                        </VerticalStackLayout>
+
+                        <Border Grid.Column="1"
+                                Background="#201A10"
+                                Stroke="#C8A44D"
+                                StrokeThickness="1"
+                                Padding="10,4"
+                                StrokeShape="RoundRectangle 14">
+
+                            <Label x:Name="VelocityTfLabel"
+                                   Text="M1"
+                                   TextColor="#FFD700"
+                                   FontSize="12"
+                                   FontAttributes="Bold" />
+                        </Border>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*,*"
+                          RowDefinitions="Auto,Auto,Auto,Auto"
+                          ColumnSpacing="7"
+                          RowSpacing="7">
+
+                        <Border Background="#1A1A22" Stroke="#353545" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Max Speed" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvMaxLabel" Text="0.00" TextColor="#FFD700" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Column="1" Background="#1A1A22" Stroke="#353545" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Prev Ref" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvPrevLabel" Text="0.00" TextColor="#FF8A8A" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Column="2" Background="#1A1A22" Stroke="#353545" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Avg Speed" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvAvgLabel" Text="0.00" TextColor="#00FF88" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="1" Background="#1A1A22" Stroke="#353545" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Ticks" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvTicksLabel" Text="0" TextColor="#FFD700" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="1" Grid.Column="1" Background="#1A1A22" Stroke="#353545" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Tick/s" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvTpsLabel" Text="0.00" TextColor="#FFD700" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="1" Grid.Column="2" Background="#1A1A22" Stroke="#353545" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="LOP Diff" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvDiffLabel" Text="0" TextColor="#FFD700" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="2" Background="#102017" Stroke="#234E36" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Buy LOP" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvBuyLabel" Text="0" TextColor="#00FF88" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="2" Grid.Column="1" Background="#241014" Stroke="#56242D" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Sell LOP" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvSellLabel" Text="0" TextColor="#FF4D4D" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="2" Grid.Column="2" Background="#1A1A22" Stroke="#353545" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="LOP Side" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvLopSideLabel" Text="EQUAL" TextColor="#FFD700" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="3" Background="#1A1A22" Stroke="#353545" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="BuyV/s" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvBuyVolLabel" Text="0.00" TextColor="#DDA0DD" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="3" Grid.Column="1" Background="#1A1A22" Stroke="#353545" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="SellV/s" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvSellVolLabel" Text="0.00" TextColor="#DDA0DD" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="3" Grid.Column="2" Background="#1A1A22" Stroke="#353545" StrokeThickness="1" Padding="7" StrokeShape="RoundRectangle 13">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Vol Diff" TextColor="#AFAFAF" FontSize="9" HorizontalTextAlignment="Center" />
+                                <Label x:Name="CvVolDiffLabel" Text="0.00" TextColor="#DDA0DD" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+
+                    <Label Text="Last 4 Speed"
+                           TextColor="#00FF88"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Margin="2,4,0,0" />
+
+                    <VerticalStackLayout Spacing="3">
+                        <Label x:Name="CvSpeedRow1" Text="#1 —" TextColor="#B6FFB6" FontSize="11" />
+                        <Label x:Name="CvSpeedRow2" Text="#2 —" TextColor="#B6FFB6" FontSize="11" />
+                        <Label x:Name="CvSpeedRow3" Text="#3 —" TextColor="#B6FFB6" FontSize="11" />
+                        <Label x:Name="CvSpeedRow4" Text="#4 —" TextColor="#B6FFB6" FontSize="11" />
+                    </VerticalStackLayout>
+
+                    <Label Text="Last 4 Ticks"
+                           TextColor="#FF6B6B"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Margin="2,4,0,0" />
+
+                    <VerticalStackLayout Spacing="3">
+                        <Label x:Name="CvTicksRow1" Text="#1 —" TextColor="#FFB0B0" FontSize="11" />
+                        <Label x:Name="CvTicksRow2" Text="#2 —" TextColor="#FFB0B0" FontSize="11" />
+                        <Label x:Name="CvTicksRow3" Text="#3 —" TextColor="#FFB0B0" FontSize="11" />
+                        <Label x:Name="CvTicksRow4" Text="#4 —" TextColor="#FFB0B0" FontSize="11" />
+                    </VerticalStackLayout>
+
+                    <Label Text="Last 4 Volume Speed"
+                           TextColor="#DDA0DD"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           Margin="2,4,0,0" />
+
+                    <VerticalStackLayout Spacing="3">
+                        <Label x:Name="CvVolumeRow1" Text="#1 —" TextColor="#F0B8FF" FontSize="11" />
+                        <Label x:Name="CvVolumeRow2" Text="#2 —" TextColor="#F0B8FF" FontSize="11" />
+                        <Label x:Name="CvVolumeRow3" Text="#3 —" TextColor="#F0B8FF" FontSize="11" />
+                        <Label x:Name="CvVolumeRow4" Text="#4 —" TextColor="#F0B8FF" FontSize="11" />
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </Border>
+    </Grid>
+</ContentPage>

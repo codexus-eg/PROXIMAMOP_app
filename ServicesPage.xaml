@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.Pages.ServicesPage"
+             Title="Services"
+             BackgroundColor="#07100B"
+             FlowDirection="RightToLeft"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="1,1">
+                <GradientStop Color="#06110B"
+                              Offset="0.0" />
+
+                <GradientStop Color="#0B1A12"
+                              Offset="0.45" />
+
+                <GradientStop Color="#102018"
+                              Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!-- HEADER -->
+        <Grid Padding="18,18,18,12"
+              ColumnDefinitions="Auto,*"
+              ColumnSpacing="12">
+
+            <Border WidthRequest="52"
+                    HeightRequest="52"
+                    Background="#2A151A"
+                    Stroke="#C8A44D"
+                    StrokeThickness="1.2"
+                    StrokeShape="RoundRectangle 18">
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackTapped" />
+                </Border.GestureRecognizers>
+
+                <Label Text="←"
+                       FontSize="24"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+            </Border>
+
+            <VerticalStackLayout Grid.Column="1"
+                                 VerticalOptions="Center"
+                                 Spacing="4">
+
+                <Label Text="Services"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="White" />
+
+                <Label Text="Choose one of the following services"
+                       FontSize="14"
+                       TextColor="#EADFC2" />
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+        <!-- BODY -->
+        <ScrollView Grid.Row="1">
+
+            <VerticalStackLayout Padding="18,8,18,24"
+                                 Spacing="16">
+
+                <!-- COPY TRADING -->
+                <Border Stroke="#C8A44D"
+                        StrokeThickness="1.2"
+                        Padding="18"
+                        StrokeShape="RoundRectangle 28"
+                        Background="#1A1114">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCopyTradesTapped" />
+                    </Border.GestureRecognizers>
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="16">
+
+                        <Border WidthRequest="72"
+                                HeightRequest="72"
+                                Background="#7B1627"
+                                Stroke="#C8A44D"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20">
+
+                            <Label Text="📈"
+                                   FontSize="34"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="6">
+
+                            <Label Text="Copy Trading"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="White" />
+
+                            <Label Text="Accessing the Copy Trades Service window."
+                                   FontSize="14"
+                                   TextColor="#E7DCC1"
+                                   LineHeight="1.4" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+
+                <!-- SEDNA -->
+                <Border Stroke="#C8A44D"
+                        StrokeThickness="1.2"
+                        Padding="18"
+                        StrokeShape="RoundRectangle 28"
+                        Background="#1A1114">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSednaTapped" />
+                    </Border.GestureRecognizers>
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="16">
+
+                        <Border WidthRequest="72"
+                                HeightRequest="72"
+                                Background="#7B1627"
+                                Stroke="#C8A44D"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20">
+
+                            <Label Text="🛰"
+                                   FontSize="34"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="6">
+
+                            <Label Text="SEDNA"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="White" />
+
+                            <Label Text="Open the SEDNA service guide and subscription page."
+                                   FontSize="14"
+                                   TextColor="#E7DCC1"
+                                   LineHeight="1.4" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+
+                <!-- PHOENIX -->
+                <Border Stroke="#C8A44D"
+                        StrokeThickness="1.2"
+                        Padding="18"
+                        StrokeShape="RoundRectangle 28"
+                        Background="#1A1114">
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="16">
+
+                        <Border WidthRequest="72"
+                                HeightRequest="72"
+                                Background="#7B1627"
+                                Stroke="#C8A44D"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20">
+
+                            <Label Text="🔥"
+                                   FontSize="34"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="6">
+
+                            <Label Text="Phoenix"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="White" />
+
+                            <Label Text="SOON."
+                                   FontSize="14"
+                                   TextColor="#E7DCC1"
+                                   LineHeight="1.4" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+
+                <!-- LOCMAP -->
+                <Border Stroke="#C8A44D"
+                        StrokeThickness="1.2"
+                        Padding="18"
+                        StrokeShape="RoundRectangle 28"
+                        Background="#1A1114">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLocmapTapped" />
+                    </Border.GestureRecognizers>
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="16">
+
+                        <Border WidthRequest="72"
+                                HeightRequest="72"
+                                Background="#7B1627"
+                                Stroke="#C8A44D"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20">
+
+                            <Label Text="🔥"
+                                   FontSize="34"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="6">
+
+                            <Label Text="LOCMAP"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="White" />
+
+                            <Label Text="Open live order flow and tick liquidity map."
+                                   FontSize="14"
+                                   TextColor="#E7DCC1"
+                                   LineHeight="1.4" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+
+                <!-- LIQUIDITY -->
+                <Border Stroke="#C8A44D"
+                        StrokeThickness="1.2"
+                        Padding="18"
+                        StrokeShape="RoundRectangle 28"
+                        Background="#1A1114">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLiquidityTapped" />
+                    </Border.GestureRecognizers>
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="16">
+
+                        <Border WidthRequest="72"
+                                HeightRequest="72"
+                                Background="#7B1627"
+                                Stroke="#C8A44D"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20">
+
+                            <Label Text="💧"
+                                   FontSize="34"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="6">
+
+                            <Label Text="Liquidity"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="White" />
+
+                            <Label Text="Open live liquidity heatmap."
+                                   FontSize="14"
+                                   TextColor="#E7DCC1"
+                                   LineHeight="1.4" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+
+                <!-- GREL90 -->
+                <Border Stroke="#C8A44D"
+                        StrokeThickness="1.2"
+                        Padding="18"
+                        StrokeShape="RoundRectangle 28"
+                        Background="#1A1114">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnGrel90Tapped" />
+                    </Border.GestureRecognizers>
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="16">
+
+                        <Border WidthRequest="72"
+                                HeightRequest="72"
+                                Background="#7B1627"
+                                Stroke="#C8A44D"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20">
+
+                            <Label Text="🟩"
+                                   FontSize="34"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="6">
+
+                            <Label Text="GREL90"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="White" />
+
+                            <Label Text="Open Scalping and Swing liquidity grid."
+                                   FontSize="14"
+                                   TextColor="#E7DCC1"
+                                   LineHeight="1.4" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+
+                <!-- FLOW90 -->
+                <Border Stroke="#C8A44D"
+                        StrokeThickness="1.2"
+                        Padding="18"
+                        StrokeShape="RoundRectangle 28"
+                        Background="#1A1114">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFlow90Tapped" />
+                    </Border.GestureRecognizers>
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="16">
+
+                        <Border WidthRequest="72"
+                                HeightRequest="72"
+                                Background="#7B1627"
+                                Stroke="#C8A44D"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20">
+
+                            <Label Text="🔵"
+                                   FontSize="34"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="6">
+
+                            <Label Text="FLOW90"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="White" />
+
+                            <Label Text="Open advanced flow."
+                                   FontSize="14"
+                                   TextColor="#E7DCC1"
+                                   LineHeight="1.4" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+
+                <!-- MARKETS -->
+                <Border Stroke="#C8A44D"
+                        StrokeThickness="1.2"
+                        Padding="18"
+                        StrokeShape="RoundRectangle 28"
+                        Background="#1A1114">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnMarketsTapped" />
+                    </Border.GestureRecognizers>
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="16">
+
+                        <Border WidthRequest="72"
+                                HeightRequest="72"
+                                Background="#7B1627"
+                                Stroke="#C8A44D"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20">
+
+                            <Label Text="📊"
+                                   FontSize="34"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="6">
+
+                            <Label Text="Markets"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="White" />
+
+                            <Label Text="Open live market charts and levels."
+                                   FontSize="14"
+                                   TextColor="#E7DCC1"
+                                   LineHeight="1.4" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

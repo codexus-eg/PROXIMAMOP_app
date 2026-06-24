@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+    <title>FLOW90</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #050b10;
+            font-family: Arial,sans-serif;
+            touch-action: none;
+            overscroll-behavior: none;
+        }
+
+        #canvas {
+            position: fixed;
+            inset: 0;
+            width: 100dvw;
+            height: 100dvh;
+            display: block;
+            background: #050b10;
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>const SERVER = "http://195.3.223.134:6061/api/flow90?symbol=XAUUSD&timeframe=M15";
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d", { alpha:false });
+
+let data = null;
+let lastGoodData = null;
+
+let dpr = 1;
+let vw = 0;
+let vh = 0;
+
+let zoomX = 1;
+let zoomY = 1;
+let panX = 0;
+let panY = 0;
+
+let dragging = false;
+let priceScaleDragging = false;
+let timeScaleDragging = false;
+
+let lastX = 0;
+let lastY = 0;
+let lastDistance = 0;
+let lastTap = 0;
+
+const MIN_ZOOM_X = 1;
+const MAX_ZOOM_X = 35;
+const MIN_ZOOM_Y = 0.45;
+const MAX_ZOOM_Y = 22;
+
+const PRICE_ZONE = 34;
+const TIME_ZONE = 34;
+
+const COLORS = {
+    bg:"#050b10",
+    panel:"#071018",
+    header:"rgba(255,255,255,0.045)",
+    grid:"rgba(255,255,255,0.055)",
+    gridStrong:"rgba(200,164,77,0.22)",
+    gold:"#C8A44D",
+    soft:"#d0b36a",
+    white:"#ffffff",
+    text:"#eaf2ff",
+    buy:"#00ff66",
+    sell:"#ff2a2a",
+    small:"#ff00ff",
+    medium:"#ffe100",
+    large:"#00b7ff",
+    lineBuy:"rgba(0,255,102,0.45)",
+    lineSell:"rgba(255,48,48,0.45)",
+    tailBuy:"#00ff66",
+    tailSell:"#ff2a2a",
+    tailHuge:"#ff00ff"
+};
+
+function sx(v){ return v / zoomX; }
+function sy(v){ return v / zoomY; }
+function fixed(v){ return v / Math.max(zoomX, zoomY); }
+
+function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 3);
+    vw = Math.floor(window.visualViewport?.width || window.innerWidth);
+    vh = Math.floor(window.visualViewport?.height || window.innerHeight);
+
+    canvas.width = Math.floor(vw * dpr);
+    canvas.height = Math.floor(vh * dpr);
+    canvas.style.width = vw + "px";
+    canvas.style.height = vh + "px";
+
+    resetTransform();
+    clampPan();
+    draw();
+}
+
+function resetTransform(){
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+
+function showMessage(msg){
+    resetTransform();
+    ctx.clearRect(0,0,vw,vh);
+    ctx.fillStyle = COLORS.bg;
+    ctx.fillRect(0,0,vw,vh);
+
+    ctx.fillStyle = COLORS.white;
+    ctx.font = "800 20px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(msg, vw / 2, vh / 2);
+}
+
+async function loadData(){
+    try{
+        const sep = SERVER.includes("?") ? "&" : "?";
+        const r = await fetch(SERVER + sep + "t=" + Date.now(), { cache:"no-store" });
+
+        if(!r.ok) throw new Error("HTTP " + r.status);
+
+        const j = await r.json();
+
+        if(j.ok === false || !j.bars || !j.bars.length){
+            if(!lastGoodData) showMessage("No FLOW90 Data");
+            return;
+        }
+
+        data = j;
+        lastGoodData = j;
+        clampPan();
+        draw();
+    }
+    catch(e){
+        if(lastGoodData){
+            data = lastGoodData;
+            draw();
+            return;
+        }
+
+        showMessage("FLOW90 Offline");
+    }
+}
+
+function getChartBox(){
+    return {
+        x:8,
+        y:74,
+        w:Math.max(160, vw - 16),
+        h:Math.max(220, vh - 108)
+    };
+}
+
+function isInPriceZone(x, y){
+    const box = getChartBox();
+    return x >= box.x + box.w - PRICE_ZONE &&
+           x <= box.x + box.w &&
+           y >= box.y &&
+           y <= box.y + box.h - TIME_ZONE;
+}
+
+function isInTimeZone(x, y){
+    const box = getChartBox();
+    return x >= box.x &&
+           x <= box.x + box.w - PRICE_ZONE &&
+           y >= box.y + box.h - TIME_ZONE &&
+           y <= box.y + box.h;
+}
+
+function clampPan(){
+    const box = getChartBox();
+
+    if(zoomX <= 1){
+        zoomX = 1;
+        panX = 0;
+    }
+
+    const maxPanX = box.w * 0.45;
+    const minPanX = -(box.w * zoomX - box.w) - box.w * 0.45;
+
+    const maxPanY = box.h * 0.9;
+    const minPanY = -(box.h * zoomY - box.h) - box.h * 0.9;
+
+    panX = Math.min(maxPanX, Math.max(minPanX, panX));
+    panY = Math.min(maxPanY, Math.max(minPanY, panY));
+}
+
+function draw(){
+    resetTransform();
+
+    ctx.clearRect(0,0,vw,vh);
+    ctx.fillStyle = COLORS.bg;
+    ctx.fillRect(0,0,vw,vh);
+
+    if(!data || !data.bars){
+        showMessage("Loading FLOW90...");
+        return;
+    }
+
+    const bars = [...data.bars].reverse();
+
+    drawHeader();
+
+    const box = getChartBox();
+
+    ctx.save();
+    roundedClip(box.x, box.y, box.w, box.h, 18);
+
+    ctx.fillStyle = COLORS.panel;
+    ctx.fillRect(box.x, box.y, box.w, box.h);
+
+    ctx.translate(box.x + panX, box.y + panY);
+    ctx.scale(zoomX, zoomY);
+
+    const chart = buildChart(bars, box);
+
+    drawGrid(chart);
+    drawConnectLines(chart);
+    drawTails(chart);
+    drawDots(chart);
+    drawDiamonds(chart);
+    drawLabels(chart);
+    drawLiveMarker(chart);
+
+    ctx.restore();
+
+    drawScaleZones(box);
+    drawChartBorder(box);
+}
+
+function buildChart(bars, box){
+    let min = Number.MAX_VALUE;
+    let max = -Number.MAX_VALUE;
+
+    for(const b of bars){
+        min = Math.min(min, Number(b.low || 0));
+        max = Math.max(max, Number(b.high || 0));
+    }
+
+    if(data.live){
+        min = Math.min(min, Number(data.live.low || min));
+        max = Math.max(max, Number(data.live.high || max));
+    }
+
+    const pad = Math.max(0.01, (max - min) * 0.32);
+    min -= pad;
+    max += pad;
+
+    const range = Math.max(0.00001, max - min);
+    const gap = box.w / Math.max(1, bars.length - 1);
+
+    return {
+        bars,
+        width:box.w,
+        height:box.h,
+        gap,
+        priceY(price){
+            return box.h - ((Number(price) - min) / range) * box.h;
+        },
+        indexX(i){
+            return i * gap;
+        }
+    };
+}
+
+function drawHeader(){
+    ctx.fillStyle = COLORS.white;
+    ctx.font = "900 28px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("FLOW90", vw / 2, 28);
+
+    ctx.fillStyle = COLORS.soft;
+    ctx.font = "700 13px Arial";
+    ctx.fillText("Advanced flow", vw / 2, 52);
+
+    if(data && data.price){
+        ctx.fillStyle = COLORS.buy;
+        ctx.font = "900 18px Consolas";
+        ctx.textAlign = "right";
+        ctx.fillText(Number(data.price).toFixed(2), vw - 14, 52);
+    }
+}
+
+function drawGrid(chart){
+    const minorX = chart.width / 8;
+    const minorY = chart.height / 8;
+
+    ctx.strokeStyle = COLORS.grid;
+    ctx.lineWidth = fixed(1);
+
+    for(let x = 0; x <= chart.width; x += minorX){
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, chart.height);
+        ctx.stroke();
+    }
+
+    for(let y = 0; y <= chart.height; y += minorY){
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(chart.width, y);
+        ctx.stroke();
+    }
+
+    ctx.strokeStyle = COLORS.gridStrong;
+    ctx.lineWidth = fixed(1.15);
+
+    for(let x = 0; x <= chart.width; x += minorX * 2){
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, chart.height);
+        ctx.stroke();
+    }
+
+    for(let y = 0; y <= chart.height; y += minorY * 2){
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(chart.width, y);
+        ctx.stroke();
+    }
+}
+
+function drawConnectLines(chart){
+    ctx.lineWidth = fixed(0.75);
+    ctx.setLineDash([fixed(2), fixed(3)]);
+
+    for(let i = 1; i < chart.bars.length; i++){
+        const a = chart.bars[i - 1];
+        const b = chart.bars[i];
+
+        ctx.strokeStyle = b.direction === "sell" ? COLORS.lineSell : COLORS.lineBuy;
+
+        ctx.beginPath();
+        ctx.moveTo(chart.indexX(i - 1), chart.priceY(a.bodyMid));
+        ctx.lineTo(chart.indexX(i), chart.priceY(b.bodyMid));
+        ctx.stroke();
+    }
+
+    ctx.setLineDash([]);
+}
+
+function drawTails(chart){
+    for(let i = 0; i < chart.bars.length; i++){
+        const b = chart.bars[i];
+        if(!b.tail || !b.tail.has) continue;
+
+        const x = chart.indexX(i);
+        const yHigh = chart.priceY(b.high);
+        const yLow = chart.priceY(b.low);
+        const yTop = chart.priceY(b.bodyTop);
+        const yBottom = chart.priceY(b.bodyBottom);
+
+        const rangePoints = Number(b.rangePoints || 0);
+        const isHuge = rangePoints >= 1500;
+
+        ctx.strokeStyle = isHuge
+            ? COLORS.tailHuge
+            : b.direction === "sell"
+                ? COLORS.tailSell
+                : COLORS.tailBuy;
+
+        ctx.lineWidth = fixed(isHuge ? 1.35 : 0.95);
+
+        ctx.beginPath();
+
+        if(b.tail.type === "upper"){
+            ctx.moveTo(x, yTop);
+            ctx.lineTo(x, yHigh);
+        }else{
+            ctx.moveTo(x, yBottom);
+            ctx.lineTo(x, yLow);
+        }
+
+        ctx.stroke();
+    }
+}
+
+function drawDots(chart){
+    for(let i = 0; i < chart.bars.length; i++){
+        const b = chart.bars[i];
+        const x = chart.indexX(i);
+        const y = chart.priceY(b.bodyMid);
+
+        let color = COLORS.large;
+        let r = 4.2;
+
+        if(b.dotClass === "small"){
+            color = COLORS.small;
+            r = 2.4;
+        }else if(b.dotClass === "medium"){
+            color = COLORS.medium;
+            r = 3.1;
+        }
+
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.ellipse(x, y, sx(r), sy(r), 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        if(b.dotClass === "large"){
+            ctx.strokeStyle = "rgba(255,255,255,0.55)";
+            ctx.lineWidth = fixed(0.55);
+            ctx.stroke();
+        }
+    }
+}
+
+function drawDiamonds(chart){
+    for(let i = 0; i < chart.bars.length; i++){
+        const b = chart.bars[i];
+        if(!b.diamond || b.diamond === "none") continue;
+
+        const x = chart.indexX(i);
+        const yMid = chart.priceY(b.bodyMid);
+
+        ctx.fillStyle = b.direction === "sell" ? COLORS.sell : COLORS.buy;
+
+        const y = b.direction === "buy"
+            ? yMid - sy(8)
+            : yMid + sy(8);
+
+        drawDiamondFixed(x, y, 3.6);
+    }
+}
+
+function drawLabels(chart){
+    if(zoomX < 4) return;
+
+    const fs = 6.2;
+
+    ctx.fillStyle = COLORS.text;
+    ctx.font = `800 ${fixed(fs)}px Arial`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    for(let i = 0; i < chart.bars.length; i++){
+        const b = chart.bars[i];
+        const x = chart.indexX(i);
+        const yHigh = chart.priceY(b.high);
+        const yLow = chart.priceY(b.low);
+        const rangeText = Math.round(Number(b.rangePoints || 0));
+
+        if(b.tail && b.tail.has){
+            if(b.tail.type === "upper"){
+                ctx.fillText(rangeText, x, yHigh - sy(8));
+            }else{
+                ctx.fillText(rangeText, x, yLow + sy(8));
+            }
+        }
+    }
+}
+
+function drawLiveMarker(chart){
+    if(!data.live || !data.price) return;
+
+    const price = Number(data.price);
+    const y = chart.priceY(price);
+
+    if(y < -80 || y > chart.height + 80) return;
+
+    ctx.strokeStyle = "rgba(255,255,255,0.28)";
+    ctx.lineWidth = fixed(1);
+
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(chart.width, y);
+    ctx.stroke();
+
+    ctx.fillStyle = COLORS.white;
+    ctx.beginPath();
+    ctx.ellipse(chart.width - sx(8), y, sx(4), sy(4), 0, 0, Math.PI * 2);
+    ctx.fill();
+}
+
+function drawScaleZones(box){
+    ctx.save();
+
+    ctx.fillStyle = priceScaleDragging ? "rgba(200,164,77,0.15)" : "rgba(255,255,255,0.025)";
+    ctx.fillRect(box.x + box.w - PRICE_ZONE, box.y, PRICE_ZONE, box.h - TIME_ZONE);
+
+    ctx.fillStyle = timeScaleDragging ? "rgba(200,164,77,0.15)" : "rgba(255,255,255,0.025)";
+    ctx.fillRect(box.x, box.y + box.h - TIME_ZONE, box.w - PRICE_ZONE, TIME_ZONE);
+
+    ctx.fillStyle = "rgba(200,164,77,0.68)";
+    ctx.font = "800 10px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    ctx.save();
+    ctx.translate(box.x + box.w - PRICE_ZONE / 2, box.y + (box.h - TIME_ZONE) / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText("PRICE SCALE", 0, 0);
+    ctx.restore();
+
+    ctx.fillText("TIME SCALE", box.x + (box.w - PRICE_ZONE) / 2, box.y + box.h - TIME_ZONE / 2);
+
+    ctx.restore();
+}
+
+function drawChartBorder(box){
+    ctx.strokeStyle = COLORS.gold;
+    ctx.lineWidth = 1.1;
+    ctx.beginPath();
+    roundedRectPath(box.x, box.y, box.w, box.h, 18);
+    ctx.stroke();
+}
+
+function drawDiamondFixed(x, y, s){
+    const rx = sx(s);
+    const ry = sy(s);
+
+    ctx.beginPath();
+    ctx.moveTo(x, y - ry);
+    ctx.lineTo(x + rx, y);
+    ctx.lineTo(x, y + ry);
+    ctx.lineTo(x - rx, y);
+    ctx.closePath();
+    ctx.fill();
+}
+
+function roundedClip(x, y, w, h, r){
+    ctx.beginPath();
+    roundedRectPath(x, y, w, h, r);
+    ctx.clip();
+}
+
+function roundedRectPath(x, y, w, h, r){
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+}
+
+function dist(touches){
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
+canvas.addEventListener("touchstart", e => {
+    e.preventDefault();
+
+    if(e.touches.length === 1){
+        const x = e.touches[0].clientX;
+        const y = e.touches[0].clientY;
+
+        priceScaleDragging = isInPriceZone(x, y);
+        timeScaleDragging = isInTimeZone(x, y);
+        dragging = !priceScaleDragging && !timeScaleDragging;
+
+        lastX = x;
+        lastY = y;
+    }
+
+    if(e.touches.length === 2){
+        dragging = false;
+        priceScaleDragging = false;
+        timeScaleDragging = false;
+        lastDistance = dist(e.touches);
+    }
+}, { passive:false });
+
+canvas.addEventListener("touchmove", e => {
+    e.preventDefault();
+
+    if(e.touches.length === 1){
+        const x = e.touches[0].clientX;
+        const y = e.touches[0].clientY;
+
+        const dx = x - lastX;
+        const dy = y - lastY;
+
+        const box = getChartBox();
+
+        if(priceScaleDragging){
+            const oldZoomY = zoomY;
+            const centerY = box.y + box.h / 2;
+            const contentY = (centerY - box.y - panY) / oldZoomY;
+
+            zoomY = Math.max(MIN_ZOOM_Y, Math.min(MAX_ZOOM_Y, zoomY * Math.exp(-dy * 0.012)));
+            panY = centerY - box.y - contentY * zoomY;
+        }
+        else if(timeScaleDragging){
+            const oldZoomX = zoomX;
+            const centerX = box.x + box.w / 2;
+            const contentX = (centerX - box.x - panX) / oldZoomX;
+
+            zoomX = Math.max(MIN_ZOOM_X, Math.min(MAX_ZOOM_X, zoomX * Math.exp(dx * 0.012)));
+            panX = centerX - box.x - contentX * zoomX;
+        }
+        else if(dragging){
+            panX += dx;
+            panY += dy;
+        }
+
+        lastX = x;
+        lastY = y;
+
+        clampPan();
+        draw();
+    }
+
+    if(e.touches.length === 2){
+        const nd = dist(e.touches);
+
+        if(lastDistance > 0){
+            const oldZoomX = zoomX;
+            const factor = nd / lastDistance;
+            const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+
+            const box = getChartBox();
+            const contentX = (cx - box.x - panX) / oldZoomX;
+
+            zoomX = Math.max(MIN_ZOOM_X, Math.min(MAX_ZOOM_X, zoomX * factor));
+            panX = cx - box.x - contentX * zoomX;
+
+            clampPan();
+            draw();
+        }
+
+        lastDistance = nd;
+    }
+}, { passive:false });
+
+canvas.addEventListener("touchend", e => {
+    const now = Date.now();
+
+    if(now - lastTap < 280){
+        zoomX = 1;
+        zoomY = 1;
+        panX = 0;
+        panY = 0;
+        draw();
+    }
+
+    lastTap = now;
+
+    if(e.touches.length === 0){
+        dragging = false;
+        priceScaleDragging = false;
+        timeScaleDragging = false;
+        lastDistance = 0;
+    }
+}, { passive:false });
+
+window.addEventListener("resize", resize, { passive:true });
+window.visualViewport?.addEventListener("resize", resize, { passive:true });
+
+resize();
+showMessage("Loading FLOW90...");
+loadData();
+setInterval(loadData, 2000);</script>
+</body>
+</html>

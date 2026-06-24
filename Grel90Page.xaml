@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PROXIMAMOP.Pages.Grel90Page"
+    BackgroundColor="#050B10"
+    Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Grid
+            Padding="14"
+            ColumnDefinitions="Auto,*"
+            RowDefinitions="Auto,Auto"
+            BackgroundColor="#050B10">
+
+            <Button
+                Text="←"
+                WidthRequest="52"
+                HeightRequest="44"
+                CornerRadius="16"
+                BackgroundColor="#2A151A"
+                BorderColor="#C8A44D"
+                BorderWidth="1"
+                TextColor="White"
+                FontSize="22"
+                Clicked="OnBackClicked" />
+
+            <VerticalStackLayout
+                Grid.Column="1"
+                Margin="12,0,0,0"
+                VerticalOptions="Center">
+
+                <Label
+                    Text="GREL90"
+                    TextColor="White"
+                    FontSize="26"
+                    FontAttributes="Bold" />
+
+                <Label
+                    Text="Advanced grid"
+                    TextColor="#EADFC2"
+                    FontSize="13" />
+
+            </VerticalStackLayout>
+
+            <Grid
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="0,14,0,0"
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10">
+
+                <Button
+                    x:Name="BtnScalping"
+                    Text="Scalping"
+                    HeightRequest="42"
+                    CornerRadius="18"
+                    FontAttributes="Bold"
+                    Clicked="OnScalpingClicked" />
+
+                <Button
+                    x:Name="BtnSwing"
+                    Grid.Column="1"
+                    Text="Swing"
+                    HeightRequest="42"
+                    CornerRadius="18"
+                    FontAttributes="Bold"
+                    Clicked="OnSwingClicked" />
+
+            </Grid>
+
+        </Grid>
+
+        <WebView
+            x:Name="GrelWebView"
+            Grid.Row="1"
+            BackgroundColor="#050B10" />
+
+    </Grid>
+
+</ContentPage>

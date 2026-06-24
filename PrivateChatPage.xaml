@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PROXIMAMOP"
+             x:Class="PROXIMAMOP.Pages.PrivateChatPage"
+             Shell.NavBarIsVisible="False"
+             FlowDirection="RightToLeft"
+             BackgroundColor="#000000">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:InverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Image Source="chat_bg.jpg"
+               Aspect="AspectFill" />
+
+        <Grid RowDefinitions="64,*,Auto"
+              RowSpacing="0">
+
+            <!-- Header -->
+            <Border Grid.Row="0"
+                    BackgroundColor="#AA000000"
+                    StrokeThickness="0"
+                    Padding="16,10">
+
+                <Grid ColumnDefinitions="Auto,*,Auto"
+                      VerticalOptions="Center">
+
+                    <Label Text="💬"
+                           FontSize="22"
+                           VerticalOptions="Center" />
+
+                    <VerticalStackLayout Grid.Column="1"
+                                         Spacing="2"
+                                         HorizontalOptions="End">
+
+                        <Label Text="المحادثة الخاصة"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalTextAlignment="End" />
+
+                        <Label x:Name="StatusLabel"
+                               Text="جاري التحميل..."
+                               FontSize="12"
+                               TextColor="#C8BDF3"
+                               HorizontalTextAlignment="End" />
+                    </VerticalStackLayout>
+
+                    <Button Grid.Column="2"
+                            Text="←"
+                            WidthRequest="42"
+                            HeightRequest="42"
+                            CornerRadius="14"
+                            BackgroundColor="#2A2A2A"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            Clicked="OnBackClicked" />
+                </Grid>
+            </Border>
+
+            <!-- Messages -->
+            <CollectionView Grid.Row="1"
+                            x:Name="MessagesCollection"
+                            Margin="10,8,10,10"
+                            BackgroundColor="Transparent"
+                            ItemsLayout="VerticalList"
+                            SelectionMode="None"
+                            ItemSizingStrategy="MeasureAllItems"
+                            VerticalScrollBarVisibility="Never">
+
+                <CollectionView.Header>
+                    <Grid HeightRequest="16" />
+                </CollectionView.Header>
+
+                <CollectionView.Footer>
+                    <Grid HeightRequest="180" />
+                </CollectionView.Footer>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="0,4">
+
+                            <!-- My messages -->
+                            <Grid IsVisible="{Binding IsMine}"
+                                  FlowDirection="LeftToRight"
+                                  ColumnDefinitions="*,Auto,48"
+                                  ColumnSpacing="8">
+
+                                <VerticalStackLayout Grid.Column="1"
+                                                     Spacing="3"
+                                                     MaximumWidthRequest="290"
+                                                     HorizontalOptions="End">
+
+                                    <HorizontalStackLayout Spacing="4"
+                                                           HorizontalOptions="End"
+                                                           FlowDirection="LeftToRight">
+                                                           <Label Text="{Binding UserName}"
+                                               FontSize="12"
+                                               FontAttributes="Bold"
+                                               TextColor="#D8CCFF"
+                                               VerticalTextAlignment="Center"
+                                               HorizontalTextAlignment="End"
+                                               IsVisible="{Binding ShowSenderName}" />
+                                    </HorizontalStackLayout>
+
+                                    <Border BackgroundColor="{Binding BubbleColor}"
+                                            StrokeThickness="0"
+                                            Padding="10,8"
+                                            StrokeShape="RoundRectangle 10"
+                                            MaximumWidthRequest="290"
+                                            HorizontalOptions="End">
+
+                                        <VerticalStackLayout Spacing="6">
+
+                                            <Image Source="{Binding ImageUrl}"
+                                                   IsVisible="{Binding IsImage}"
+                                                   Aspect="AspectFill"
+                                                   HeightRequest="170"
+                                                   WidthRequest="220" />
+
+                                            <Border IsVisible="{Binding IsVoice}"
+                                                    BackgroundColor="#CC121212"
+                                                    Stroke="#454545"
+                                                    StrokeThickness="1"
+                                                    Padding="8"
+                                                    StrokeShape="RoundRectangle 8">
+                                                <HorizontalStackLayout Spacing="10"
+                                                                       FlowDirection="LeftToRight">
+                                                    <Button Text="▶️ تشغيل"
+                                                            Clicked="OnPlayVoiceClicked"
+                                                            CommandParameter="{Binding Id}"
+                                                            HeightRequest="36"
+                                                            CornerRadius="12"
+                                                            BackgroundColor="#2B175A"
+                                                            TextColor="White"
+                                                            FontSize="12" />
+
+                                                    <Label Text="{Binding VoiceDurationText}"
+                                                           VerticalOptions="Center"
+                                                           FontSize="13"
+                                                           TextColor="White" />
+                                                </HorizontalStackLayout>
+                                            </Border>
+
+                                            <Label Text="{Binding Text}"
+                                                   IsVisible="{Binding HasText}"
+                                                   FontSize="14"
+                                                   TextColor="{Binding TextColor}"
+                                                   LineBreakMode="WordWrap"
+                                                   HorizontalTextAlignment="End" />
+
+                                            <Label Text="{Binding TimeText}"
+                                                   FontSize="10"
+                                                   TextColor="#B8B8B8"
+                                                   HorizontalTextAlignment="End" />
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </VerticalStackLayout>
+
+                                <Border Grid.Column="2"
+                                        StrokeThickness="2"
+                                        BackgroundColor="#1C1C1C"
+                                        Stroke="#3E3E3E"
+                                        StrokeShape="RoundRectangle 10"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding ShowAvatar}">
+
+                                    <Grid>
+                                        <Image Source="{Binding AvatarUrl}"
+                                               Aspect="AspectFill" />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <!-- Other messages -->
+                            <Grid IsVisible="{Binding IsMine, Converter={StaticResource InverseBoolConverter}}"
+                                  FlowDirection="LeftToRight"
+                                  ColumnDefinitions="48,Auto,*"
+                                  ColumnSpacing="8">
+
+                                <Border Grid.Column="0"
+                                        StrokeThickness="2"
+                                        BackgroundColor="#1C1C1C"
+                                        Stroke="#3E3E3E"
+                                        StrokeShape="RoundRectangle 10"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="Start"
+                                        IsVisible="{Binding ShowAvatar}">
+
+                                    <Grid>
+                                        <Image Source="{Binding AvatarUrl}"
+                                               Aspect="AspectFill" />
+                                    </Grid>
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1"
+                                                     Spacing="3"
+                                                     MaximumWidthRequest="290"
+                                                     HorizontalOptions="Start">
+
+                                    <HorizontalStackLayout Spacing="4"
+                                                           HorizontalOptions="Start"
+                                                           FlowDirection="LeftToRight">
+
+                                        <Label Text="{Binding UserName}"
+                                               FontSize="12"
+                                               FontAttributes="Bold"
+                                               TextColor="#D8CCFF"
+                                               VerticalTextAlignment="Center"
+                                               HorizontalTextAlignment="Start"
+                                               IsVisible="{Binding ShowSenderName}" />
+                                    </HorizontalStackLayout>
+
+                                    <Border BackgroundColor="{Binding BubbleColor}"
+                                            StrokeThickness="0"
+                                            Padding="10,8"
+                                            StrokeShape="RoundRectangle 10"
+                                            MaximumWidthRequest="290"
+                                            HorizontalOptions="Start">
+                                            <VerticalStackLayout Spacing="6">
+
+                                            <Image Source="{Binding ImageUrl}"
+                                                   IsVisible="{Binding IsImage}"
+                                                   Aspect="AspectFill"
+                                                   HeightRequest="170"
+                                                   WidthRequest="220" />
+
+                                            <Border IsVisible="{Binding IsVoice}"
+                                                    BackgroundColor="#CC121212"
+                                                    Stroke="#454545"
+                                                    StrokeThickness="1"
+                                                    Padding="8"
+                                                    StrokeShape="RoundRectangle 8">
+                                                <HorizontalStackLayout Spacing="10"
+                                                                       FlowDirection="LeftToRight">
+                                                    <Button Text="▶️ تشغيل"
+                                                            Clicked="OnPlayVoiceClicked"
+                                                            CommandParameter="{Binding Id}"
+                                                            HeightRequest="36"
+                                                            CornerRadius="12"
+                                                            BackgroundColor="#2B175A"
+                                                            TextColor="White"
+                                                            FontSize="12" />
+
+                                                    <Label Text="{Binding VoiceDurationText}"
+                                                           VerticalOptions="Center"
+                                                           FontSize="13"
+                                                           TextColor="White" />
+                                                </HorizontalStackLayout>
+                                            </Border>
+
+                                            <Label Text="{Binding Text}"
+                                                   IsVisible="{Binding HasText}"
+                                                   FontSize="14"
+                                                   TextColor="{Binding TextColor}"
+                                                   LineBreakMode="WordWrap"
+                                                   HorizontalTextAlignment="Start" />
+
+                                            <Label Text="{Binding TimeText}"
+                                                   FontSize="10"
+                                                   TextColor="#B8B8B8"
+                                                   HorizontalTextAlignment="Start" />
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Bottom Bar -->
+            <Grid Grid.Row="2"
+                  Padding="10,8,10,10"
+                  ColumnDefinitions="Auto,Auto,Auto,*,Auto"
+                  BackgroundColor="#AA000000">
+
+                <Button x:Name="RefreshButton"
+                        Text="↻"
+                        WidthRequest="44"
+                        HeightRequest="44"
+                        CornerRadius="14"
+                        BackgroundColor="#2A2A2A"
+                        TextColor="White"
+                        Clicked="OnRefreshClicked" />
+                        <Button Grid.Column="1"
+                        x:Name="ImageButton"
+                        Text="🖼"
+                        WidthRequest="44"
+                        HeightRequest="44"
+                        CornerRadius="14"
+                        BackgroundColor="#2A2A2A"
+                        TextColor="White"
+                        Clicked="OnPickImageClicked" />
+
+                <Button Grid.Column="2"
+                        x:Name="VoiceButton"
+                        Text="🎤"
+                        WidthRequest="44"
+                        HeightRequest="44"
+                        CornerRadius="14"
+                        BackgroundColor="#2A2A2A"
+                        TextColor="White"
+                        Pressed="OnVoicePressed"
+                        Released="OnVoiceReleased" />
+
+                <Border Grid.Column="3"
+                        Margin="8,0"
+                        BackgroundColor="#CC1A1A1A"
+                        Stroke="#343434"
+                        StrokeShape="RoundRectangle 14"
+                        Padding="10,0">
+
+                    <Entry x:Name="MessageEntry"
+                           Placeholder="اكتب رسالتك هنا"
+                           PlaceholderColor="#9A9A9A"
+                           TextColor="White"
+                           BackgroundColor="Transparent"
+                           HorizontalTextAlignment="End"
+                           ReturnType="Send"
+                           MaxLength="1000"
+                           Completed="OnSendClicked" />
+                </Border>
+
+                <Button Grid.Column="4"
+                        x:Name="SendButton"
+                        Text="إرسال"
+                        WidthRequest="86"
+                        HeightRequest="44"
+                        CornerRadius="14"
+                        BackgroundColor="#7C3AED"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        Clicked="OnSendClicked" />
+            </Grid>
+
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.Pages.LiquidityHeatmapPage"
+             BackgroundColor="#07100B"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*">
+        <Grid Padding="14"
+              ColumnDefinitions="Auto,*"
+              BackgroundColor="#07100B">
+
+            <Button Text="←"
+                    WidthRequest="54"
+                    HeightRequest="46"
+                    CornerRadius="16"
+                    BackgroundColor="#2A151A"
+                    BorderColor="#C8A44D"
+                    BorderWidth="1"
+                    TextColor="White"
+                    FontSize="22"
+                    Clicked="OnBackClicked" />
+
+            <VerticalStackLayout Grid.Column="1"
+                                 Margin="12,0,0,0"
+                                 VerticalOptions="Center">
+                <Label Text="GOLDMAP"
+                       TextColor="White"
+                       FontSize="24"
+                       FontAttributes="Bold" />
+                <Label Text="Live XAUUSD liquidity map"
+                       TextColor="#EADFC2"
+                       FontSize="13" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <WebView x:Name="HeatmapWebView"
+                 Grid.Row="1"
+                 BackgroundColor="#07100B" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.SettingsPage"
+             BackgroundColor="#090A10"
+             Shell.NavBarIsVisible="False"
+             FlowDirection="RightToLeft">
+
+    <Grid RowDefinitions="Auto,*"
+          RowSpacing="0">
+
+        <!-- الهيدر -->
+        <Grid Grid.Row="0"
+              Padding="18,18,18,12"
+              ColumnDefinitions="Auto,*">
+
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#151321" Offset="0.0" />
+                    <GradientStop Color="#221739" Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <!-- زر الرجوع -->
+            <Button Grid.Column="0"
+                    Text="←"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Clicked="OnBackClicked" />
+
+            <!-- العنوان -->
+            <Label Grid.Column="1"
+                   Text="الإعدادات"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalTextAlignment="End"
+                   VerticalOptions="Center" />
+
+        </Grid>
+
+        <!-- المحتوى -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="16,16,16,24"
+                                 Spacing="14">
+
+                <!-- الحساب -->
+                <Border Background="#131722"
+                        Stroke="#2C3550"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 22"
+                        Padding="16">
+
+                    <VerticalStackLayout Spacing="12">
+
+                        <Label Text="الحساب"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalTextAlignment="End" />
+
+                        <Button Text="My Profile"
+                                BackgroundColor="#7C3AED"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="16"
+                                HeightRequest="52"
+                                Clicked="OnMyProfileClicked" />
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- الإشعارات -->
+                <Border Background="#12151C"
+                        Stroke="#2A2F3C"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 22"
+                        Padding="16">
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="14">
+
+                        <Switch x:Name="FeedNotificationsSwitch"
+                                Grid.Column="0"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center"
+                                Toggled="OnFeedNotificationsToggled" />
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             Spacing="8"
+                                             HorizontalOptions="End">
+
+                            <Label Text="إشعارات التوصيات"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalTextAlignment="End" />
+                                   <Label Text="تفعيل الإشعارات الخاصة بالتوصيات والفرص الجديدة."
+                                   FontSize="14"
+                                   TextColor="#AEB6C9"
+                                   HorizontalTextAlignment="End" />
+
+                            <Label x:Name="FeedNotificationsStatusLabel"
+                                   Text="الحالة: غير معروفة"
+                                   FontSize="13"
+                                   TextColor="#C4B5FD"
+                                   HorizontalTextAlignment="End" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

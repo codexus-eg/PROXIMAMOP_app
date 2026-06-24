@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PROXIMAMOP.Pages.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Login"
+    BackgroundColor="#0B0B16"
+    NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <Grid Padding="24">
+            <VerticalStackLayout
+                VerticalOptions="Center"
+                Spacing="18">
+
+                <Label
+                    Text="Welcome"
+                    FontSize="34"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    TextColor="White" />
+
+                <Label
+                    Text="Sign in to continue"
+                    FontSize="16"
+                    HorizontalTextAlignment="Center"
+                    TextColor="#A1A1AA" />
+
+                <Border
+                    StrokeThickness="1"
+                    Stroke="#232336"
+                    BackgroundColor="#151524"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="20"
+                    Margin="0,20,0,0">
+
+                    <VerticalStackLayout Spacing="16">
+
+                        <Label
+                            Text="Email"
+                            FontSize="14"
+                            TextColor="#CFCFE7" />
+
+                        <Entry
+                            x:Name="EmailEntry"
+                            Placeholder="Enter your email"
+                            PlaceholderColor="#7C7C98"
+                            TextColor="White"
+                            Keyboard="Email"
+                            BackgroundColor="#1B1B2D"
+                            HeightRequest="52"
+                            Margin="0,0,0,4" />
+
+                        <Label
+                            Text="Password"
+                            FontSize="14"
+                            TextColor="#CFCFE7" />
+
+                        <Entry
+                            x:Name="PasswordEntry"
+                            Placeholder="Enter your password"
+                            PlaceholderColor="#7C7C98"
+                            TextColor="White"
+                            IsPassword="True"
+                            BackgroundColor="#1B1B2D"
+                            HeightRequest="52"
+                            Margin="0,0,0,4" />
+
+                        <Label
+                            x:Name="ErrorLabel"
+                            Text=""
+                            TextColor="#FF6B6B"
+                            FontSize="13"
+                            IsVisible="False" />
+
+                        <Button
+                            Text="Login"
+                            HeightRequest="54"
+                            CornerRadius="14"
+                            BackgroundColor="#9A8CFF"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            Clicked="OnLoginClicked" />
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

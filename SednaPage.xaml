@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.Pages.SednaPage"
+             BackgroundColor="#07100B"
+             FlowDirection="LeftToRight"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="18,20,18,34" Spacing="18">
+
+            <Grid ColumnDefinitions="Auto,*" VerticalOptions="Center">
+                <Button Text="←"
+                        WidthRequest="58"
+                        HeightRequest="58"
+                        CornerRadius="20"
+                        BackgroundColor="#3A0F1B"
+                        BorderColor="#C8A44D"
+                        BorderWidth="1.5"
+                        TextColor="White"
+                        FontSize="24"
+                        Clicked="OnBackClicked" />
+
+                <VerticalStackLayout Grid.Column="1"
+                                     Spacing="4"
+                                     HorizontalOptions="Center"
+                                     Margin="0,0,58,0">
+                    <Label Text="SEDNA"
+                           FontSize="34"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center" />
+
+                    <Label Text="Learn how the system works before you subscribe."
+                           FontSize="14"
+                           TextColor="#D1D5DB"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <Border Stroke="#C8A44D"
+                    StrokeThickness="1.5"
+                    Background="#111A15"
+                    Padding="18"
+                    StrokeShape="RoundRectangle 28">
+
+                <VerticalStackLayout Spacing="18">
+
+                    <Label Text="How It Works"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center" />
+
+                    <Label Text="Review the guide images, watch the tutorial video, then continue to the subscription form."
+                           FontSize="15"
+                           TextColor="#D6D6D6"
+                           HorizontalTextAlignment="Center"
+                           LineBreakMode="WordWrap" />
+
+                    <Border Stroke="#C8A44D"
+                            StrokeThickness="1"
+                            Background="#17231D"
+                            Padding="10"
+                            HeightRequest="430"
+                            StrokeShape="RoundRectangle 24">
+                        <Image Source="lg.jpg"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill" />
+                    </Border>
+
+                    <Border Stroke="#7A1F2C"
+                            StrokeThickness="1"
+                            Background="#1D1518"
+                            Padding="10"
+                            HeightRequest="500"
+                            StrokeShape="RoundRectangle 24">
+                        <Image Source="lsc.jpg"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill" />
+                    </Border>
+
+                    <Border Stroke="#C8A44D"
+                            StrokeThickness="1"
+                            Background="#17231D"
+                            Padding="10"
+                            HeightRequest="500"
+                            StrokeShape="RoundRectangle 24">
+                        <Image Source="ccv.jpg"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill" />
+                    </Border>
+
+                    <Border Stroke="#7A1F2C"
+                            StrokeThickness="1"
+                            Background="#1D1518"
+                            Padding="10"
+                            HeightRequest="500"
+                            StrokeShape="RoundRectangle 24">
+                        <Image Source="jki.jpg"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill" />
+                    </Border>
+
+                    <Button Text="Watch Video"
+                            BackgroundColor="#7A1F2C"
+                            TextColor="White"
+                            CornerRadius="20"
+                            HeightRequest="56"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            Clicked="OnWatchVideoClicked" />
+
+                    <Button Text="Subscribe Now"
+                            BackgroundColor="#C8A44D"
+                            TextColor="#111827"
+                            CornerRadius="22"
+                            HeightRequest="60"
+                            FontSize="17"
+                            FontAttributes="Bold"
+                            Clicked="OnSubscribeClicked" />
+
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gold Chart</title>
+
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #0b0b0b;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        #chartWrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #0b0b0b;
+        }
+
+        #chart {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+            #overlay svg {
+                width: 100%;
+                height: 100%;
+                overflow: visible;
+            }
+
+        .controlBtn {
+            position: absolute;
+            z-index: 30;
+            padding: 9px 15px;
+            border-radius: 14px;
+            border: 1.5px solid #ffd400;
+            background: rgba(0,0,0,0.78);
+            color: #ffd400;
+            font-size: 14px;
+            font-weight: 800;
+            pointer-events: auto;
+        }
+
+            .controlBtn.active {
+                background: #ffd400;
+                color: #000;
+            }
+
+        #zoneBtn {
+            left: 14px;
+            top: 14px;
+        }
+
+        #levelsBtn {
+            left: 112px;
+            top: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chartWrapper">
+        <div id="chart"></div>
+
+        <button id="zoneBtn" class="controlBtn">Zones</button>
+        <button id="levelsBtn" class="controlBtn active">Levels</button>
+
+        <div id="overlay">
+            <svg id="overlaySvg"></svg>
+        </div>
+    </div>
+
+    <script>
+        let chart = null;
+        let candleSeries = null;
+        let helperSeries = null;
+
+        let candles = [];
+        let timeframeSeconds = 60;
+
+        let currentObjects = [];
+        let externalIndicatorObjects = [];
+        let equalWickObjects = [];
+        let manualZoneObjects = [];
+
+        let chartReadyFlag = false;
+        let isPointerDown = false;
+        let userInteractionUntil = 0;
+        let redrawPending = false;
+        let zonePickMode = false;
+        let showExternalLevels = true;
+
+        const EQW = {
+            checkBars: 1000,
+            minWickPips: 10,
+            minBodyPips: 5,
+            useRelativeDiff: true,
+            maxDiffPips: 3,
+            maxDiffPercent: 0.20,
+            point: 0.01,
+
+            signalColor: "#ff00ff",
+
+            zoneBarsForward: 18,
+            sellZone1: "#ff6347",
+            sellZone2: "#b22222",
+            buyZone1: "#00ff66",
+            buyZone2: "#228b22",
+
+            level1Low: 1.50,
+            level1High: 1.55,
+            level2Low: 2.50,
+            level2High: 2.55
+        };
+
+        function chartIsReady() {
+            return chartReadyFlag === true;
+        }
+
+        function createChartIfNeeded() {
+            if (chart) return;
+
+            chart = LightweightCharts.createChart(document.getElementById("chart"), {
+                width: window.innerWidth,
+                height: window.innerHeight,
+                attributionLogo: false,
+                layout: {
+                    background: { color: "#0b0b0b" },
+                    textColor: "#d1d4dc"
+                },
+                grid: {
+                    vertLines: { color: "#1a1a1a" },
+                    horzLines: { color: "#1a1a1a" }
+                },
+                rightPriceScale: {
+                    borderColor: "#333"
+                },
+                timeScale: {
+                    borderColor: "#333",
+                    timeVisible: true,
+                    secondsVisible: false
+                },
+                crosshair: {
+                    mode: LightweightCharts.CrosshairMode.Normal
+                }
+            });
+
+            candleSeries = chart.addSeries(LightweightCharts.CandlestickSeries, {
+                upColor: "#00ff88",
+                downColor: "#ff4d4d",
+                borderUpColor: "#00ff88",
+                borderDownColor: "#ff4d4d",
+                wickUpColor: "#00ff88",
+                wickDownColor: "#ff4d4d"
+            });
+
+            helperSeries = chart.addSeries(LightweightCharts.LineSeries, {
+                color: "rgba(0,0,0,0)",
+                lineWidth: 1,
+                priceLineVisible: false,
+                lastValueVisible: false,
+                crosshairMarkerVisible: false
+            });
+
+            const wrapper = document.getElementById("chartWrapper");
+            const zoneBtn = document.getElementById("zoneBtn");
+            const levelsBtn = document.getElementById("levelsBtn");
+
+            zoneBtn.addEventListener("click", e => {
+                e.stopPropagation();
+                zonePickMode = !zonePickMode;
+                zoneBtn.classList.toggle("active", zonePickMode);
+            });
+
+            levelsBtn.addEventListener("click", e => {
+                e.stopPropagation();
+                showExternalLevels = !showExternalLevels;
+                levelsBtn.classList.toggle("active", showExternalLevels);
+                rebuildHelperSeries();
+                requestRedrawObjects();
+            });
+
+            wrapper.addEventListener("pointerdown", () => {
+                isPointerDown = true;
+                userInteractionUntil = Date.now() + 5000;
+            });
+
+            wrapper.addEventListener("pointerup", () => {
+                isPointerDown = false;
+                userInteractionUntil = Date.now() + 5000;
+            });
+
+            wrapper.addEventListener("pointercancel", () => {
+                isPointerDown = false;
+                userInteractionUntil = Date.now() + 5000;
+            });
+
+            wrapper.addEventListener("wheel", () => {
+                userInteractionUntil = Date.now() + 5000;
+            }, { passive: true });
+
+            chart.subscribeClick(param => {
+                if (!zonePickMode) return;
+                if (!param || param.time == null) return;
+
+                const index = findNearestCandleIndex(Number(param.time));
+                if (index < 0) return;
+
+                manualZoneObjects = [];
+                drawManualZonesForCandle(index);
+
+                zonePickMode = false;
+                zoneBtn.classList.remove("active");
+
+                rebuildHelperSeries();
+                requestRedrawObjects();
+            });
+
+            chart.timeScale().subscribeVisibleTimeRangeChange(() => {
+                requestRedrawObjects();
+            });
+
+            window.addEventListener("resize", () => {
+                chart.applyOptions({
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                });
+                requestRedrawObjects();
+            });
+
+            chartReadyFlag = true;
+        }
+
+        function parseBase64Json(base64) {
+            return JSON.parse(atob(base64));
+        }
+
+        function normalizePayload(payload) {
+            if (!payload) return [];
+
+            if (payload.objects && Array.isArray(payload.objects)) {
+                return payload.objects;
+            }
+
+            if (payload.data && payload.data.objects && Array.isArray(payload.data.objects)) {
+                return payload.data.objects;
+            }
+
+            return [];
+        }
+
+        function getAllObjects() {
+            return [
+                ...currentObjects,
+                ...(showExternalLevels ? externalIndicatorObjects : []),
+                ...manualZoneObjects,
+                ...equalWickObjects
+            ];
+        }
+
+        function setTimeframeSeconds(seconds) {
+            timeframeSeconds = Number(seconds || 60);
+        }
+
+        function sanitizeCandles(input) {
+            const map = new Map();
+
+            for (const c of input || []) {
+                if (!c || c.time == null) continue;
+
+                const time = Number(c.time);
+                const open = Number(c.open);
+                const high = Number(c.high);
+                const low = Number(c.low);
+                const close = Number(c.close);
+
+                if (![time, open, high, low, close].every(isFinite)) continue;
+
+                map.set(time, { time, open, high, low, close });
+            }
+
+            return [...map.values()].sort((a, b) => a.time - b.time);
+        }
+
+        function setCandles(base64Json, autoFit) {
+            createChartIfNeeded();
+
+            try {
+                candles = sanitizeCandles(parseBase64Json(base64Json));
+            } catch {
+                candles = [];
+            }
+
+            candleSeries.setData(candles);
+
+            buildEqualWicksIndicator();
+            rebuildHelperSeries();
+
+            if (autoFit === true || autoFit === "true") {
+                safeFitContent();
+            }
+
+            requestRedrawObjects();
+        }
+
+        function setObjects(base64Json, autoFit) {
+            createChartIfNeeded();
+
+            try {
+                currentObjects = normalizePayload(parseBase64Json(base64Json));
+            } catch {
+                currentObjects = [];
+            }
+
+            rebuildHelperSeries();
+
+            if (autoFit === true || autoFit === "true") {
+                safeFitContent();
+            }
+
+            requestRedrawObjects();
+        }
+
+        function setIndicatorObjects(base64Json, autoFit) {
+            createChartIfNeeded();
+
+            try {
+                externalIndicatorObjects = normalizePayload(parseBase64Json(base64Json));
+            } catch {
+                externalIndicatorObjects = [];
+            }
+
+            rebuildHelperSeries();
+
+            if (autoFit === true || autoFit === "true") {
+                safeFitContent();
+            }
+
+            requestRedrawObjects();
+        }
+
+        function updateLivePrice(price, unixTime) {
+            createChartIfNeeded();
+
+            if (!candles || candles.length === 0) return;
+
+            const p = Number(price);
+            const t = Number(unixTime);
+
+            if (!isFinite(p) || !isFinite(t)) return;
+
+            const bucket = Math.floor(t / timeframeSeconds) * timeframeSeconds;
+            const last = candles[candles.length - 1];
+
+            let newBarCreated = false;
+
+            if (bucket > Number(last.time)) {
+                const newCandle = {
+                    time: bucket,
+                    open: Number(last.close),
+                    high: p,
+                    low: p,
+                    close: p
+                };
+
+                candles.push(newCandle);
+                candleSeries.update(newCandle);
+                newBarCreated = true;
+            } else {
+                last.high = Math.max(Number(last.high), p);
+                last.low = Math.min(Number(last.low), p);
+                last.close = p;
+
+                candleSeries.update({
+                    time: Number(last.time),
+                    open: Number(last.open),
+                    high: Number(last.high),
+                    low: Number(last.low),
+                    close: Number(last.close)
+                });
+            }
+
+            if (newBarCreated) {
+                buildEqualWicksIndicator();
+                rebuildHelperSeries();
+            }
+
+            requestRedrawObjects();
+        }
+
+        function safeFitContent() {
+            if (!chart) return;
+            if (isPointerDown) return;
+            if (Date.now() < userInteractionUntil) return;
+
+            requestAnimationFrame(() => {
+                try {
+                    chart.timeScale().fitContent();
+                } catch { }
+            });
+        }
+
+        /* Equal Wicks */
+
+        function buildEqualWicksIndicator() {
+            equalWickObjects = [];
+
+            if (!candles || candles.length < 3) return;
+
+            const maxBars = Math.min(EQW.checkBars, candles.length);
+            const start = Math.max(1, candles.length - maxBars);
+
+            for (let i = start; i < candles.length - 1; i++) {
+                if (isEqualWickCandle(i)) {
+                    addSignalBlock(i);
+                }
+            }
+        }
+
+        function isEqualWickCandle(index) {
+            const c = candles[index];
+            if (!c) return false;
+
+            const o = Number(c.open);
+            const cl = Number(c.close);
+            const h = Number(c.high);
+            const l = Number(c.low);
+
+            const bodyTop = Math.max(o, cl);
+            const bodyBottom = Math.min(o, cl);
+            const bodyPips = Math.abs(o - cl) / EQW.point;
+
+            if (bodyPips < EQW.minBodyPips) return false;
+
+            const upperWickPips = (h - bodyTop) / EQW.point;
+            const lowerWickPips = (bodyBottom - l) / EQW.point;
+
+            if (upperWickPips < EQW.minWickPips) return false;
+            if (lowerWickPips < EQW.minWickPips) return false;
+
+            const diff = Math.abs(upperWickPips - lowerWickPips);
+
+            if (EQW.useRelativeDiff) {
+                const avg = (upperWickPips + lowerWickPips) / 2;
+                if (avg <= 0) return false;
+                return diff / avg <= EQW.maxDiffPercent;
+            }
+
+            return diff <= EQW.maxDiffPips;
+        }
+
+        function addSignalBlock(index) {
+            const c = candles[index];
+
+            equalWickObjects.push({
+                obj: "EQW_CANDLE",
+                t1: c.time,
+                open: c.open,
+                close: c.close,
+                high: c.high,
+                low: c.low,
+                color: EQW.signalColor
+            });
+        }
+
+        /* Manual Zones */
+
+        function findNearestCandleIndex(time) {
+            if (!candles.length) return -1;
+
+            let bestIndex = -1;
+            let bestDiff = Number.MAX_VALUE;
+
+            for (let i = 0; i < candles.length; i++) {
+                const diff = Math.abs(Number(candles[i].time) - time);
+
+                if (diff < bestDiff) {
+                    bestDiff = diff;
+                    bestIndex = i;
+                }
+            }
+
+            return bestIndex;
+        }
+
+        function drawManualZonesForCandle(index) {
+            drawZonesOnBar(index, true, true, manualZoneObjects);
+            drawZonesOnBar(index, false, true, manualZoneObjects);
+        }
+
+        function drawZonesOnBar(index, breakoutUp, isMain, targetArray) {
+            const c = candles[index];
+            if (!c) return;
+
+            const h = Number(c.high);
+            const l = Number(c.low);
+            const range = h - l;
+
+            if (range <= 0) return;
+
+            const t1 = Number(c.time);
+            const t2 = t1 + timeframeSeconds * EQW.zoneBarsForward;
+
+            let z1High, z1Low, z2High, z2Low;
+
+            if (breakoutUp) {
+                const z1a = h + range * (EQW.level1Low - 1);
+                const z1b = h + range * (EQW.level1High - 1);
+                const z2a = h + range * (EQW.level2Low - 1);
+                const z2b = h + range * (EQW.level2High - 1);
+
+                z1High = Math.max(z1a, z1b);
+                z1Low = Math.min(z1a, z1b);
+                z2High = Math.max(z2a, z2b);
+                z2Low = Math.min(z2a, z2b);
+            } else {
+                const z1a = l - range * (EQW.level1Low - 1);
+                const z1b = l - range * (EQW.level1High - 1);
+                const z2a = l - range * (EQW.level2Low - 1);
+                const z2b = l - range * (EQW.level2High - 1);
+
+                z1High = Math.max(z1a, z1b);
+                z1Low = Math.min(z1a, z1b);
+                z2High = Math.max(z2a, z2b);
+                z2Low = Math.min(z2a, z2b);
+            }
+
+            targetArray.push({
+                obj: "RECT",
+                t1,
+                t2,
+                high: z1High,
+                low: z1Low,
+                color: breakoutUp ? EQW.sellZone1 : EQW.buyZone1,
+                fill: 1,
+                width: isMain ? 2 : 1,
+                alpha: 0.13
+            });
+
+            targetArray.push({
+                obj: "RECT",
+                t1,
+                t2,
+                high: z2High,
+                low: z2Low,
+                color: breakoutUp ? EQW.sellZone2 : EQW.buyZone2,
+                fill: 1,
+                width: isMain ? 2 : 1,
+                alpha: 0.13
+            });
+        }
+
+        /* Helper Series */
+
+        function rebuildHelperSeries() {
+            if (!helperSeries) return;
+
+            const map = new Map();
+
+            function addPoint(time, value) {
+                time = Number(time);
+                value = Number(value);
+
+                if (!isFinite(time) || !isFinite(value)) return;
+
+                if (!map.has(time)) {
+                    map.set(time, { high: value, low: value });
+                } else {
+                    const p = map.get(time);
+                    p.high = Math.max(p.high, value);
+                    p.low = Math.min(p.low, value);
+                }
+            }
+
+            for (const c of candles) {
+                addPoint(c.time, c.high);
+                addPoint(c.time, c.low);
+            }
+
+            for (const o of getAllObjects()) {
+                if (!o || !o.obj) continue;
+
+                const type = String(o.obj).toUpperCase();
+
+                if (type === "RECT") {
+                    addPoint(o.t1, o.high);
+                    addPoint(o.t1, o.low);
+                    addPoint(o.t2, o.high);
+                    addPoint(o.t2, o.low);
+                } else if (type === "TREND") {
+                    addPoint(o.t1, o.p1);
+                    addPoint(o.t2, o.p2);
+                } else if (type === "HLINE") {
+                    if (candles.length > 0 && o.price != null) {
+                        addPoint(candles[0].time, o.price);
+                        addPoint(candles[candles.length - 1].time, o.price);
+                    }
+                } else if (type === "TEXT" || type === "ARROW") {
+                    addPoint(o.t1, o.p1);
+                } else if (type === "EQW_CANDLE") {
+                    addPoint(o.t1, o.high);
+                    addPoint(o.t1, o.low);
+                }
+            }
+
+            const points = [];
+
+            for (const [time, p] of map.entries()) {
+                points.push({ time, value: p.high });
+            }
+
+            points.sort((a, b) => a.time - b.time);
+
+            try {
+                helperSeries.setData(points);
+            } catch { }
+        }
+
+        /* Drawing */
+
+        function requestRedrawObjects() {
+            if (redrawPending) return;
+
+            redrawPending = true;
+
+            requestAnimationFrame(() => {
+                redrawPending = false;
+                redrawObjects();
+            });
+        }
+
+        function redrawObjects() {
+            if (!chart || !candleSeries) return;
+
+            const svg = document.getElementById("overlaySvg");
+
+            while (svg.firstChild) {
+                svg.removeChild(svg.firstChild);
+            }
+
+            for (const o of getAllObjects()) {
+                drawObject(svg, o);
+            }
+        }
+
+        function drawObject(svg, o) {
+            if (!o || !o.obj) return;
+
+            const type = String(o.obj).toUpperCase();
+
+            if (type === "RECT") return drawRect(svg, o);
+            if (type === "TREND") return drawTrend(svg, o);
+            if (type === "HLINE") return drawHLine(svg, o);
+            if (type === "TEXT") return drawText(svg, o);
+            if (type === "ARROW") return drawArrow(svg, o);
+            if (type === "LABEL") return drawLabel(svg, o);
+            if (type === "EQW_CANDLE") return drawEqualWickCandle(svg, o);
+        }
+
+        function timeToX(t) {
+            return chart.timeScale().timeToCoordinate(Number(t));
+        }
+
+        function priceToY(p) {
+            return candleSeries.priceToCoordinate(Number(p));
+        }
+
+        function makeSvg(tag) {
+            return document.createElementNS("http://www.w3.org/2000/svg", tag);
+        }
+
+        function hexToRgba(hex, alpha) {
+            let h = String(hex || "#ffffff").replace("#", "").trim();
+
+            if (h.length === 3) {
+                h = h.split("").map(c => c + c).join("");
+            }
+
+            const r = parseInt(h.substring(0, 2), 16);
+            const g = parseInt(h.substring(2, 4), 16);
+            const b = parseInt(h.substring(4, 6), 16);
+
+            return `rgba(${r},${g},${b},${alpha})`;
+        }
+
+        function styleDashArray(style) {
+            const s = String(style || "").toUpperCase();
+
+            if (s === "DOT") return "2,4";
+            if (s === "DASH") return "8,5";
+            if (s === "DASHDOT") return "8,4,2,4";
+            if (s === "DASHDOTDOT") return "8,4,2,4,2,4";
+
+            return "";
+        }
+
+        function drawRect(svg, o) {
+            const x1 = timeToX(o.t1);
+            const x2 = timeToX(o.t2);
+            const y1 = priceToY(o.high);
+            const y2 = priceToY(o.low);
+
+            if ([x1, x2, y1, y2].some(v => v == null || !isFinite(v))) return;
+
+            const left = Math.min(x1, x2);
+            const top = Math.min(y1, y2);
+            const width = Math.abs(x2 - x1);
+            const height = Math.abs(y2 - y1);
+
+            if (width < 1 || height < 1) return;
+
+            const alpha = o.alpha != null
+                ? Number(o.alpha)
+                : Number(o.fill) === 1
+                    ? 0.22
+                    : 0.08;
+
+            const rect = makeSvg("rect");
+            rect.setAttribute("x", left);
+            rect.setAttribute("y", top);
+            rect.setAttribute("width", width);
+            rect.setAttribute("height", height);
+            rect.setAttribute("rx", 3);
+            rect.setAttribute("fill", hexToRgba(o.color || "#ffffff", alpha));
+            rect.setAttribute("stroke", o.color || "#ffffff");
+            rect.setAttribute("stroke-width", o.width || 1);
+
+            const dash = styleDashArray(o.style);
+            if (dash) rect.setAttribute("stroke-dasharray", dash);
+
+            svg.appendChild(rect);
+        }
+
+        function drawEqualWickCandle(svg, o) {
+            const x = timeToX(o.t1);
+            const yHigh = priceToY(o.high);
+            const yLow = priceToY(o.low);
+            const yOpen = priceToY(o.open);
+            const yClose = priceToY(o.close);
+
+            if ([x, yHigh, yLow, yOpen, yClose].some(v => v == null || !isFinite(v))) return;
+
+            const color = o.color || "#ff00ff";
+
+            const bodyTop = Math.min(yOpen, yClose);
+            const bodyBottom = Math.max(yOpen, yClose);
+            const bodyHeight = Math.max(1, bodyBottom - bodyTop);
+
+            const wick = makeSvg("line");
+            wick.setAttribute("x1", x);
+            wick.setAttribute("y1", yHigh);
+            wick.setAttribute("x2", x);
+            wick.setAttribute("y2", yLow);
+            wick.setAttribute("stroke", color);
+            wick.setAttribute("stroke-width", 1.4);
+            wick.setAttribute("stroke-opacity", 0.65);
+            wick.setAttribute("stroke-linecap", "round");
+            svg.appendChild(wick);
+
+            const body = makeSvg("rect");
+            body.setAttribute("x", x - 3);
+            body.setAttribute("y", bodyTop);
+            body.setAttribute("width", 6);
+            body.setAttribute("height", bodyHeight);
+            body.setAttribute("rx", 1.5);
+            body.setAttribute("fill", hexToRgba(color, 0.32));
+            body.setAttribute("stroke", color);
+            body.setAttribute("stroke-width", 1);
+            body.setAttribute("stroke-opacity", 0.75);
+            svg.appendChild(body);
+        }
+
+        function drawTrend(svg, o) {
+            const x1Raw = timeToX(o.t1);
+            const x2Raw = timeToX(o.t2);
+            const y1 = priceToY(o.p1);
+            const y2 = priceToY(o.p2);
+
+            if ([x1Raw, x2Raw, y1, y2].some(v => v == null || !isFinite(v))) return;
+
+            const line = makeSvg("line");
+            line.setAttribute("x1", x1Raw);
+            line.setAttribute("y1", y1);
+            line.setAttribute("x2", Number(o.ray) === 1 ? window.innerWidth : x2Raw);
+            line.setAttribute("y2", y2);
+            line.setAttribute("stroke", o.color || "#ffffff");
+            line.setAttribute("stroke-width", o.width || 1);
+
+            const dash = styleDashArray(o.style);
+            if (dash) line.setAttribute("stroke-dasharray", dash);
+
+            svg.appendChild(line);
+        }
+
+        function drawHLine(svg, o) {
+            const y = priceToY(o.price);
+            if (y == null || !isFinite(y)) return;
+
+            const line = makeSvg("line");
+            line.setAttribute("x1", 0);
+            line.setAttribute("y1", y);
+            line.setAttribute("x2", window.innerWidth);
+            line.setAttribute("y2", y);
+            line.setAttribute("stroke", o.color || "#ffffff");
+            line.setAttribute("stroke-width", o.width || 1);
+
+            const dash = styleDashArray(o.style);
+            if (dash) line.setAttribute("stroke-dasharray", dash);
+
+            svg.appendChild(line);
+        }
+
+        function drawText(svg, o) {
+            const x = timeToX(o.t1);
+            const y = priceToY(o.p1);
+
+            if (x == null || y == null || !isFinite(x) || !isFinite(y)) return;
+
+            const text = makeSvg("text");
+            text.setAttribute("x", x + 6);
+            text.setAttribute("y", y - 6);
+            text.setAttribute("fill", o.color || "#ffff00");
+            text.setAttribute("font-size", o.fontsize || 12);
+            text.setAttribute("font-family", o.font || "Arial");
+            text.textContent = o.text || o.name || "";
+
+            svg.appendChild(text);
+        }
+
+        function drawArrow(svg, o) {
+            const x = timeToX(o.t1);
+            const y = priceToY(o.p1);
+
+            if (x == null || y == null || !isFinite(x) || !isFinite(y)) return;
+
+            const circle = makeSvg("circle");
+            circle.setAttribute("cx", x);
+            circle.setAttribute("cy", y);
+            circle.setAttribute("r", 5);
+            circle.setAttribute("fill", o.color || "#ffffff");
+
+            svg.appendChild(circle);
+        }
+
+        function drawLabel(svg, o) {
+            const x = 20 + Number(o.x || 0);
+            const y = 20 + Number(o.y || 0);
+
+            const text = makeSvg("text");
+            text.setAttribute("x", x);
+            text.setAttribute("y", y);
+            text.setAttribute("fill", o.color || "#ffffff");
+            text.setAttribute("font-size", o.fontsize || 12);
+            text.setAttribute("font-family", o.font || "Arial");
+            text.textContent = o.text || o.name || "";
+
+            svg.appendChild(text);
+        }
+
+        createChartIfNeeded();
+    </script>
+</body>
+</html>

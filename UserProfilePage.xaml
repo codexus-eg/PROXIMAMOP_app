@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROXIMAMOP.UserProfilePage"
+             BackgroundColor="#0B0B0B"
+             Title="Profile"
+             FlowDirection="RightToLeft">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="14">
+
+            <Grid WidthRequest="118"
+                  HeightRequest="118"
+                  HorizontalOptions="Center">
+
+                <Border x:Name="AvatarBorder"
+                        Stroke="#2E2E2E"
+                        StrokeThickness="3"
+                        BackgroundColor="#1C1C1C"
+                        StrokeShape="RoundRectangle 59">
+                    <Image x:Name="AvatarImage"
+                           Source="dotnet_bot.png"
+                           Aspect="AspectFill" />
+                </Border>
+
+                <Border x:Name="BadgeIconBorder"
+                        IsVisible="False"
+                        WidthRequest="26"
+                        HeightRequest="26"
+                        Padding="0"
+                        BackgroundColor="#2E2E2E"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 13"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        TranslationX="4"
+                        TranslationY="-4">
+                    <Label x:Name="BadgeIconLabel"
+                           Text=""
+                           FontSize="14"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           TextColor="White" />
+                </Border>
+            </Grid>
+
+            <Label x:Name="NameLabel"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center" />
+
+            <!-- 🔥 الجديد: ID -->
+            <Label x:Name="UserIdLabel"
+                   FontSize="14"
+                   TextColor="#C4B5FD"
+                   HorizontalTextAlignment="Center"
+                   Text="ID: -" />
+
+            <Label x:Name="BadgeNameLabel"
+                   FontSize="14"
+                   TextColor="#D8CCFF"
+                   HorizontalTextAlignment="Center" />
+
+            <Label x:Name="RoleLabel"
+                   FontSize="14"
+                   TextColor="#C4B5FD"
+                   HorizontalTextAlignment="Center" />
+
+            <Border BackgroundColor="#151515"
+                    Stroke="#2A2A2A"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="12">
+                <Label x:Name="BioLabel"
+                       TextColor="White"
+                       HorizontalTextAlignment="End" />
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

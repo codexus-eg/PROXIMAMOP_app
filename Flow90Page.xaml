@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PROXIMAMOP.Pages.Flow90Page"
+    Shell.NavBarIsVisible="False"
+    Padding="0"
+    BackgroundColor="#050B10">
+
+    <Grid RowDefinitions="48,*"
+          BackgroundColor="#050B10">
+
+        <!-- COMPACT HEADER -->
+        <Grid Grid.Row="0"
+              Padding="10,6,10,4"
+              ColumnDefinitions="Auto,*,Auto"
+              ColumnSpacing="8"
+              BackgroundColor="#050B10">
+
+            <!-- BACK BUTTON -->
+            <Border WidthRequest="36"
+                    HeightRequest="36"
+                    Background="#2A151A"
+                    Stroke="#C8A44D"
+                    StrokeThickness="1.1"
+                    StrokeShape="RoundRectangle 13"
+                    VerticalOptions="Center">
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackTapped" />
+                </Border.GestureRecognizers>
+
+                <Label Text="←"
+                       FontSize="19"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+            </Border>
+
+            <Label Grid.Column="1"
+                   Text=""
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <Label Grid.Column="2"
+                  Text="LIVE GOLD"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="#22C55E"
+                   VerticalOptions="Center" />
+
+        </Grid>
+
+        <!-- CONTENT -->
+        <Grid Grid.Row="1">
+
+            <WebView x:Name="FlowWebView"
+                     Margin="0"
+                     BackgroundColor="#050B10"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand" />
+
+            <Grid x:Name="LoadingOverlay"
+                  BackgroundColor="#AA050B10"
+                  IsVisible="True">
+
+                <VerticalStackLayout HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     Spacing="14">
+
+                    <ActivityIndicator IsRunning="True"
+                                       Color="#C8A44D"
+                                       WidthRequest="42"
+                                       HeightRequest="42" />
+
+                    <Label Text="Loading FLOW90..."
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

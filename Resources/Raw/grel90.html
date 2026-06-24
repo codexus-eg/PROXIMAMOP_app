@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1,
+               maximum-scale=1,
+               user-scalable=no,
+               viewport-fit=cover" />
+
+<title>GREL90</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #050b10;
+    font-family: Arial, sans-serif;
+    touch-action: none;
+}
+
+#canvas {
+    position: fixed;
+    inset: 0;
+    width: 100dvw;
+    height: 100dvh;
+    display: block;
+    background: #050b10;
+    touch-action: none;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+<script>
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d", { alpha: false });
+
+let latestData = null;
+let currentTf = "M5";
+
+let viewW = 0;
+let viewH = 0;
+let dpr = 1;
+
+let zoom = 1;
+let panX = 0;
+let panY = 0;
+
+let isDragging = false;
+let lastX = 0;
+let lastY = 0;
+let lastDistance = 0;
+let lastTapTime = 0;
+
+const MIN_ZOOM = 1;
+const MAX_ZOOM = 7;
+
+const COLORS = {
+    bg: "#050b10",
+    panel: "#0b141d",
+    empty: "#101010",
+
+    border: "rgba(200,164,77,0.7)",
+
+    grid: "rgba(200,164,77,0.28)",
+    gridStrong: "rgba(200,164,77,0.50)",
+
+    white: "#ffffff",
+    soft: "#d8c27a",
+
+    text: "#f2f5ff",
+
+    green: "#00ff66",
+
+    ball: "#00ff66",
+    glow: "rgba(0,255,102,0.55)"
+};
+
+function resize() {
+
+    dpr = Math.min(window.devicePixelRatio || 1, 3);
+
+    viewW = Math.floor(
+        window.visualViewport?.width || window.innerWidth
+    );
+
+    viewH = Math.floor(
+        window.visualViewport?.height || window.innerHeight
+    );
+
+    canvas.width = Math.floor(viewW * dpr);
+    canvas.height = Math.floor(viewH * dpr);
+
+    canvas.style.width = viewW + "px";
+    canvas.style.height = viewH + "px";
+
+    resetTransform();
+
+    clampPan();
+
+    draw();
+}
+
+function resetTransform() {
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function showMessage(msg) {
+
+    resetTransform();
+
+    ctx.clearRect(0, 0, viewW, viewH);
+
+    ctx.fillStyle = COLORS.bg;
+    ctx.fillRect(0, 0, viewW, viewH);
+
+    ctx.fillStyle = COLORS.white;
+    ctx.font = "700 18px Arial";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";
+
+    ctx.fillText(msg, 18, 24);
+}
+
+window.showMessage = showMessage;
+
+function setGrel90(base64, tf) {
+
+    try {
+
+        currentTf = tf || "M5";
+
+        latestData = JSON.parse(atob(base64));
+
+        if (latestData.ok === false) {
+
+            showMessage("No GREL90 data");
+            return;
+        }
+
+        draw();
+
+    } catch (e) {
+
+        showMessage("Parse error");
+    }
+}
+
+window.setGrel90 = setGrel90;
+
+function getLayout() {
+
+    const m = 8;
+    const headerH = 34;
+    const footerH = 24;
+
+    return {
+
+        x: m,
+        y: m + headerH,
+
+        w: viewW,
+        h: viewH,
+
+        gridW: Math.max(
+            80,
+            viewW - m * 2
+        ),
+
+        gridH: Math.max(
+            80,
+            viewH - m * 2 - headerH - footerH
+        ),
+
+        headerY: m,
+
+        footerY: viewH - footerH
+    };
+}
+
+function clampPan() {
+
+    const l = getLayout();
+
+    if (zoom <= 1) {
+
+        zoom = 1;
+
+        panX = 0;
+        panY = 0;
+
+        return;
+    }
+
+    const minX = -(l.gridW * zoom - l.gridW);
+    const minY = -(l.gridH * zoom - l.gridH);
+
+    panX = Math.min(0, Math.max(minX, panX));
+    panY = Math.min(0, Math.max(minY, panY));
+}
+
+function blend(a, b, t) {
+
+    const ca = hex(a);
+    const cb = hex(b);
+
+    const r = Math.round(ca.r + (cb.r - ca.r) * t);
+    const g = Math.round(ca.g + (cb.g - ca.g) * t);
+    const bb = Math.round(ca.b + (cb.b - ca.b) * t);
+
+    return `rgb(${r},${g},${bb})`;
+}
+
+function hex(h) {
+
+    h = h.replace("#", "");
+
+    return {
+        r: parseInt(h.substring(0,2),16),
+        g: parseInt(h.substring(2,4),16),
+        b: parseInt(h.substring(4,6),16)
+    };
+}
+
+function colorByNorm(norm) {
+
+    const n = Math.max(
+        0,
+        Math.min(1, Number(norm || 0))
+    );
+
+    if (n < 0.20)
+        return blend("#101010", "#2f4f4f", n / 0.20);
+
+    if (n < 0.45)
+        return blend("#2f4f4f", "#2e8b57", (n - 0.20) / 0.25);
+
+    if (n < 0.70)
+        return blend("#2e8b57", "#ffd700", (n - 0.45) / 0.25);
+
+    if (n < 0.88)
+        return blend("#ffd700", "#ff4500", (n - 0.70) / 0.18);
+
+    return blend("#ff4500", "#800000", (n - 0.88) / 0.12);
+}
+
+function draw() {
+
+    if (!latestData) {
+
+        showMessage("Loading GREL90...");
+        return;
+    }
+
+    const rows = Number(latestData.rows || 20);
+    const cols = Number(latestData.cols || 20);
+
+    const events = latestData.events || [];
+
+    const l = getLayout();
+
+    const cellW = l.gridW / cols;
+    const cellH = l.gridH / rows;
+
+    clampPan();
+
+    resetTransform();
+
+    ctx.clearRect(0, 0, l.w, l.h);
+
+    ctx.fillStyle = COLORS.bg;
+    ctx.fillRect(0, 0, l.w, l.h);
+
+    drawHeader(l, events.length);
+
+    ctx.fillStyle = COLORS.panel;
+    ctx.fillRect(
+        l.x,
+        l.y,
+        l.gridW,
+        l.gridH
+    );
+
+    ctx.save();
+
+    ctx.beginPath();
+
+    ctx.rect(
+        l.x,
+        l.y,
+        l.gridW,
+        l.gridH
+    );
+
+    ctx.clip();
+
+    ctx.translate(
+        l.x + panX,
+        l.y + panY
+    );
+
+    ctx.scale(zoom, zoom);
+
+    drawCells(
+        rows,
+        cols,
+        events,
+        cellW,
+        cellH
+    );
+
+    drawGrid(
+        rows,
+        cols,
+        l.gridW,
+        l.gridH
+    );
+
+    ctx.restore();
+
+    drawBall(
+        l,
+        cellW,
+        cellH,
+        rows,
+        cols
+    );
+
+    drawBorder(l);
+
+    drawFooter(l);
+}
+
+function drawHeader(l, items) {
+
+    const mode =
+        currentTf === "M5"
+        ? "Scalping"
+        : "Swing";
+
+    ctx.fillStyle = "rgba(200,164,77,0.10)";
+
+    roundRect(
+        8,
+        l.headerY,
+        l.w - 16,
+        28,
+        10,
+        true,
+        false
+    );
+
+    ctx.fillStyle = COLORS.white;
+    ctx.font = "800 15px Arial";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+
+    ctx.fillText(
+        "GREL90",
+        18,
+        l.headerY + 14
+    );
+
+    ctx.fillStyle = COLORS.soft;
+    ctx.font = "700 12px Arial";
+
+    ctx.fillText(
+        mode + " • Items: " + items,
+        92,
+        l.headerY + 14
+    );
+
+    const price = Number(latestData.price || 0);
+
+    if (price > 0) {
+
+        ctx.fillStyle = COLORS.green;
+        ctx.font = "800 12px Consolas";
+        ctx.textAlign = "right";
+
+        ctx.fillText(
+            price.toFixed(2),
+            l.w - 18,
+            l.headerY + 14
+        );
+    }
+}
+
+function drawCells(rows, cols, events, cellW, cellH) {
+
+    const gap = 1 / zoom;
+
+    for (let r = 0; r < rows; r++) {
+
+        for (let c = 0; c < cols; c++) {
+
+            const idx = r * cols + c;
+
+            const ev = events[idx];
+
+            const x = c * cellW;
+            const y = r * cellH;
+
+            ctx.fillStyle =
+                ev
+                ? colorByNorm(ev.norm)
+                : COLORS.empty;
+
+            ctx.fillRect(
+                x + gap,
+                y + gap,
+                Math.max(1, cellW - gap * 2),
+                Math.max(1, cellH - gap * 2)
+            );
+
+            if (ev) {
+
+                drawCellText(
+                    ev,
+                    x,
+                    y,
+                    cellW,
+                    cellH
+                );
+            }
+        }
+    }
+}
+
+function drawCellText(ev, x, y, w, h) {
+
+    // áÇ ÊÙåÑ ßÊÇÈÉ ÅÐÇ ÇáÒæã ÕÛíÑ
+    if (zoom < 1.9)
+        return;
+
+    // ÎØ ÕÛíÑ ÌÏÇð
+    const fs = Math.max(
+        2.5,
+        Math.min(
+            5,
+            Math.min(w, h) * 0.09 * Math.sqrt(zoom)
+        )
+    );
+
+    const date = new Date(
+        Number(ev.time || 0) * 1000
+    );
+
+    const day = String(
+        date.getDate()
+    ).padStart(2, "0");
+
+    const hh = String(
+        date.getHours()
+    ).padStart(2, "0");
+
+    const mm = String(
+        date.getMinutes()
+    ).padStart(2, "0");
+
+    ctx.fillStyle = COLORS.text;
+
+    ctx.font = `900 ${fs}px Arial`;
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    ctx.shadowColor = "rgba(0,0,0,0.95)";
+    ctx.shadowBlur = 1 / zoom;
+
+    const cx = x + w / 2;
+    const cy = y + h / 2;
+
+    // Òæã ãÊæÓØ = Ýæáíæã ÝÞØ
+    if (zoom >= 1.9 && zoom < 3.5) {
+
+        ctx.fillText(
+            `${ev.volume}`,
+            cx,
+            cy
+        );
+    }
+
+    // Òæã Þæí = æÞÊ ÝÞØ
+    else {
+
+        ctx.fillText(
+            `${day} ${hh}:${mm}`,
+            cx,
+            cy
+        );
+    }
+
+    ctx.shadowBlur = 0;
+}
+
+function drawGrid(rows, cols, gridW, gridH) {
+
+    const cellW = gridW / cols;
+    const cellH = gridH / rows;
+
+    ctx.lineWidth = 1 / zoom;
+    ctx.strokeStyle = COLORS.grid;
+
+    for (let c = 0; c <= cols; c++) {
+
+        const x = c * cellW;
+
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, gridH);
+        ctx.stroke();
+    }
+
+    for (let r = 0; r <= rows; r++) {
+
+        const y = r * cellH;
+
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(gridW, y);
+        ctx.stroke();
+    }
+
+    ctx.lineWidth = 1.25 / zoom;
+    ctx.strokeStyle = COLORS.gridStrong;
+
+    for (let c = 0; c <= cols; c += 5) {
+
+        const x = c * cellW;
+
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, gridH);
+        ctx.stroke();
+    }
+
+    for (let r = 0; r <= rows; r += 5) {
+
+        const y = r * cellH;
+
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(gridW, y);
+        ctx.stroke();
+    }
+}
+
+function drawBall(l, cellW, cellH, rows, cols) {
+
+    const hit = Number(
+        latestData.hitIndex ?? -1
+    );
+
+    if (hit < 0)
+        return;
+
+    const r = Math.floor(hit / cols);
+    const c = hit % cols;
+
+    if (
+        r < 0 ||
+        r >= rows ||
+        c < 0 ||
+        c >= cols
+    ) return;
+
+    const x =
+        l.x +
+        panX +
+        (c * cellW + cellW / 2) * zoom;
+
+    const y =
+        l.y +
+        panY +
+        (r * cellH + cellH / 2) * zoom;
+
+    if (
+        x < l.x ||
+        x > l.x + l.gridW ||
+        y < l.y ||
+        y > l.y + l.gridH
+    ) return;
+
+    ctx.save();
+
+    ctx.shadowColor = COLORS.glow;
+    ctx.shadowBlur = 18;
+
+    ctx.fillStyle = COLORS.ball;
+
+    ctx.beginPath();
+
+    ctx.arc(
+        x,
+        y,
+        8,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+    ctx.strokeStyle = "#ffffff";
+    ctx.lineWidth = 2;
+
+    ctx.stroke();
+
+    ctx.restore();
+}
+
+function drawBorder(l) {
+
+    ctx.strokeStyle = COLORS.border;
+    ctx.lineWidth = 1.2;
+
+    ctx.strokeRect(
+        l.x + 0.5,
+        l.y + 0.5,
+        l.gridW,
+        l.gridH
+    );
+}
+
+function drawFooter(l) {
+
+    ctx.fillStyle = "rgba(255,255,255,0.50)";
+    ctx.font = "700 11px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    ctx.fillText(
+        "Pinch to zoom • Drag to move • Double tap to reset",
+        l.w / 2,
+        l.footerY + 9
+    );
+}
+
+function roundRect(x, y, w, h, r, fill, stroke) {
+
+    ctx.beginPath();
+
+    ctx.moveTo(x + r, y);
+
+    ctx.arcTo(
+        x + w,
+        y,
+        x + w,
+        y + h,
+        r
+    );
+
+    ctx.arcTo(
+        x + w,
+        y + h,
+        x,
+        y + h,
+        r
+    );
+
+    ctx.arcTo(
+        x,
+        y + h,
+        x,
+        y,
+        r
+    );
+
+    ctx.arcTo(
+        x,
+        y,
+        x + w,
+        y,
+        r
+    );
+
+    ctx.closePath();
+
+    if (fill) ctx.fill();
+    if (stroke) ctx.stroke();
+}
+
+function distance(touches) {
+
+    const dx =
+        touches[0].clientX -
+        touches[1].clientX;
+
+    const dy =
+        touches[0].clientY -
+        touches[1].clientY;
+
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
+canvas.addEventListener(
+    "touchstart",
+    e => {
+
+        e.preventDefault();
+
+        if (e.touches.length === 1) {
+
+            isDragging = true;
+
+            lastX = e.touches[0].clientX;
+            lastY = e.touches[0].clientY;
+        }
+
+        if (e.touches.length === 2) {
+
+            isDragging = false;
+
+            lastDistance = distance(e.touches);
+        }
+    },
+    { passive: false }
+);
+
+canvas.addEventListener(
+    "touchmove",
+    e => {
+
+        e.preventDefault();
+
+        if (
+            e.touches.length === 1 &&
+            isDragging
+        ) {
+
+            const x = e.touches[0].clientX;
+            const y = e.touches[0].clientY;
+
+            panX += x - lastX;
+            panY += y - lastY;
+
+            lastX = x;
+            lastY = y;
+
+            clampPan();
+
+            draw();
+        }
+
+        if (e.touches.length === 2) {
+
+            const newDistance = distance(e.touches);
+
+            if (lastDistance > 0) {
+
+                const oldZoom = zoom;
+
+                const factor =
+                    newDistance / lastDistance;
+
+                const cx =
+                    (
+                        e.touches[0].clientX +
+                        e.touches[1].clientX
+                    ) / 2;
+
+                const cy =
+                    (
+                        e.touches[0].clientY +
+                        e.touches[1].clientY
+                    ) / 2;
+
+                const l = getLayout();
+
+                const contentX =
+                    (cx - l.x - panX) / oldZoom;
+
+                const contentY =
+                    (cy - l.y - panY) / oldZoom;
+
+                zoom = Math.max(
+                    MIN_ZOOM,
+                    Math.min(
+                        MAX_ZOOM,
+                        zoom * factor
+                    )
+                );
+
+                panX =
+                    cx -
+                    l.x -
+                    contentX * zoom;
+
+                panY =
+                    cy -
+                    l.y -
+                    contentY * zoom;
+
+                clampPan();
+
+                draw();
+            }
+
+            lastDistance = newDistance;
+        }
+    },
+    { passive: false }
+);
+
+canvas.addEventListener(
+    "touchend",
+    e => {
+
+        const now = Date.now();
+
+        if (
+            e.changedTouches.length === 1 &&
+            now - lastTapTime < 280
+        ) {
+
+            zoom = 1;
+
+            panX = 0;
+            panY = 0;
+
+            draw();
+        }
+
+        lastTapTime = now;
+
+        if (e.touches.length === 0) {
+
+            isDragging = false;
+
+            lastDistance = 0;
+        }
+    },
+    { passive: false }
+);
+
+window.addEventListener(
+    "resize",
+    resize,
+    { passive: true }
+);
+
+window.visualViewport?.addEventListener(
+    "resize",
+    resize,
+    { passive: true }
+);
+
+resize();
+
+showMessage("Loading GREL90...");
+
+</script>
+
+</body>
+</html>

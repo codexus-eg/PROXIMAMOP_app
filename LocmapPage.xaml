@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PROXIMAMOP.LocmapPage"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#050914">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
+
+        <!-- HEADER -->
+        <Grid Padding="14,8,14,4"
+              ColumnDefinitions="Auto,*,Auto"
+              ColumnSpacing="10">
+
+            <!-- BACK -->
+            <Border WidthRequest="48"
+                    HeightRequest="48"
+                    Background="#2A151A"
+                    Stroke="#C8A44D"
+                    StrokeThickness="1.2"
+                    StrokeShape="RoundRectangle 15"
+                    VerticalOptions="Center">
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackTapped" />
+                </Border.GestureRecognizers>
+
+                <Label Text="?"
+                       TextColor="White"
+                       FontSize="24"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+            </Border>
+
+            <!-- TITLE -->
+            <VerticalStackLayout Grid.Column="1"
+                                 Spacing="0"
+                                 HorizontalOptions="Center">
+
+                <Label Text="LOCMAP"
+                       TextColor="White"
+                       FontSize="34"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" />
+
+                <Label Text="Tick contracts map � XAUUSD"
+                       TextColor="#C8A44D"
+                       FontSize="13"
+                       HorizontalTextAlignment="Center" />
+
+            </VerticalStackLayout>
+
+            <!-- LIVE -->
+            <Border Grid.Column="2"
+                    Background="#052E1B"
+                    Stroke="#22C55E"
+                    StrokeThickness="1.2"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="12,7"
+                    VerticalOptions="Center">
+
+                <HorizontalStackLayout Spacing="6">
+
+                    <Label Text="LIVE"
+                           TextColor="#4ADE80"
+                           FontSize="13"
+                           FontAttributes="Bold" />
+
+                    <Label Text="?"
+                           TextColor="#22C55E"
+                           FontSize="13" />
+
+                </HorizontalStackLayout>
+
+            </Border>
+
+        </Grid>
+
+        <!-- STATS -->
+        <Border Grid.Row="1"
+                Margin="14,4,14,8"
+                Padding="12"
+                Background="#0B1220"
+                Stroke="#1E293B"
+                StrokeThickness="1.1"
+                StrokeShape="RoundRectangle 22">
+
+            <Grid ColumnDefinitions="*,*,*">
+
+                <!-- LEVELS -->
+                <VerticalStackLayout Spacing="2">
+
+                    <Label Text="Levels"
+                           TextColor="#94A3B8"
+                           FontSize="12"
+                           HorizontalTextAlignment="Center" />
+
+                    <Label x:Name="LevelsLabel"
+                           Text="0"
+                           TextColor="White"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+                <!-- CONTRACTS -->
+                <VerticalStackLayout Grid.Column="1"
+                                     Spacing="2">
+
+                    <Label Text="Contracts"
+                           TextColor="#94A3B8"
+                           FontSize="12"
+                           HorizontalTextAlignment="Center" />
+                           <Label x:Name="ContractsLabel"
+                           Text="0"
+                           TextColor="#C8A44D"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+                <!-- LAST PRICE -->
+                <VerticalStackLayout Grid.Column="2"
+                                     Spacing="2">
+
+                    <Label Text="Last Price"
+                           TextColor="#94A3B8"
+                           FontSize="12"
+                           HorizontalTextAlignment="Center" />
+
+                    <Label x:Name="LastPriceLabel"
+                           Text="0.00"
+                           TextColor="#22C55E"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+            </Grid>
+
+        </Border>
+
+        <!-- MODE BUTTONS -->
+        <Grid Grid.Row="2"
+              Margin="14,0,14,8"
+              ColumnDefinitions="*,*"
+              ColumnSpacing="10">
+
+            <!-- HEATMAP -->
+            <Button x:Name="HeatmapButton"
+                    Text="Heatmap"
+                    Clicked="OnHeatmapClicked"
+                    HeightRequest="44"
+                    CornerRadius="16"
+                    BackgroundColor="#C8A44D"
+                    TextColor="#111827"
+                    FontAttributes="Bold" />
+
+            <!-- CARDS -->
+            <Button x:Name="CardsButton"
+                    Grid.Column="1"
+                    Text="Cards"
+                    Clicked="OnCardsClicked"
+                    HeightRequest="44"
+                    CornerRadius="16"
+                    BackgroundColor="#1A1114"
+                    TextColor="White"
+                    BorderColor="#C8A44D"
+                    BorderWidth="1"
+                    FontAttributes="Bold" />
+
+        </Grid>
+
+        <!-- CONTENT -->
+        <Grid Grid.Row="3">
+
+            <!-- ===================== -->
+            <!-- CARDS VIEW -->
+            <!-- ===================== -->
+
+            <CollectionView x:Name="LevelsCollection"
+                            IsVisible="False"
+                            Margin="14,0,14,8"
+                            SelectionMode="None">
+
+                <CollectionView.EmptyView>
+
+                    <VerticalStackLayout VerticalOptions="Center"
+                                         HorizontalOptions="Center"
+                                         Spacing="8">
+
+                        <Label Text="No LOCMAP data"
+                               TextColor="White"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
+
+                        <Label Text="Waiting for ..."
+                               TextColor="#94A3B8"
+                               FontSize="14"
+                               HorizontalTextAlignment="Center" />
+
+                    </VerticalStackLayout>
+
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <Border Margin="0,0,0,12"
+                                Padding="16,14"
+                                Background="#081120"
+                                Stroke="#17243A"
+                                StrokeThickness="1.1"
+                                StrokeShape="RoundRectangle 24">
+
+                            <Grid RowDefinitions="Auto,Auto,Auto"
+                                  ColumnDefinitions="*,Auto,*"
+                                  ColumnSpacing="14">
+                                  <!-- PRICE -->
+                                <Label Grid.Row="0"
+                                       Grid.ColumnSpan="3"
+                                       Text="{Binding PriceText}"
+                                       TextColor="#C8A44D"
+                                       FontSize="27"
+                                       FontAttributes="Bold"
+                                       HorizontalTextAlignment="Center" />
+
+                                <!-- SELL -->
+                                <VerticalStackLayout Grid.Row="1"
+                                                     Grid.Column="0"
+                                                     Spacing="5">
+
+                                    <Grid HeightRequest="28">
+
+                                        <Border Background="#4A0B15"
+                                                StrokeShape="RoundRectangle 13"
+                                                HorizontalOptions="Fill" />
+
+                                        <Border Background="#EF4444"
+                                                WidthRequest="{Binding SellBarWidth}"
+                                                HorizontalOptions="Start"
+                                                StrokeShape="RoundRectangle 13" />
+
+                                    </Grid>
+
+                                    <Label Text="{Binding SellText}"
+                                           TextColor="#FFA3A3"
+                                           FontSize="13"
+                                           HorizontalTextAlignment="Center" />
+
+                                </VerticalStackLayout>
+
+                                <!-- CENTER -->
+                                <VerticalStackLayout Grid.Row="1"
+                                                     Grid.Column="1"
+                                                     WidthRequest="110"
+                                                     Spacing="2"
+                                                     HorizontalOptions="Center">
+
+                                    <Label Text="{Binding Total Text}"
+                                           TextColor="White"
+                                           FontSize="14"
+                                           HorizontalTextAlignment="Center" />
+
+                                    <Label Text="{Binding ContractsText}"
+                                           TextColor="#38BDF8"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="Center" />
+
+                                </VerticalStackLayout>
+
+                                <!-- BUY -->
+                                <VerticalStackLayout Grid.Row="1"
+                                                     Grid.Column="2"
+                                                     Spacing="5">
+
+                                    <Grid HeightRequest="28">
+
+                                        <Border Background="#0B3A23"
+                                                StrokeShape="RoundRectangle 13"
+                                                HorizontalOptions="Fill" />
+
+                                        <Border Background="#22C55E"
+                                                WidthRequest="{Binding BuyBarWidth}"
+                                                HorizontalOptions="Start"
+                                                StrokeShape="RoundRectangle 13" />
+
+                                    </Grid>
+
+                                    <Label Text="{Binding BuyText}"
+                                           TextColor="#86EFAC"
+                                           FontSize="13"
+                                           HorizontalTextAlignment="Center" />
+
+                                </VerticalStackLayout>
+                                <!-- FOOTER -->
+                                <Grid Grid.Row="2"
+                                      Grid.ColumnSpan="3"
+                                      Margin="0,8,0,0"
+                                      ColumnDefinitions="*,Auto">
+
+                                    <Label Text="{Binding DeltaText}"
+                                           TextColor="#CBD5E1"
+                                           FontSize="13" />
+
+                                    <Label Grid.Column="1"
+                                           Text="{Binding ZoneText}"
+                                           TextColor="#A78BFA"
+                                           FontSize="13"
+                                           FontAttributes="Bold" />
+
+                                </Grid>
+
+                            </Grid>
+
+                        </Border>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <!-- ===================== -->
+            <!-- HEATMAP VIEW -->
+            <!-- ===================== -->
+
+            <Grid x:Name="HeatmapContainer"
+                  IsVisible="True"
+                  Margin="2,0,2,4">
+
+                <Border Background="#020617"
+                        Stroke="#17243A"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="0">
+
+                    <Grid RowDefinitions="Auto,*">
+
+                        <!-- TOP BAR -->
+                        <Grid Padding="8,5"
+                              ColumnDefinitions="*,Auto,Auto"
+                              ColumnSpacing="6">
+
+                            <Label Text=" Heatmap 13d"
+                                   TextColor="#C8A44D"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+
+                            <!-- CENTER -->
+                            <Button Grid.Column="1"
+                                    Text="Center"
+                                    HeightRequest="30"
+                                    Padding="8,0"
+                                    CornerRadius="10"
+                                    BackgroundColor="#1A1114"
+                                    TextColor="White"
+                                    BorderColor="#C8A44D"
+                                    BorderWidth="1"
+                                    FontSize="12"
+                                    Clicked="OnHeatmapCenterClicked" />
+
+                            <!-- CLEAR -->
+                            <Button Grid.Column="2"
+                                    Text="Clear"
+                                    HeightRequest="30"
+                                    Padding="8,0"
+                                    CornerRadius="10"
+                                    BackgroundColor="#2A151A"
+                                    TextColor="White"
+                                    BorderColor="#C8A44D"
+                                    BorderWidth="1"
+                                    FontSize="12"
+                                    Clicked="OnHeatmapClearClicked" />
+
+                        </Grid>
+
+                        <!-- HEATMAP -->
+                        <WebView x:Name="HeatmapWebView"
+                                 Grid.Row="1"
+                                 HorizontalOptions="Fill"
+                                 VerticalOptions="Fill" />
+
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
